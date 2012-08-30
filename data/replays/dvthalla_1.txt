@@ -1,30 +1,30 @@
-// Attempt to create a replay file format
-// Attacker data (player), format is military skill, commander skill, commander luck, commander power up,formation
+# Attempt to create a replay file format
+# Attacker data (player), format is military skill, commander skill, commander luck, commander power up,formation
 
 attacker = 22,43,78,Safeguard 1,Vela
 
-// attacker ships, top to bottom, front to back
+# attacker ships, top to bottom, front to back
 
 attacker_ships = M-1 Destroyer Ship a, L-1 Destroyer Ship a, L-1 Destroyer Ship a, M-1 Destroyer Ship a
 
-// ship upgrade levels for every ship mentioned
+# ship upgrade levels for every ship mentioned
 
 attacker_upgrades = M-1 Destroyer Ship a:0000,L-1 Destroyer Ship a:1003
 
-// defender ships, top to bottom, front to back, 
+# defender ships, top to bottom, front to back, 
 
-// Defender data, just formation (you can do this with planet data)
+# Defender data, just formation (you can do this with planet data)
 defender = Vela
 defender_ships = S Antagonist Ship a, M Anathema Ship b,M Antagonist Ship a,S Antagonist Ship a
 
-// battle progress
-// damage rounds, list 5 rows. If two ships in a row, list as front/back. Empty item for empty row.
-// item format is damage(ships left) eg 1000(2) (color is too subjective)
-// start with C on the line for a critical
+# battle progress
+# damage rounds, list 5 rows. If two ships in a row, list as front/back. Empty item for empty row.
+# item format is damage(ships left) eg 1000(2) (color is too subjective)
+# start with C on the line for a critical
 
 stats.1.attacker=3287,1833,1015,1750,3375,1056
 stats.1.defender=1470,990,1470,1290,1110,1170
 damage.1.attacker=,,360(3),1206(1),360(3)
 damage.1.defender=,,1918(0),2027(0)/2066(0),1918(0)
 
-// this needs to be pretty stable against typos.
+# this needs to be pretty stable against typos.
