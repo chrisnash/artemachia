@@ -74,8 +74,7 @@ public class ReplayRunner
             psi = psi.skillUpgrade(commanderBoost);
             attackShips.add(psi);
         }
-        //TODO
-        //Deployment attackDeployment = attackFormation.deploy(attackShips);
+        Deployment attackDeployment = attackFormation.deploy(attackShips);
 
         String defendFormationName = replay.get("defender");
         List<String> defendShipNames = replay.getList("defender_ships");
@@ -83,12 +82,10 @@ public class ReplayRunner
         List<EnemyShipInstance> defendShips = new LinkedList<EnemyShipInstance>();
         for(String defendShipName : defendShipNames)
         {
-            //TODO
-            //defendShips.add(esd.instantiate(defendShipName));
+            defendShips.add(esd.instantiate(defendShipName));
         }
         Formation defendFormation = FormationService.get(defendFormationName);
-        //TODO
-        //Deployment defendDeployment = defendFormation.deploy(defendShips);
+        Deployment defendDeployment = defendFormation.deploy(defendShips);
         
         // attempt to load the battle stats.1.attacker, stats.1.defender, damage.1.attacker, damage.1.defender
         for(int turn=1;;turn++)
@@ -105,7 +102,6 @@ public class ReplayRunner
             // do whatever you need to do with this
         }
         
-        //TODO
-        //esd.update();
+        esd.update();
     }
 }
