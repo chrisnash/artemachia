@@ -9,4 +9,8 @@ public interface ShipInstance
     Ship getParent();
 
     double getEffectiveCount();
+
+    boolean isAlive();
+
+    void updateDamage(DamageEntry damageEntry) throws Exception;
 }

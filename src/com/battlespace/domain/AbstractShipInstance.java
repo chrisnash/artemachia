@@ -36,4 +36,20 @@ public class AbstractShipInstance implements ShipInstance
     {
         return template;
     }
+
+    @Override
+    public boolean isAlive()
+    {
+        return unitsRemaining > 0;
+    }
+
+    @Override
+    public void updateDamage(DamageEntry damageEntry) throws Exception
+    {
+        // TODO Auto-generated method stub
+        unitsRemaining = damageEntry.remainingShips;
+        double m1 = damage.value(false) + damageEntry.damage.value(false);
+        double m2 = damage.value(true) + damageEntry.damage.value(true);
+        damage = StatFactory.create(m1, m2);
+    }
 }

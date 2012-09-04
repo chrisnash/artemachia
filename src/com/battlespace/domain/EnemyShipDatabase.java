@@ -11,6 +11,7 @@ import com.battlespace.service.StatFactory;
 public class EnemyShipDatabase
 {
     Map<String, EnemyShip> db;
+    boolean dirty = false;
     
     public static EnemyShipDatabase load() throws Exception
     {
@@ -53,11 +54,7 @@ public class EnemyShipDatabase
 
     public EnemyShipInstance instantiate(String name) throws Exception
     {
-        EnemyShip nme = db.get(name);
-        if(nme == null)
-        {
-            throw new Exception("Could not load enemy ship " + name);
-        }
+        EnemyShip nme = lookup(name);
         return nme.createInstance();
     }
 
@@ -65,6 +62,45 @@ public class EnemyShipDatabase
     {
         // TODO Auto-generated method stub
         
+    }
+
+    public EnemyShip lookup(String name) throws Exception
+    {
+        EnemyShip nme = db.get(name);
+        if(nme == null)
+        {
+            throw new Exception("Could not load enemy ship " + name);
+        }
+        return nme;
+    }
+
+    public void refineSummaryStats(EnemyShip nme,
+            List<Stat> newStatEstimate) throws Exception
+    {
+        System.out.println(newStatEstimate);
+        
+        List<Stat> initial = nme.getSummaryStats();
+        List<Stat> improved = RangedStat.merge(initial, newStatEstimate);
+        
+        for(int i=0;i<6;i++)
+        {
+            Stat si = initial.get(i);
+            if(si instanceof RangedStat)
+            {
+                RangedStat ri = (RangedStat)si;
+                Stat j = improved.get(i);
+                if(j.value(false) > ri.value(false))
+                {
+                    ri.setMin(j.value(false));
+                    dirty = true;
+                }
+                if(j.value(true) < ri.value(true))
+                {
+                    ri.setMax(j.value(true));
+                    dirty = true;
+                }
+            }
+        }
     }
 
 }

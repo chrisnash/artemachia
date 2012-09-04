@@ -46,4 +46,41 @@ public class Deployment
         return results;
     }
 
+    public Integer frontLine()
+    {
+        Integer fl = null;
+        // the front row is actually the COLUMN of the frontmost living ship
+        for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
+        {
+            Coordinate k = e.getKey();
+            ShipInstance v = e.getValue();
+            if(!v.isAlive()) continue;
+            if((fl==null) || (k.c < fl))
+            {
+                fl = k.c;
+            }
+        }
+        return fl;
+    }
+
+    public ShipInstance getLivingShip(int r, int c)
+    {
+        Coordinate k = new Coordinate(r, c);
+        ShipInstance ship = deploymentMap.get(k);
+        if( (ship != null) && (!ship.isAlive()) )
+        {
+            ship = null;
+        }
+        return ship;
+    }
+
+    public void updateDamage(int r, int c, DamageEntry damageEntry) throws Exception
+    {
+        if(damageEntry==null) return;
+        Coordinate k = new Coordinate(r, c);
+        ShipInstance ship = deploymentMap.get(k);
+        if(ship==null) throw new Exception("No ship at " + k + " to apply damage");
+        ship.updateDamage(damageEntry);
+    }
+
 }

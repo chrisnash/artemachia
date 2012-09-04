@@ -45,7 +45,7 @@ public class RangedStat implements Stat
         return results;
     }
 
-    private static RangedStat statFromDisplay(String stat)
+    static RangedStat statFromDisplay(String stat)
     {
         double base = Double.valueOf(stat);
         double min = base - 1;
@@ -76,8 +76,8 @@ public class RangedStat implements Stat
         return out;
     }
 
-    public static List<Stat> merge(List<RangedStat> s1,
-            List<Stat> s2) throws Exception
+    public static List<Stat> merge(List<? extends Stat> s1,
+            List<? extends Stat> s2) throws Exception
     {
         List<Stat> out = new LinkedList<Stat>();
         for(int i=0; i<6; i++)
@@ -91,7 +91,7 @@ public class RangedStat implements Stat
         return out;
     }
 
-    public static List<Stat> scale(List<Stat> base, double ratio) throws Exception
+    public static List<Stat> scale(List<? extends Stat> base, double ratio) throws Exception
     {
         List<Stat> out = new LinkedList<Stat>();
         for(Stat s : base)
@@ -104,5 +104,33 @@ public class RangedStat implements Stat
     public String toString()
     {
         return min+"-"+max;
+    }
+
+    public static List<Stat> diff(List<RangedStat> s1,
+            List<Stat> s2) throws Exception
+    {
+        List<Stat> out = new LinkedList<Stat>();
+        for(int i=0;i<6;i++)
+        {
+            double a1 = s1.get(i).value(false);
+            double a2 = s2.get(i).value(false);
+            double b1 = s1.get(i).value(true);
+            double b2 = s2.get(i).value(true);
+            
+            double m = a1 - b2;
+            double n = b1 - a2;
+            if(m<0.0) m=0.0;
+            out.add(StatFactory.create(m,n));
+        }
+        return out;
+    }
+
+    public void setMin(double value)
+    {
+        min = value;
+    }
+    public void setMax(double value)
+    {
+        max = value;
     }
 }

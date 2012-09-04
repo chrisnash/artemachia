@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
+import com.battlespace.domain.DamageEntry;
 import com.battlespace.domain.Deployment;
+import com.battlespace.domain.EnemyShip;
 import com.battlespace.domain.EnemyShipDatabase;
 import com.battlespace.domain.EnemyShipInstance;
 import com.battlespace.domain.FileData;
@@ -117,11 +120,44 @@ public class ReplayRunner
             // Then for each ship type, min is given by back calculation (assuming all other ships maxed)
             // and likewise for max
             Map<String, Double> deploymentSummary = defendDeployment.getSummary();
+            Set<String> enemyNames = deploymentSummary.keySet();
+            for(String treatFixed : enemyNames)
+            {
+                // sum the raw stats from the remaining ships
+                List<Stat> others = RangedStat.createEmptyStats();
+                for(String otherShipName : enemyNames)
+                {
+                    if(otherShipName.equals(treatFixed)) continue;
+                    EnemyShip otherShip = esd.lookup(otherShipName);
+                    List<Stat> stats = otherShip.getSummaryStats();
+                    List<Stat> scaled = RangedStat.scale(stats, deploymentSummary.get(otherShipName));
+                    others = RangedStat.sum(others, scaled);
+                }
+                // display range sub others what our ship might be.
+                List<Stat> fixedStats = RangedStat.diff(displayRange, others);
+                List<Stat> newStatEstimate = RangedStat.scale(fixedStats, 1.0 / deploymentSummary.get(treatFixed));
+                EnemyShip fixedShip = esd.lookup(treatFixed);
+                esd.refineSummaryStats(fixedShip, newStatEstimate);
+            }
             
             List<String> attackDamage = replay.getList("damage."+turn+".attacker");
+            List<DamageEntry> ad = DamageEntry.parseDamage(attackDamage, attackDeployment);
+            
             List<String> defendDamage = replay.getList("damage."+turn+".defender");
+            List<DamageEntry> dd = DamageEntry.parseDamage(defendDamage, attackDeployment);
        
-            // do whatever you need to do with this
+            // update damage and ship counts
+            int afl = attackDeployment.frontLine();
+            for(int i=0;i<10;i++)
+            {
+                attackDeployment.updateDamage(i%5, afl+((i>=5)?1:0), ad.get(i));
+            }
+            int dfl = defendDeployment.frontLine();
+            for(int i=0;i<10;i++)
+            {
+                defendDeployment.updateDamage(i%5, dfl+((i>=5)?1:0), dd.get(i));
+            }
+            
         }
         
         esd.update();
