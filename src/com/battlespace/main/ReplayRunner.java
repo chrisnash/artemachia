@@ -108,7 +108,16 @@ public class ReplayRunner
             List<Stat> realRange = attackDeployment.getStats();
             List<Stat> extractedAttackStats = RangedStat.merge(displayRange, realRange);
             
+            // How to analyze defend stats. Obviously we need to do a display breakdown
             List<String> defendStats = replay.getList("stats."+turn+".defender");
+            displayRange = RangedStat.statsFromDisplay(defendStats);
+            
+            // now the trick is as follows. Summarize deployment as a map of
+            // ship name to effective ship count.
+            // Then for each ship type, min is given by back calculation (assuming all other ships maxed)
+            // and likewise for max
+            Map<String, Double> deploymentSummary = defendDeployment.getSummary();
+            
             List<String> attackDamage = replay.getList("damage."+turn+".attacker");
             List<String> defendDamage = replay.getList("damage."+turn+".defender");
        

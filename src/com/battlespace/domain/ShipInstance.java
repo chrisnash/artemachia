@@ -5,4 +5,8 @@ import java.util.List;
 public interface ShipInstance
 {
     List<Stat> getEffectiveStats() throws Exception;
+
+    Ship getParent();
+
+    double getEffectiveCount();
 }

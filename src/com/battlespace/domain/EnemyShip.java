@@ -13,4 +13,9 @@ public class EnemyShip extends AbstractShip
         // TODO Auto-generated constructor stub
     }
 
+    public EnemyShipInstance createInstance() throws Exception
+    {
+        return new EnemyShipInstance(this);
+    }
+
 }

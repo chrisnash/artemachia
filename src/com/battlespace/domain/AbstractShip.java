@@ -82,4 +82,9 @@ public class AbstractShip implements Ship
         out.add(plasma.get("L"));
         return out;
     }
+    
+    public String getName()
+    {
+        return name;
+    }
 }

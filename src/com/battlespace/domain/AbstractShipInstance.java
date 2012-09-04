@@ -20,11 +20,20 @@ public class AbstractShipInstance implements ShipInstance
     @Override
     public List<Stat> getEffectiveStats() throws Exception
     {
-        double ratio = unitsRemaining;
-        ratio /= template.getUnits();
-        
+        double ratio = getEffectiveCount();        
         List<Stat> base = template.getSummaryStats();
         return RangedStat.scale(base, ratio);
-        
+    }
+    
+    public double getEffectiveCount()
+    {
+        double ratio = unitsRemaining;
+        ratio /= template.getUnits();
+        return ratio;
+    }
+    
+    public Ship getParent()
+    {
+        return template;
     }
 }

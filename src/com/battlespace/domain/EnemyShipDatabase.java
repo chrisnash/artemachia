@@ -51,10 +51,14 @@ public class EnemyShipDatabase
         this.db = x;
     }
 
-    public EnemyShipInstance instantiate(String defendShipName)
+    public EnemyShipInstance instantiate(String name) throws Exception
     {
-        // TODO Auto-generated method stub
-        return null;
+        EnemyShip nme = db.get(name);
+        if(nme == null)
+        {
+            throw new Exception("Could not load enemy ship " + name);
+        }
+        return nme.createInstance();
     }
 
     public void update()

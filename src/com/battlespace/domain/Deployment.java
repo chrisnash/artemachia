@@ -1,5 +1,6 @@
 package com.battlespace.domain;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
@@ -23,6 +24,26 @@ public class Deployment
             stats = RangedStat.sum(stats, shipStat);
         }
         return stats;
+    }
+
+    public Map<String, Double> getSummary()
+    {
+        Map<String, Double> results = new HashMap<String, Double>();
+        for(ShipInstance instance : deploymentMap.values())
+        {
+            String name = instance.getParent().getName();
+            double c = instance.getEffectiveCount();
+            if(c > 0.0)
+            {
+                Double d = results.get(name);
+                if(d!=null)
+                {
+                    c += d.doubleValue();
+                }
+                results.put(name, Double.valueOf(c));
+            }
+        }
+        return results;
     }
 
 }

@@ -7,4 +7,6 @@ public interface Ship
     int getUnits();
 
     List<Stat> getSummaryStats();
+
+    String getName();
 }
