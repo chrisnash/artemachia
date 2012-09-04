@@ -33,5 +33,17 @@ public class DataLoaderService
         }
         return fd;
     }
+    
+    public static FileData loadFileWithBackup(String primaryFile, String secondaryFile) throws IOException
+    {
+        try
+        {
+            return loadFile(primaryFile);
+        }
+        catch(final IOException e)
+        {
+            return loadFile(secondaryFile);
+        }
+    }
 
 }

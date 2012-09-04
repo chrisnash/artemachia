@@ -17,5 +17,4 @@ public class EnemyShip extends AbstractShip
     {
         return new EnemyShipInstance(this);
     }
-
 }

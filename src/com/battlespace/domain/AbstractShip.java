@@ -20,6 +20,8 @@ public class AbstractShip implements Ship
     public Stat speed;
     public int units;
     
+    String code;
+    
     public AbstractShip(String name, Map<String, Stat> torp,
             Map<String, Stat> plas, Stat torpShield, Stat plasShield, Stat dur,
             Stat dom, Stat speed, int units) throws Exception
@@ -86,5 +88,33 @@ public class AbstractShip implements Ship
     public String getName()
     {
         return name;
+    }
+    
+    public String getCode()
+    {
+        return code;
+    }
+    
+    public Stat getDomination()
+    {
+        return domination;
+    }
+    
+    public Stat getDurability()
+    {
+        return durability;
+    }
+    
+    public List<Stat> getShieldStats()
+    {
+        List<Stat> out = new LinkedList<Stat>();
+        out.add(torpedoShield);
+        out.add(plasmaShield);
+        return out;
+    }
+    
+    public Stat getSpeed()
+    {
+        return speed;
     }
 }

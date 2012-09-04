@@ -1,5 +1,9 @@
 package com.battlespace.domain;
 
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,12 +27,10 @@ public class EnemyShipDatabase
     {
         // looks a lot like the other one
         Map<String, EnemyShip> _psd = new HashMap<String, EnemyShip>();
-        FileData fd = DataLoaderService.loadFile("data/enemy_ships.txt");
+        FileData fd = DataLoaderService.loadFileWithBackup("conf/enemy_ships.txt","data/enemy_ships.txt");
         Set<String> keys = fd.getKeys();
         for(String key : keys)
         {
-            if(key.contains(".")) continue; // skip enhancements, labelled .0.1.2.3
-            
             List<String> data = fd.getList(key);
             
             String name = data.get(0);
@@ -41,7 +43,8 @@ public class EnemyShipDatabase
             Stat speed = StatFactory.create(data.get(11));
             int units = Integer.valueOf(data.get(12));
                             
-            EnemyShip ps = new EnemyShip(name, torp, plas, torpShield, plasShield, dur, dom, speed, units);            
+            EnemyShip ps = new EnemyShip(name, torp, plas, torpShield, plasShield, dur, dom, speed, units);          
+            ps.code = key;
             _psd.put(name, ps);
         }
         return _psd;
@@ -58,10 +61,57 @@ public class EnemyShipDatabase
         return nme.createInstance();
     }
 
-    public void update()
+    public void update() throws IOException
     {
-        // TODO Auto-generated method stub
-        
+        if(dirty)
+        {
+            PrintStream w = new PrintStream(new FileOutputStream("conf/enemy_ships.txt"));
+            
+            // write the new version of the file
+            for(EnemyShip ship : db.values())
+            {
+                String code = ship.getCode();
+                String name = ship.getName();
+                List<Stat> summary = ship.getSummaryStats();
+                List<Stat> shield = ship.getShieldStats();
+                Stat durability = ship.getDurability();
+                Stat domination = ship.getDomination();
+                Stat speed = ship.getSpeed();
+                int units = ship.getUnits();
+                
+                StringBuffer sb = new StringBuffer(code + "=" + name + ",");
+                sb.append(statsFormat(summary));
+                sb.append(statsFormat(shield));
+                sb.append(statFormat(durability));
+                sb.append(statFormat(domination));
+                sb.append(statFormat(speed));
+                sb.append(Integer.toString(units));
+                
+                w.println(sb.toString());
+            }
+            w.close();
+        }
+    }
+
+    private String statsFormat(List<Stat> summary)
+    {
+        StringBuffer sb = new StringBuffer();
+        for(Stat stat : summary)
+        {
+            sb.append(statFormat(stat));
+        }
+        return sb.toString();
+    }
+
+    private String statFormat(Stat stat)
+    {
+        int min = (int)Math.floor(stat.value(false));
+        int max = (int)Math.ceil(stat.value(true));
+        if(min==max)
+        {
+            return Integer.toString(min)+",";
+        }
+        return Integer.toString(min)+"-"+Integer.toString(max)+",";
     }
 
     public EnemyShip lookup(String name) throws Exception
@@ -76,9 +126,7 @@ public class EnemyShipDatabase
 
     public void refineSummaryStats(EnemyShip nme,
             List<Stat> newStatEstimate) throws Exception
-    {
-        System.out.println(newStatEstimate);
-        
+    {        
         List<Stat> initial = nme.getSummaryStats();
         List<Stat> improved = RangedStat.merge(initial, newStatEstimate);
         
