@@ -5,13 +5,17 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.Deployment;
 import com.battlespace.domain.EnemyShipDatabase;
 import com.battlespace.domain.EnemyShipInstance;
 import com.battlespace.domain.FileData;
 import com.battlespace.domain.Formation;
+import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
+import com.battlespace.domain.RangedStat;
+import com.battlespace.domain.Stat;
 import com.battlespace.service.CommanderPowerService;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
@@ -30,7 +34,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "dvthalla_1.txt";
+        String replayFile = "data/replays/" + "brutus_1.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -63,16 +67,20 @@ public class ReplayRunner
         
         for(String attackShipName : attackShipNames)
         {
-            PlayerShipInstance psi = PlayerShipDatabase.instantiate(attackShipName);
+            PlayerShip psi = PlayerShipDatabase.lookup(attackShipName);
+            
             // apply ship upgrades
             psi = psi.applyUpgrades( upgradeLevels.get(attackShipName) );
-            // apply player skill
-            psi = PlayerSkillModifier.upgrade(psi, militarySkill);
-            // apply commander skill
-            psi = commanderPower.upgrade(psi);
-            // apply commander stat
-            psi = psi.skillUpgrade(commanderBoost);
-            attackShips.add(psi);
+
+            // calculate boost percentages
+            Booster booster = new Booster(psi.size);
+            
+            PlayerSkillModifier.upgrade(booster, militarySkill);
+            commanderPower.upgrade(booster);
+            booster.skillUpgrade(commanderBoost);
+            
+            psi = psi.applyBooster(booster);
+            attackShips.add(psi.createInstance());
         }
         Deployment attackDeployment = attackFormation.deploy(attackShips);
 
@@ -95,6 +103,11 @@ public class ReplayRunner
             {
                 break;
             }
+            // allow for display rounding and make sure they're compatible with our calculations
+            List<RangedStat> displayRange = RangedStat.statsFromDisplay(attackStats);
+            List<Stat> realRange = attackDeployment.getStats();
+            List<Stat> extractedAttackStats = RangedStat.merge(displayRange, realRange);
+            
             List<String> defendStats = replay.getList("stats."+turn+".defender");
             List<String> attackDamage = replay.getList("damage."+turn+".attacker");
             List<String> defendDamage = replay.getList("damage."+turn+".defender");

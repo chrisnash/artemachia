@@ -3,7 +3,9 @@ package com.battlespace.domain.player;
 import java.util.List;
 
 import com.battlespace.domain.AbstractPlayerPower;
+import com.battlespace.domain.Booster;
 import com.battlespace.domain.PlayerPower;
+import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
 public class BoostShields extends AbstractPlayerPower
@@ -18,10 +20,11 @@ public class BoostShields extends AbstractPlayerPower
     }
 
     @Override
-    public PlayerShipInstance upgrade(PlayerShipInstance psi) throws Exception
+    public void upgrade(Booster b) throws Exception
     {
-        if(!psi.size.equals(size)) return psi;
-        return new PlayerShipInstance(psi.name, psi.torpedoes, psi.plasma, psi.torpedoShield.enhance(percent), psi.plasmaShield.enhance(percent), psi.durability, psi.domination, psi.speed, psi.units);
-
+        if(b.size.equals(size))
+        {
+            b.add(new double[]{0,0,0,0,0,0,percent,percent,0,0,0});
+        }
     }
 }

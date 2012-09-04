@@ -1,3 +1,15 @@
+m1mpa=M-1 Mass Produced Ship a,570,300,300,300,270,270,60,60,1920,6,10,3
+m1mpa.0=Pulse Rifle a,45,30,30,0,0,0,0,0,0,0,0
+m1mpa.1=Particle Beam a,0,0,0,30,15,15,0,0,0,0,0
+m1mpa.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
+m1mpa.3=Whipple Armor a,0,0,0,0,0,0,10,10,0,0,0
+
+m1ta=M-1 Torpedo Ship a,1440,690,690,0,0,0,150,0,2460,6,10,3
+m1ta.0=Torpedo Gun a,60,30,30,0,0,0,0,0,0,0,0
+m1ta.1=Pulse Rifle a,45,30,30,0,0,0,0,0,0,0,0
+m1ta.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
+m1ta.3=Anti-Torpedo Armor a,0,0,0,0,0,0,20,0,0,0,0
+
 m1da=M-1 Destroyer Ship a,1320,240,240,570,240,240,100,0,2460,6,10,3
 m1da.0=Anti-S Torpedo a,105,15,15,0,0,0,0,0,0,0,0
 m1da.1=Anti-S Particle Beam a,0,0,0,45,15,15,0,0,0,0,0

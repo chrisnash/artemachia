@@ -8,24 +8,25 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 import com.battlespace.domain.AbstractPlayerPower;
+import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.FileData;
+import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
 public class PlayerSkillModifier
 {
     static SortedSet<AbstractPlayerPower> _pp;
     
-    public static PlayerShipInstance upgrade(PlayerShipInstance psi,
+    public static void upgrade(Booster booster,
             int militarySkill) throws Exception
     {
         SortedSet<AbstractPlayerPower> pp = loadDatabase();
         for(AbstractPlayerPower app : pp)
         {
             if(app.level > militarySkill) break;
-            psi = app.upgrade(psi);
+            app.upgrade(booster);
         }
-        return psi;
     }
 
     private static SortedSet<AbstractPlayerPower> loadDatabase() throws Exception

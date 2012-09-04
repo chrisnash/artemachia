@@ -3,7 +3,9 @@ package com.battlespace.domain.commander;
 import java.util.List;
 
 import com.battlespace.domain.AbsoluteStat;
+import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
+import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
 public class Safeguard implements CommanderPower
@@ -16,9 +18,9 @@ public class Safeguard implements CommanderPower
     }
     
     @Override
-    public PlayerShipInstance upgrade(PlayerShipInstance psi) throws Exception
+    public void upgrade(Booster b) throws Exception
     {
-        return new PlayerShipInstance(psi.name, AbsoluteStat.enhance(psi.torpedoes, percent), psi.plasma, psi.torpedoShield, psi.plasmaShield, psi.durability, psi.domination, psi.speed, psi.units);
+        b.add(new double[]{0,0,0, 0,0,0, percent,0, 0,0, 0});
     }
 
 }

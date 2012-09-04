@@ -22,5 +22,12 @@ public class StatFactory
             return new RangedStat(Double.valueOf(p1), Double.valueOf(p2));
         }
     }
+    
+    public static Stat create(double v1, double v2) throws Exception
+    {
+        if((v1>v2)||(v1<0.0)) throw new Exception("Illegal stat range " + v1 + "-" + v2);
+        if(v1==v2) return new AbsoluteStat(v1);
+        return new RangedStat(v1, v2);
+    }
 
 }

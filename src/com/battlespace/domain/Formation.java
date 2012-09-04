@@ -1,7 +1,10 @@
 package com.battlespace.domain;
 
 import java.util.List;
+import java.util.Map;
+import java.util.SortedMap;
 import java.util.SortedSet;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Formation
@@ -12,14 +15,14 @@ public class Formation
     public static final int COLUMNS = 7;
     
     public Formation(String value) throws Exception
-    {
+    {        
         if(value.length()!=ROWS*COLUMNS) throw new Exception("Invalid formation string length " + value.length());
         int index=0;
         for(int r=0; r<ROWS; r++)
         {
             for(int c=0;c<COLUMNS;c++)
             {
-                String q = value.substring(c,c+1);
+                String q = value.substring(index,index+1);
                 if(q.equals("X"))
                 {
                     coords.add(new Coordinate(r,c));
@@ -33,10 +36,19 @@ public class Formation
         }
     }
 
-    public Deployment deploy(List<? extends ShipInstance> attackShips)
+    public Deployment deploy(List<? extends ShipInstance> ships) throws Exception
     {
-        // TODO Auto-generated method stub
-        return null;
+        SortedMap<Coordinate, ShipInstance> deployData = new TreeMap<Coordinate, ShipInstance>();
+        int index = 0;
+        if(coords.size() != ships.size())
+        {
+            throw new Exception("Deployment mismatch formation=" + coords.size() + " ships=" + ships.size());
+        }
+        for(Coordinate c : coords)
+        {
+            deployData.put(c, ships.get(index++));
+        }
+        return new Deployment(deployData);
     }
 
 }

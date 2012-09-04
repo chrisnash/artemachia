@@ -1,0 +1,16 @@
+attacker = 28,36,31,L Missileer 1,Aquila
+attacker_ships = M-1 Mass Produced Ship a,M-1 Torpedo Ship a,M-1 Mass Produced Ship a
+attacker_upgrades = M-1 Mass Produced Ship a:0000,M-1 Torpedo Ship a:0000
+
+defender = Aquila
+defender_ships = S Antagonist Ship a,S Antagonist Ship a,S Antagonist Ship a
+
+stats.1.attacker=2704,1352,1352,628,566,566
+stats.1.defender=810,810,1530,360,360,450
+damage.1.attacker=C475(3),,452(3),,475(3)
+damage.1.defender=882(2),,1434(0),,882(2)
+
+stats.2.attacker=2704,1352,1352,628,566,566
+stats.2.defender=180,180,340,80,80,100
+damage.2.attacker=121(3),,,,121(3)
+damage.2.defender=882(0),,,,1434(0)

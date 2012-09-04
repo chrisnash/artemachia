@@ -1,5 +1,7 @@
 package com.battlespace.domain;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 public class AbstractShip implements Ship
@@ -62,5 +64,22 @@ public class AbstractShip implements Ship
     public String toString()
     {
         return name + " " + size + " " + torpedoes + " " + plasma + " " + torpedoShield + " " + plasmaShield + " " + durability + " " + domination + " " + speed + " " + units;
+    }
+    
+    public int getUnits()
+    {
+        return units;
+    }
+    
+    public List<Stat> getSummaryStats()
+    {
+        List<Stat> out = new LinkedList<Stat>();
+        out.add(torpedoes.get("S"));
+        out.add(torpedoes.get("M"));
+        out.add(torpedoes.get("L"));
+        out.add(plasma.get("S"));
+        out.add(plasma.get("M"));
+        out.add(plasma.get("L"));
+        return out;
     }
 }

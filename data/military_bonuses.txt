@@ -3,3 +3,4 @@ b5=5,Dept of Defense a,BoostShields,S,3
 b10=10,Dept of Transport a,BoostSpeed,5
 b17=17,Air Force b,BoostWeapons,M,3
 b22=22,Dept of Defense b,BoostShields,M,3
+b28=28,Aeronautics Admin a,BoostDomination,15
