@@ -79,4 +79,8 @@ public class DamageEntry
         return new DamageEntry(piece.substring(0,open), Integer.valueOf(piece.substring(open+1,close)), critical );
     }
     
+    public String toString()
+    {
+        return (critical?"C":"") + damage + "(" + remainingShips + ")";
+    }
 }

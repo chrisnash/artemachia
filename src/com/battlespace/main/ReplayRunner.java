@@ -190,19 +190,8 @@ public class ReplayRunner
             for(Map<Coordinate, Coordinate> attackCombo : allAttackCombos)
             {
                 // flip the map into the form (defender)-(list all attackers)
-                Map<Coordinate, List<Coordinate>> attackersPerDefender = new HashMap<Coordinate, List<Coordinate>>();
-                for(Map.Entry<Coordinate, Coordinate> e : attackCombo.entrySet())
-                {
-                    Coordinate attacker = e.getKey();
-                    Coordinate defender = e.getValue();
-                    List<Coordinate> list = attackersPerDefender.get(defender);
-                    if(list == null)
-                    {
-                        list = new LinkedList<Coordinate>();
-                        attackersPerDefender.put(defender, list);
-                    }
-                    list.add(attacker);
-                }
+                Map<Coordinate, List<Coordinate>> attackersPerDefender = invertAttackers(attackCombo);
+                
                 boolean match = true;
                 for(int i=0;match && (i<10);i++)
                 {
@@ -226,21 +215,8 @@ public class ReplayRunner
                             // just a subset of them. (2^n-1 possible subsets). Crap.
                             if(de.remainingShips == 0)
                             {
-                                // subset testing
-                                match = false;
-                                for(int t=1; (!match) && (t< (1<<targeting.size()) ); t++)
-                                {
-                                    // use the bitmask for t to build a sublist
-                                    List<Coordinate> sl = new LinkedList<Coordinate>();
-                                    for(int b=0; b<targeting.size(); b++)
-                                    {
-                                        if( (t&(1<<b)) != 0)
-                                        {
-                                            sl.add(targeting.get(b));
-                                        }
-                                    }
-                                    match = isCompatibleAttack(attackDeployment, defendDeployment, sl, dl, de);
-                                }
+                                List< List<Coordinate> > es = findEliminatingSubsets(attackDeployment, defendDeployment, targeting, dl, de);
+                                match = (es.size() > 0);    // anything will do
                             }
                             else
                             {
@@ -257,6 +233,35 @@ public class ReplayRunner
                 }
             }
             //System.out.println("Matching attack configurations " + matchingAttacks.size());
+            
+            if(matchingAttacks.size()==1)
+            {
+                Map<Coordinate, Coordinate> attackCombo = matchingAttacks.get(0);
+                // now do it all again, this time to compute enemy shield effectiveness.
+                // note you may need to test the subsets harder this time.
+                Map<Coordinate, List<Coordinate>> attackersPerDefender = invertAttackers(attackCombo);
+                // fl is still the defender front line
+                for(Map.Entry<Coordinate, List<Coordinate>> e : attackersPerDefender.entrySet())
+                {
+                    Coordinate defenderPos = e.getKey();
+                    List<Coordinate> attackerPos = e.getValue();
+                    DamageEntry de = dd.get(defenderPos.r + ((defenderPos.c==fl)?0:5) );
+                    // special handling of a wipeout
+                    if(de.remainingShips==0)
+                    {
+                        List< List<Coordinate> > es = findEliminatingSubsets(attackDeployment, defendDeployment, attackerPos, defenderPos, de);
+                        System.out.println("Uncertain: " + es.size());
+                        if(es.size()==1)
+                        {
+                            adjustShields(attackDeployment, defendDeployment, es.get(0), defenderPos, de);
+                        }
+                    }
+                    else
+                    {
+                        adjustShields(attackDeployment, defendDeployment, attackerPos, defenderPos, de);
+                    }
+                }
+            }
             
             // update damage and ship counts
             int afl = attackDeployment.frontLine();
@@ -303,6 +308,86 @@ public class ReplayRunner
         esd.update();
     }
 
+    private static List<List<Coordinate>> findEliminatingSubsets(
+            Deployment attackDeployment, Deployment defendDeployment,
+            List<Coordinate> targeting, Coordinate dl, DamageEntry de) throws Exception
+    {
+        List< List<Coordinate> > out = new LinkedList< List<Coordinate> >();
+        for(int t=1; (t< (1<<targeting.size()) ); t++)
+        {
+            // use the bitmask for t to build a sublist
+            List<Coordinate> sl = new LinkedList<Coordinate>();
+            for(int b=0; b<targeting.size(); b++)
+            {
+                if( (t&(1<<b)) != 0)
+                {
+                    sl.add(targeting.get(b));
+                }
+            }
+            if( isCompatibleAttack(attackDeployment, defendDeployment, sl, dl, de) )
+            {
+                out.add(sl);
+            }
+        }
+        return out;
+    }
+
+    private static Map<Coordinate, List<Coordinate>> invertAttackers(
+            Map<Coordinate, Coordinate> attackCombo)
+    {
+        Map<Coordinate, List<Coordinate>> attackersPerDefender = new HashMap<Coordinate, List<Coordinate>>();
+        for(Map.Entry<Coordinate, Coordinate> e : attackCombo.entrySet())
+        {
+            Coordinate attacker = e.getKey();
+            Coordinate defender = e.getValue();
+            List<Coordinate> list = attackersPerDefender.get(defender);
+            if(list == null)
+            {
+                list = new LinkedList<Coordinate>();
+                attackersPerDefender.put(defender, list);
+            }
+            list.add(attacker);
+        }
+        return attackersPerDefender;
+    }
+
+    private static void adjustShields(Deployment attackDeployment,
+            Deployment defendDeployment, List<Coordinate> al, Coordinate dl,
+            DamageEntry de) throws Exception
+    {
+        // find out whether it's possible the list of attackers at al can do the suggested damage to the defender at dl
+        Stat torpedoDamage = StatFactory.create(0.0, 0.0);
+        Stat plasmaDamage = StatFactory.create(0.0, 0.0);
+        // get the defending ship
+        ShipInstance si = defendDeployment.getLivingShip(dl.r, dl.c);
+        Ship ss = si.getParent();
+        String size = ss.getSize();
+        
+        double critmul = de.critical ? 1.30 : 1.00;
+        
+        for(Coordinate a : al)
+        {
+            ShipInstance ai = attackDeployment.getLivingShip(a.r, a.c);
+            Ship as = ai.getParent();
+            double c = ai.getEffectiveCount();  // scalar for damage inflicted
+            
+            Stat td = as.getTorpedoDamage(size, c*critmul);
+            Stat pd = as.getPlasmaDamage(size, c*critmul);
+            
+            torpedoDamage = RangedStat.sum2(torpedoDamage, td);
+            plasmaDamage = RangedStat.sum2(plasmaDamage, pd);
+        }
+        
+        // calculate min and max potential damage
+        List<Stat> shields = ss.getShieldStats();
+    
+        // this is the data we've got to make match
+        System.out.println("TD " + torpedoDamage);
+        System.out.println("PD " + plasmaDamage);
+        System.out.println("SH " + shields);
+        System.out.println("DA " + de);
+    }
+    
     private static boolean isCompatibleAttack(Deployment attackDeployment,
             Deployment defendDeployment, List<Coordinate> al, Coordinate dl,
             DamageEntry de) throws Exception
