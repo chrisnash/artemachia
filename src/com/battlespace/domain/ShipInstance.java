@@ -13,4 +13,8 @@ public interface ShipInstance
     boolean isAlive();
 
     void updateDamage(DamageEntry damageEntry) throws Exception;
+
+    int getUnits();
+
+    Stat getDamage();
 }

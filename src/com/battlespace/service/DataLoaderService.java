@@ -36,6 +36,8 @@ public class DataLoaderService
     
     public static FileData loadFileWithBackup(String primaryFile, String secondaryFile) throws IOException
     {
+        // disable the other loader while debugging
+        
         try
         {
             return loadFile(primaryFile);

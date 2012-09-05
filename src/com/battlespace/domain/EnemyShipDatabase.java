@@ -151,4 +151,23 @@ public class EnemyShipDatabase
         }
     }
 
+    public void refineDurability(EnemyShip nme, Stat refined)
+    {
+        Stat si = nme.getDurability();
+        if(si instanceof RangedStat)
+        {
+            RangedStat ri = (RangedStat)si;
+            if(refined.value(false) > ri.value(false))
+            {
+                ri.setMin(refined.value(false));
+                dirty = true;
+            }
+            if(refined.value(true) < ri.value(true))
+            {
+                ri.setMax(refined.value(true));
+                dirty = true;
+            }
+        }
+    }
+
 }

@@ -52,4 +52,15 @@ public class AbstractShipInstance implements ShipInstance
         double m2 = damage.value(true) + damageEntry.damage.value(true);
         damage = StatFactory.create(m1, m2);
     }
+    
+    public int getUnits()
+    {
+        return unitsRemaining;
+    }
+
+    @Override
+    public Stat getDamage()
+    {
+        return damage;
+    }
 }

@@ -1,5 +1,6 @@
 package com.battlespace.main;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,12 +19,14 @@ import com.battlespace.domain.Formation;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 import com.battlespace.domain.RangedStat;
+import com.battlespace.domain.ShipInstance;
 import com.battlespace.domain.Stat;
 import com.battlespace.service.CommanderPowerService;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
 import com.battlespace.service.PlayerShipDatabase;
 import com.battlespace.service.PlayerSkillModifier;
+import com.battlespace.service.StatFactory;
 
 public class ReplayRunner
 {
@@ -157,7 +160,35 @@ public class ReplayRunner
             {
                 defendDeployment.updateDamage(i%5, dfl+((i>=5)?1:0), dd.get(i));
             }
-            
+            // use ship count to refine durability estimates
+            Collection<ShipInstance> defenders = defendDeployment.getAllShips();
+            for(ShipInstance defender : defenders)
+            {
+                EnemyShip nme = (EnemyShip)defender.getParent();
+                int total = nme.getUnits();
+                int current = defender.getUnits();
+                int removed = total - current;
+                Stat damage = defender.getDamage();
+                // estimate durability based on damage data
+                // removed = damage/durability * total, rounded down
+                // so removed <= damage/durability * total < removed+1
+                // in other words durability <= damage*total/removed
+                // and durability > damage*total/(removed+1)
+                
+                // of course, this is wrong for overkill :)
+                double min = 0;
+                if(current > 0) // you can't set a min if you wiped them out
+                {
+                    min = (damage.value(false)*total) / (removed+1);
+                }
+                double max = 10000.0;
+                if(removed>0) // you can't know a max if you havent hurt anyone yet
+                {
+                    max = (damage.value(true) * total) / removed;
+                }
+                Stat refined = StatFactory.create(min, max);
+                esd.refineDurability(nme, refined);
+            }
         }
         
         esd.update();

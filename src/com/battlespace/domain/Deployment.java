@@ -1,5 +1,6 @@
 package com.battlespace.domain;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -81,6 +82,11 @@ public class Deployment
         ShipInstance ship = deploymentMap.get(k);
         if(ship==null) throw new Exception("No ship at " + k + " to apply damage");
         ship.updateDamage(damageEntry);
+    }
+
+    public Collection<ShipInstance> getAllShips()
+    {
+        return deploymentMap.values();
     }
 
 }
