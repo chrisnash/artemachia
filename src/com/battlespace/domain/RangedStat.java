@@ -45,12 +45,13 @@ public class RangedStat implements Stat
         return results;
     }
 
+    // increasing fuzz to 2.
     static RangedStat statFromDisplay(String stat)
     {
         double base = Double.valueOf(stat);
-        double min = base - 1;
+        double min = base - 2;
         if(min<0) min=0;
-        double max = base + 1;
+        double max = base + 2;
         return new RangedStat(min, max);
     }
 
