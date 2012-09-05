@@ -250,15 +250,15 @@ public class ReplayRunner
                     if(de.remainingShips==0)
                     {
                         List< List<Coordinate> > es = findEliminatingSubsets(attackDeployment, defendDeployment, attackerPos, defenderPos, de);
-                        System.out.println("Uncertain: " + es.size());
+                        //System.out.println("Uncertain: " + es.size());
                         if(es.size()==1)
                         {
-                            adjustShields(attackDeployment, defendDeployment, es.get(0), defenderPos, de);
+                            adjustShields(attackDeployment, defendDeployment, es.get(0), defenderPos, de, esd);
                         }
                     }
                     else
                     {
-                        adjustShields(attackDeployment, defendDeployment, attackerPos, defenderPos, de);
+                        adjustShields(attackDeployment, defendDeployment, attackerPos, defenderPos, de, esd);
                     }
                 }
             }
@@ -353,14 +353,14 @@ public class ReplayRunner
 
     private static void adjustShields(Deployment attackDeployment,
             Deployment defendDeployment, List<Coordinate> al, Coordinate dl,
-            DamageEntry de) throws Exception
+            DamageEntry de, EnemyShipDatabase esd) throws Exception
     {
         // find out whether it's possible the list of attackers at al can do the suggested damage to the defender at dl
         Stat torpedoDamage = StatFactory.create(0.0, 0.0);
         Stat plasmaDamage = StatFactory.create(0.0, 0.0);
         // get the defending ship
         ShipInstance si = defendDeployment.getLivingShip(dl.r, dl.c);
-        Ship ss = si.getParent();
+        EnemyShip ss = (EnemyShip)si.getParent();
         String size = ss.getSize();
         
         double critmul = de.critical ? 1.30 : 1.00;
@@ -380,12 +380,50 @@ public class ReplayRunner
         
         // calculate min and max potential damage
         List<Stat> shields = ss.getShieldStats();
+        Stat ts = shields.get(0);
+        Stat ps = shields.get(1);
     
         // this is the data we've got to make match
-        System.out.println("TD " + torpedoDamage);
-        System.out.println("PD " + plasmaDamage);
-        System.out.println("SH " + shields);
-        System.out.println("DA " + de);
+        //System.out.println("TD " + torpedoDamage);
+        //System.out.println("PD " + plasmaDamage);
+        //System.out.println("SH " + shields);
+        //System.out.println("DA " + de);
+        
+        // find the min and max damage of each type possible (assume min/max damage of other type)
+        double minTD = de.damage.value(false) - shieldedDamage( plasmaDamage.value(true), ps.value(false) );    // sub max plasma, min shield
+        if(minTD<0.0) minTD = 0.0;
+        double maxTD = de.damage.value(true) - shieldedDamage( plasmaDamage.value(false), ps.value(true) );     // sub min plasma, max shield
+        if(maxTD>torpedoDamage.value(true)) maxTD=torpedoDamage.value(true);
+        
+        double minPD = de.damage.value(false) - shieldedDamage( torpedoDamage.value(true), ts.value(false) );    // sub max plasma, min shield
+        if(minPD<0.0) minPD = 0.0;
+        double maxPD = de.damage.value(true) - shieldedDamage( torpedoDamage.value(false), ts.value(true) );     // sub min plasma, max shield
+        if(maxPD>plasmaDamage.value(true)) maxPD=plasmaDamage.value(true);
+        
+        //System.out.println("TDX " + minTD + " " + maxTD);
+        //System.out.println("PDX " + minPD + " " + maxPD);
+        
+        // basic formula
+        // X = D * R (X result, D damage, R ratio).
+        // so ratio is simply X/D (x awarded d delivered)
+        double minTR = 0.0;
+        double maxTR = 1.0;
+        double minPR = 0.0;
+        double maxPR = 1.0;
+        
+        if(torpedoDamage.value(true)>0.0) minTR = minTD / torpedoDamage.value(true);
+        if(torpedoDamage.value(false)>0.0) maxTR = maxTD / torpedoDamage.value(false);
+        if(plasmaDamage.value(true)>0.0) minPR = minPD / plasmaDamage.value(true);
+        if(plasmaDamage.value(false)>0.0) maxPR = maxPD / plasmaDamage.value(false);
+
+        //System.out.println("TDR " + minTR + " " + maxTR);
+        //System.out.println("PDR " + minPR + " " + maxPR);
+
+        List<Stat> shieldRange = new LinkedList<Stat>();
+        shieldRange.add(StatFactory.create(1000.0*(1.0-maxTR), 1000.0*(1.0-minTR)));
+        shieldRange.add(StatFactory.create(1000.0*(1.0-maxPR), 1000.0*(1.0-minPR)));
+        
+        esd.refineShields(ss, shieldRange);
     }
     
     private static boolean isCompatibleAttack(Deployment attackDeployment,

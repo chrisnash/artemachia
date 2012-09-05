@@ -79,8 +79,10 @@ public class RangedStat implements Stat
     public static List<Stat> merge(List<? extends Stat> s1,
             List<? extends Stat> s2) throws Exception
     {
+        if(s1.size() != s2.size()) throw new Exception("Size mismatch");
+        
         List<Stat> out = new LinkedList<Stat>();
-        for(int i=0; i<6; i++)
+        for(int i=0; i<s1.size(); i++)
         {
             double a1 = s1.get(i).value(false);
             double a2 = s2.get(i).value(false);

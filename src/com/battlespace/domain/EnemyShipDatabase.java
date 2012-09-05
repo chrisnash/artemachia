@@ -128,9 +128,14 @@ public class EnemyShipDatabase
             List<Stat> newStatEstimate) throws Exception
     {        
         List<Stat> initial = nme.getSummaryStats();
+        doRefine(initial, newStatEstimate, 6);
+    }
+    
+    private void doRefine(List<Stat> initial, List<Stat> newStatEstimate, int count) throws Exception
+    {
         List<Stat> improved = RangedStat.merge(initial, newStatEstimate);
         
-        for(int i=0;i<6;i++)
+        for(int i=0;i<count;i++)
         {
             Stat si = initial.get(i);
             if(si instanceof RangedStat)
@@ -168,6 +173,12 @@ public class EnemyShipDatabase
                 dirty = true;
             }
         }
+    }
+
+    public void refineShields(EnemyShip nme, List<Stat> newStatEstimate) throws Exception
+    {
+        List<Stat> initial = nme.getShieldStats();
+        doRefine(initial, newStatEstimate, 2);        
     }
 
 }
