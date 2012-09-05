@@ -2,6 +2,7 @@ package com.battlespace.domain;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.SortedMap;
@@ -87,6 +88,52 @@ public class Deployment
     public Collection<ShipInstance> getAllShips()
     {
         return deploymentMap.values();
+    }
+
+    public Map<Coordinate, AttackOptions> getAttackVectors(
+            Deployment opponent)
+    {
+        Map<Coordinate, AttackOptions> results = new HashMap<Coordinate, AttackOptions>();
+        int fl = opponent.frontLine();
+        for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
+        {
+            Coordinate k = e.getKey();
+            ShipInstance v = e.getValue();
+            if(!v.isAlive()) continue;
+            
+            AttackVector f = getAttackVector(k, opponent, fl);
+            AttackVector r = getAttackVector(k, opponent, fl+1);
+            results.put(k, new AttackOptions(f,r));
+        }
+        return results;
+    }
+
+    private AttackVector getAttackVector(Coordinate k, Deployment opponent,
+            int fl)
+    {
+        Integer deviation = null;
+        List<Coordinate> best = new LinkedList<Coordinate>();
+        for(int r=0; r<5; r++)
+        {
+            ShipInstance target = opponent.getLivingShip(r, fl);
+            if(target != null)
+            {
+                // lock on
+                int d = r - k.r;
+                if(d<0) d=-d;
+                if((deviation == null) || (d < deviation.intValue()) )
+                {
+                    best.clear();
+                    best.add(new Coordinate(r, fl));
+                    deviation = Integer.valueOf(d);
+                }
+                else if(d == deviation.intValue())
+                {
+                    best.add(new Coordinate(r, fl));
+                }
+            }
+        }
+        return new AttackVector(fl, deviation, best);
     }
 
 }

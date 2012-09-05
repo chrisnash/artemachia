@@ -7,8 +7,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.battlespace.domain.AttackOptions;
 import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
+import com.battlespace.domain.Coordinate;
 import com.battlespace.domain.DamageEntry;
 import com.battlespace.domain.Deployment;
 import com.battlespace.domain.EnemyShip;
@@ -148,6 +150,36 @@ public class ReplayRunner
             
             List<String> defendDamage = replay.getList("damage."+turn+".defender");
             List<DamageEntry> dd = DamageEntry.parseDamage(defendDamage, attackDeployment);
+            
+            // based on defender damage, update estimates of defender shields.
+            // Method: establish attack vectors, for each attacking ship, work out
+            // which ships are possibly targeted. Note that's a max of 4 per attacker
+            // so we have a max of 4^n permutations.
+            Map<Coordinate, AttackOptions> attackVectors = attackDeployment.getAttackVectors(defendDeployment);
+            //System.out.println(attackVectors);
+            // DON'T APPLY ATTACK FUZZ HERE
+            List< Map<Coordinate,Coordinate> > allAttackCombos = new LinkedList< Map<Coordinate,Coordinate> >();
+            allAttackCombos.add(new HashMap<Coordinate, Coordinate>());    // start with an empty hash map
+            for(Map.Entry<Coordinate, AttackOptions> e : attackVectors.entrySet() )
+            {
+                Coordinate k = e.getKey();
+                AttackOptions v = e.getValue();     // boring boring
+                
+                List< Map<Coordinate,Coordinate> > rewrite = new LinkedList< Map<Coordinate,Coordinate> >();
+                Collection<Coordinate> allTargets = v.getAllTargets();
+                for(Coordinate target : allTargets)
+                {
+                    for(Map<Coordinate,Coordinate> attackCombo : allAttackCombos)
+                    {
+                        Map<Coordinate,Coordinate> dup = new HashMap<Coordinate, Coordinate>();
+                        dup.putAll(attackCombo);
+                        dup.put(k, target);
+                        rewrite.add(dup);
+                    }
+                }
+                allAttackCombos = rewrite;
+            }
+            //System.out.println("Attack permutations: " + allAttackCombos.size());
        
             // update damage and ship counts
             int afl = attackDeployment.frontLine();
