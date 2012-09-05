@@ -2,8 +2,8 @@ package com.battlespace.domain;
 
 public class Coordinate implements Comparable<Coordinate>
 {
-    int r;
-    int c;
+    public int r;
+    public int c;
     
     public Coordinate(int r, int c)
     {

@@ -133,4 +133,14 @@ public class RangedStat implements Stat
     {
         max = value;
     }
+
+    public static Stat sum2(Stat s1, Stat s2) throws Exception
+    {
+        return StatFactory.create(s1.value(false)+s2.value(false), s1.value(true)+s2.value(true));
+    }
+
+    public static Stat scale1(Stat stat, double d) throws Exception
+    {
+        return StatFactory.create(stat.value(false)*d, stat.value(true)*d);
+    }
 }

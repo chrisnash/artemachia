@@ -5,9 +5,9 @@ import java.util.List;
 
 public class DamageEntry
 {
-    Stat damage;
-    int remainingShips;
-    boolean critical;
+    public Stat damage;
+    public int remainingShips;
+    public boolean critical;
     
     public DamageEntry(String value, int remaining, boolean critical)
     {

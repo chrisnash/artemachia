@@ -117,4 +117,22 @@ public class AbstractShip implements Ship
     {
         return speed;
     }
+
+    @Override
+    public Stat getTorpedoDamage(String size, double d) throws Exception
+    {
+        return RangedStat.scale1(torpedoes.get(size), d);
+    }
+
+    @Override
+    public Stat getPlasmaDamage(String size, double d) throws Exception
+    {
+        return RangedStat.scale1(plasma.get(size), d);
+    }
+
+    @Override
+    public String getSize()
+    {
+        return size;
+    }
 }

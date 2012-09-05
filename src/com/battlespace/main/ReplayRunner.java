@@ -21,6 +21,7 @@ import com.battlespace.domain.Formation;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 import com.battlespace.domain.RangedStat;
+import com.battlespace.domain.Ship;
 import com.battlespace.domain.ShipInstance;
 import com.battlespace.domain.Stat;
 import com.battlespace.service.CommanderPowerService;
@@ -184,6 +185,8 @@ public class ReplayRunner
             // The idea now is to play out these attacks and see which match the dd DamageEntry lists.
             // Remember if a defender is totally obliterated, not all hits may have registered
             int fl = defendDeployment.frontLine();
+            // we need to find exactly one attack that matches
+            List< Map<Coordinate, Coordinate>> matchingAttacks = new LinkedList<Map<Coordinate, Coordinate>>();
             for(Map<Coordinate, Coordinate> attackCombo : allAttackCombos)
             {
                 // flip the map into the form (defender)-(list all attackers)
@@ -200,13 +203,61 @@ public class ReplayRunner
                     }
                     list.add(attacker);
                 }
-                for(int i=0;i<10;i++)
+                boolean match = true;
+                for(int i=0;match && (i<10);i++)
                 {
                     int r = i%5;
                     int c = fl + ((i>=5)?1:0);          // defender location
                     DamageEntry de = dd.get(i);
+                    Coordinate dl = new Coordinate(r,c);
+                    List<Coordinate> targeting = attackersPerDefender.get(dl);
+                    // simple match fails, no entry, but attackers, or entry with no attackers
+                    if(de==null)
+                    {
+                        if(targeting!=null) match=false;
+                    }
+                    else
+                    {
+                        if(targeting==null) match=false;
+                        else
+                        {
+                            // damage is done, and attackers exist. We must make sure the listed attackers can effect the
+                            // listed amount of damage. Note if it's a wipeout then we may not need all the attackers,
+                            // just a subset of them. (2^n-1 possible subsets). Crap.
+                            if(de.remainingShips == 0)
+                            {
+                                // subset testing
+                                match = false;
+                                for(int t=1; (!match) && (t< (1<<targeting.size()) ); t++)
+                                {
+                                    // use the bitmask for t to build a sublist
+                                    List<Coordinate> sl = new LinkedList<Coordinate>();
+                                    for(int b=0; b<targeting.size(); b++)
+                                    {
+                                        if( (t&(1<<b)) != 0)
+                                        {
+                                            sl.add(targeting.get(b));
+                                        }
+                                    }
+                                    match = isCompatibleAttack(attackDeployment, defendDeployment, sl, dl, de);
+                                }
+                            }
+                            else
+                            {
+                                match = isCompatibleAttack(attackDeployment, defendDeployment, targeting, dl, de);
+                            }
+                        }
+                    }
+                            
+                }
+                
+                if(match)
+                {
+                    matchingAttacks.add(attackCombo);
                 }
             }
+            //System.out.println("Matching attack configurations " + matchingAttacks.size());
+            
             // update damage and ship counts
             int afl = attackDeployment.frontLine();
             for(int i=0;i<10;i++)
@@ -250,5 +301,58 @@ public class ReplayRunner
         }
         
         esd.update();
+    }
+
+    private static boolean isCompatibleAttack(Deployment attackDeployment,
+            Deployment defendDeployment, List<Coordinate> al, Coordinate dl,
+            DamageEntry de) throws Exception
+    {
+        // find out whether it's possible the list of attackers at al can do the suggested damage to the defender at dl
+        Stat torpedoDamage = StatFactory.create(0.0, 0.0);
+        Stat plasmaDamage = StatFactory.create(0.0, 0.0);
+        // get the defending ship
+        ShipInstance si = defendDeployment.getLivingShip(dl.r, dl.c);
+        Ship ss = si.getParent();
+        String size = ss.getSize();
+        
+        double critmul = de.critical ? 1.30 : 1.00;
+        
+        for(Coordinate a : al)
+        {
+            ShipInstance ai = attackDeployment.getLivingShip(a.r, a.c);
+            Ship as = ai.getParent();
+            double c = ai.getEffectiveCount();  // scalar for damage inflicted
+            
+            Stat td = as.getTorpedoDamage(size, c*critmul);
+            Stat pd = as.getPlasmaDamage(size, c*critmul);
+            
+            torpedoDamage = RangedStat.sum2(torpedoDamage, td);
+            plasmaDamage = RangedStat.sum2(plasmaDamage, pd);
+        }
+        
+        // calculate min and max potential damage
+        List<Stat> shields = ss.getShieldStats();
+        
+        // max damage is when both shields are at minimum and torpedo, plasma are maxed
+        double mind = shieldedDamage(torpedoDamage.value(false), shields.get(0).value(true))
+                +shieldedDamage(plasmaDamage.value(false), shields.get(1).value(true));
+        double maxd = shieldedDamage(torpedoDamage.value(true), shields.get(0).value(false))
+                +shieldedDamage(plasmaDamage.value(true), shields.get(1).value(false));
+        
+        // check that's compatible with de
+        double minm = de.damage.value(false);
+        double maxm = de.damage.value(true);
+        
+        // check for nonempty intersection
+        if(minm>mind) mind=minm;
+        if(maxm<maxd) maxd=maxm;
+        return (mind<=maxd);
+    }
+
+    private static double shieldedDamage(double damage, double shield)
+    {
+        if(shield<=0) return damage;
+        if(shield>=1000) return 0.0;
+        return damage * (1000.0-shield)/1000.0;
     }
 }
