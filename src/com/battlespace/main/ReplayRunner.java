@@ -181,6 +181,32 @@ public class ReplayRunner
             }
             //System.out.println("Attack permutations: " + allAttackCombos.size());
        
+            // The idea now is to play out these attacks and see which match the dd DamageEntry lists.
+            // Remember if a defender is totally obliterated, not all hits may have registered
+            int fl = defendDeployment.frontLine();
+            for(Map<Coordinate, Coordinate> attackCombo : allAttackCombos)
+            {
+                // flip the map into the form (defender)-(list all attackers)
+                Map<Coordinate, List<Coordinate>> attackersPerDefender = new HashMap<Coordinate, List<Coordinate>>();
+                for(Map.Entry<Coordinate, Coordinate> e : attackCombo.entrySet())
+                {
+                    Coordinate attacker = e.getKey();
+                    Coordinate defender = e.getValue();
+                    List<Coordinate> list = attackersPerDefender.get(defender);
+                    if(list == null)
+                    {
+                        list = new LinkedList<Coordinate>();
+                        attackersPerDefender.put(defender, list);
+                    }
+                    list.add(attacker);
+                }
+                for(int i=0;i<10;i++)
+                {
+                    int r = i%5;
+                    int c = fl + ((i>=5)?1:0);          // defender location
+                    DamageEntry de = dd.get(i);
+                }
+            }
             // update damage and ship counts
             int afl = attackDeployment.frontLine();
             for(int i=0;i<10;i++)

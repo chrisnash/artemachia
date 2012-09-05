@@ -7,11 +7,13 @@ public class DamageEntry
 {
     Stat damage;
     int remainingShips;
+    boolean critical;
     
-    public DamageEntry(String value, int remaining)
+    public DamageEntry(String value, int remaining, boolean critical)
     {
         this.damage = RangedStat.statFromDisplay(value);
         this.remainingShips = remaining;
+        this.critical = critical;
     }
     
     public static List<DamageEntry> parseDamage(List<String> pieces, Deployment d) throws Exception
@@ -23,12 +25,14 @@ public class DamageEntry
         
         if(pieces.size() != 5) throw new Exception("Damage string incorrect format " + pieces);
         int fr = d.frontLine();
+        boolean critical = false;
         for(int i=0;i<5;i++)
         {
             String piece = pieces.get(i);
             // ignore the critical marker for the moment
             if(piece.startsWith("C"))
             {
+                critical = true;        // all hits critical from here
                 piece = piece.substring(1);
             }
             boolean frship = (d.getLivingShip(i,fr) != null);
@@ -43,20 +47,20 @@ public class DamageEntry
             {
                 String[] parts = piece.split("\\/");
                 if(parts.length!=2) throw new Exception("Two damage entries expected on row " + i + " but got " + piece);
-                frontRow.add(pieceParse(parts[0]));
-                backRow.add(pieceParse(parts[1]));
+                frontRow.add(pieceParse(parts[0], critical));
+                backRow.add(pieceParse(parts[1], critical));
             }
             else
             {
                 if(frship)
                 {
-                    frontRow.add(pieceParse(piece));
+                    frontRow.add(pieceParse(piece, critical));
                     backRow.add(null);
                 }
                 else
                 {
                     frontRow.add(null);
-                    backRow.add(pieceParse(piece));
+                    backRow.add(pieceParse(piece, critical));
                 }
             }
         }
@@ -66,13 +70,13 @@ public class DamageEntry
         return rv;
     }
 
-    private static DamageEntry pieceParse(String piece) throws Exception
+    private static DamageEntry pieceParse(String piece, boolean critical) throws Exception
     {
         if(piece.equals("")) return null;   // empty string = no damage
         int open = piece.indexOf("(");
         int close = piece.indexOf(")");
         if((open==-1)||(close==-1)||(open>close)) throw new Exception("Not a valid damage string " + piece);
-        return new DamageEntry(piece.substring(0,open), Integer.valueOf(piece.substring(open+1,close)) );
+        return new DamageEntry(piece.substring(0,open), Integer.valueOf(piece.substring(open+1,close)), critical );
     }
     
 }
