@@ -26,4 +26,15 @@ public class Booster
             boosts[i] += ds[i];
         }
     }
+    
+    public String toString()
+    {
+        StringBuffer sb = new StringBuffer(size+":");
+        for(int i=0;i<BOOST_SIZE;i++)
+        {
+            if(i!=0) sb.append(",");
+            sb.append(Double.toString(boosts[i]));
+        }
+        return sb.toString();
+    }
 }

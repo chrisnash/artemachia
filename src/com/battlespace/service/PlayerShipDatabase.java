@@ -65,17 +65,24 @@ public class PlayerShipDatabase
                     
                     List<String> _data = fd.getList(subkey);
                     
-                    String _name = _data.get(0);
-                    Map<String, Stat> _torp = AbsoluteStat.createWeaponStat(_data.subList(1,4));
-                    Map<String, Stat> _plas = AbsoluteStat.createWeaponStat(_data.subList(4,7));
-                    Stat _torpShield = StatFactory.create(_data.get(7));
-                    Stat _plasShield = StatFactory.create(_data.get(8));
-                    Stat _dur = StatFactory.create(_data.get(9));
-                    Stat _dom = StatFactory.create(_data.get(10));
-                    Stat _speed = StatFactory.create(_data.get(11));
-                    
-                    ShipEnhancement se = new ShipEnhancement(name, _torp, _plas, _torpShield, _plasShield, _dur, _dom, _speed, units);
-                    ps.registerEnhancement(i,se);
+                    if(_data!=null)
+                    {
+                        String _name = _data.get(0);
+                        Map<String, Stat> _torp = AbsoluteStat.createWeaponStat(_data.subList(1,4));
+                        Map<String, Stat> _plas = AbsoluteStat.createWeaponStat(_data.subList(4,7));
+                        Stat _torpShield = StatFactory.create(_data.get(7));
+                        Stat _plasShield = StatFactory.create(_data.get(8));
+                        Stat _dur = StatFactory.create(_data.get(9));
+                        Stat _dom = StatFactory.create(_data.get(10));
+                        Stat _speed = StatFactory.create(_data.get(11));
+                        
+                        ShipEnhancement se = new ShipEnhancement(name, _torp, _plas, _torpShield, _plasShield, _dur, _dom, _speed, units);
+                        ps.registerEnhancement(i,se);
+                    }
+                    else
+                    {
+                        ps.registerEnhancement(i, null);    // temporary, until player ship db contains upgrades
+                    }
                 }
                 
                 _psd.put(name, ps);

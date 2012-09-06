@@ -111,6 +111,7 @@ public class Deployment
     private AttackVector getAttackVector(Coordinate k, Deployment opponent,
             int fl)
     {
+        // allow dead-ahead to be treated as deviation 1. Have seen shots go into the adjacent row.
         Integer deviation = null;
         List<Coordinate> best = new LinkedList<Coordinate>();
         for(int r=0; r<5; r++)
@@ -121,6 +122,7 @@ public class Deployment
                 // lock on
                 int d = r - k.r;
                 if(d<0) d=-d;
+                if(d==0) d=1;
                 if((deviation == null) || (d < deviation.intValue()) )
                 {
                     best.clear();

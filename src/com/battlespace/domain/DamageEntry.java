@@ -16,12 +16,16 @@ public class DamageEntry
         this.critical = critical;
     }
     
-    public static List<DamageEntry> parseDamage(List<String> pieces, Deployment d) throws Exception
+    public static List<DamageEntry> parseDamage(List<String> oldPieces, Deployment d) throws Exception
     {
         // first five entries are front row
         // next five are back row
         List<DamageEntry> frontRow = new LinkedList<DamageEntry>();
         List<DamageEntry> backRow = new LinkedList<DamageEntry>();
+        
+        List<String> pieces = new LinkedList<String>();
+        pieces.addAll(oldPieces);
+        while(pieces.size()<5) pieces.add("");  // because trailing empties get removed
         
         if(pieces.size() != 5) throw new Exception("Damage string incorrect format " + pieces);
         int fr = d.frontLine();

@@ -1,3 +1,35 @@
+#TODO: add upgrade details for these ships
+
+s1ia,S-I Improvised Ship a,270,270,300,150,150,180,40,40,1800,6,10,6
+s1mpa,S-I Mass Produced Ship a,270,270,480,240,240,360,60,60,2100,6,12,6
+s1ta,S-I Torpedo Ship a,630,630,1320,0,0,0,150,0,2700,6,12,6
+s1pa,S-I Plasma Ship a,0,0,0,630,630,1320,0,150,2700,6,12,6
+s1ha,S-I Hyperdrive Ship a,300,300,600,270,270,450,60,60,2280,6,15,6
+s1aa,S-I Assault Ship a,390,390,600,360,360,390,100,100,2520,12,12,6
+#s1xa,S-I Special Ship,420,660,660,420,660,660,150,150,2280,6,14,6
+m1pa,M-I Plasma Ship a,0,0,0,1440,690,690,0,150,2460,6,10,3
+m1ha,M-I Hyperdrive Ship a,480,270,270,720,330,330,60,60,2040,6,14,3
+m1sa,M-I Armored Ship a,150,90,90,150,90,90,250,250,2930,18,8,3
+m1na,M-I Domination Ship a,180,150,150,180,150,150,300,100,2700,60,9,3
+l1mpa,L-I Mass Produced Ship a,250,400,250,380,540,380,60,60,1700,8,9,1
+l1ta,L-I Torpedo Ship a,730,1570,730,0,0,0,150,0,2200,8,9,1
+l1pa,L-I Plasma Ship a,0,0,0,700,1500,700,0,150,2200,8,9,1
+l1sa,L-I Armored Ship a,100,150,100,100,150,100,250,250,2850,20,7,1
+l1na,L-I Domination Ship a,150,200,150,150,200,150,100,300,2600,70,8,1
+l1aa,L-I Assault Ship a,450,600,450,400,500,400,100,100,2100,15,9,1
+
+s1sa=S-1 Armored Ship a,90,90,120,90,90,120,250,250,3120,18,10,6
+s1sa.0=Pulse Rifle a,0,0,30,0,0,0,0,0,0,0,0
+s1sa.1=Particle Beam a,0,0,0,0,0,30,0,0,0,0,0
+s1sa.2=Warp Engine a,0,0,0,0,0,0,0,0,0,0,1
+s1sa.3=Ion Armor a,0,0,0,0,0,0,30,30,0,0,0
+
+s1da=S-1 Destroyer Ship a,240,240,510,180,180,1260,0,100,2700,6,12,6
+s1da.0=Anti-L Plasma a,0,0,0,0,0,90,0,0,0,0,0
+s1da.1=Anti-L Pulse Rifle a,30,30,30,0,0,0,0,0,0,0,0
+s1da.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
+s1da.3=Anti-Plasma Armor a,0,0,0,0,0,0,0,10,0,0,0
+
 m1mpa=M-1 Mass Produced Ship a,570,300,300,300,270,270,60,60,1920,6,10,3
 m1mpa.0=Pulse Rifle a,45,30,30,0,0,0,0,0,0,0,0
 m1mpa.1=Particle Beam a,0,0,0,30,15,15,0,0,0,0,0
@@ -9,6 +41,12 @@ m1ta.0=Torpedo Gun a,60,30,30,0,0,0,0,0,0,0,0
 m1ta.1=Pulse Rifle a,45,30,30,0,0,0,0,0,0,0,0
 m1ta.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
 m1ta.3=Anti-Torpedo Armor a,0,0,0,0,0,0,20,0,0,0,0
+
+m1aa=M-1 Assault Ship a,480,360,360,600,450,450,100,100,2340,12,10,3
+m1aa.0=Plasma Cannon c,0,0,0,45,30,30,0,0,0,0,0
+m1aa.1=Pulse Rifle b,45,30,30,0,0,0,0,0,0,0,0
+m1aa.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
+m1aa.3=Multi-Shock Armor d,0,0,0,0,0,0,10,10,0,0,0
 
 m1da=M-1 Destroyer Ship a,1320,240,240,570,240,240,100,0,2460,6,10,3
 m1da.0=Anti-S Torpedo a,105,15,15,0,0,0,0,0,0,0,0

@@ -43,7 +43,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "dvthalla_1.txt";
+        String replayFile = "data/replays/" + "laumann_1.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -77,9 +77,11 @@ public class ReplayRunner
         for(String attackShipName : attackShipNames)
         {
             PlayerShip psi = PlayerShipDatabase.lookup(attackShipName);
+            //System.out.println(psi);
             
             // apply ship upgrades
             psi = psi.applyUpgrades( upgradeLevels.get(attackShipName) );
+            //System.out.println(psi);
 
             // calculate boost percentages
             Booster booster = new Booster(psi.size);
@@ -87,8 +89,10 @@ public class ReplayRunner
             PlayerSkillModifier.upgrade(booster, militarySkill);
             commanderPower.upgrade(booster);
             booster.skillUpgrade(commanderBoost);
+            //System.out.println(booster);
             
             psi = psi.applyBooster(booster);
+            //System.out.println(psi);
             attackShips.add(psi.createInstance());
         }
         Deployment attackDeployment = attackFormation.deploy(attackShips);
@@ -115,6 +119,10 @@ public class ReplayRunner
             // allow for display rounding and make sure they're compatible with our calculations
             List<RangedStat> displayRange = RangedStat.statsFromDisplay(attackStats);
             List<Stat> realRange = attackDeployment.getStats();
+            
+            //System.out.println(displayRange);
+            //System.out.println(realRange);
+            
             List<Stat> extractedAttackStats = RangedStat.merge(displayRange, realRange);
             
             // How to analyze defend stats. Obviously we need to do a display breakdown
@@ -150,7 +158,7 @@ public class ReplayRunner
             List<DamageEntry> ad = DamageEntry.parseDamage(attackDamage, attackDeployment);
             
             List<String> defendDamage = replay.getList("damage."+turn+".defender");
-            List<DamageEntry> dd = DamageEntry.parseDamage(defendDamage, attackDeployment);
+            List<DamageEntry> dd = DamageEntry.parseDamage(defendDamage, defendDeployment);
             
             // based on defender damage, update estimates of defender shields.
             // Method: establish attack vectors, for each attacking ship, work out
