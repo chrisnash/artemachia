@@ -9,7 +9,6 @@ import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-import com.battlespace.domain.AttackOptions;
 import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.Coordinate;
@@ -29,9 +28,12 @@ import com.battlespace.domain.Stat;
 import com.battlespace.service.CommanderPowerService;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
+import com.battlespace.service.ObjectCreator;
 import com.battlespace.service.PlayerShipDatabase;
 import com.battlespace.service.PlayerSkillModifier;
 import com.battlespace.service.StatFactory;
+import com.battlespace.strategy.AttackPlan;
+import com.battlespace.strategy.AttackStrategy;
 
 public class ReplayRunner
 {
@@ -42,6 +44,8 @@ public class ReplayRunner
     public static void main(String[] args) throws Exception
     {
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
+        AttackStrategy attackStrategy = (AttackStrategy)ObjectCreator.createObjectFromConfig("com.battlespace.strategy", config, "attackStrategy");
+        
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
@@ -166,32 +170,10 @@ public class ReplayRunner
             // Method: establish attack vectors, for each attacking ship, work out
             // which ships are possibly targeted. Note that's a max of 4 per attacker
             // so we have a max of 4^n permutations.
-            Map<Coordinate, AttackOptions> attackVectors = attackDeployment.getAttackVectors(defendDeployment);
-            //System.out.println(attackVectors);
-            // DON'T APPLY ATTACK FUZZ HERE
-            List< Map<Coordinate,Coordinate> > allAttackCombos = new LinkedList< Map<Coordinate,Coordinate> >();
-            allAttackCombos.add(new HashMap<Coordinate, Coordinate>());    // start with an empty hash map
-            for(Map.Entry<Coordinate, AttackOptions> e : attackVectors.entrySet() )
-            {
-                Coordinate k = e.getKey();
-                AttackOptions v = e.getValue();     // boring boring
-                
-                List< Map<Coordinate,Coordinate> > rewrite = new LinkedList< Map<Coordinate,Coordinate> >();
-                Collection<Coordinate> allTargets = v.getAllTargets();
-                for(Coordinate target : allTargets)
-                {
-                    for(Map<Coordinate,Coordinate> attackCombo : allAttackCombos)
-                    {
-                        Map<Coordinate,Coordinate> dup = new HashMap<Coordinate, Coordinate>();
-                        dup.putAll(attackCombo);
-                        dup.put(k, target);
-                        rewrite.add(dup);
-                    }
-                }
-                allAttackCombos = rewrite;
-            }
-            //System.out.println("Attack permutations: " + allAttackCombos.size());
-       
+
+            AttackPlan attackPlan = attackStrategy.getAttackPlan(attackDeployment, defendDeployment);
+            List< Map<Coordinate,Coordinate> > allAttackCombos = attackPlan.getAllAttackCombos();
+                  
             // The idea now is to play out these attacks and see which match the dd DamageEntry lists.
             // Remember if a defender is totally obliterated, not all hits may have registered
             int fl = defendDeployment.frontLine();

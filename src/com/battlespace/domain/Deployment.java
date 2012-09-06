@@ -90,54 +90,7 @@ public class Deployment
         return deploymentMap.values();
     }
 
-    public Map<Coordinate, AttackOptions> getAttackVectors(
-            Deployment opponent)
-    {
-        Map<Coordinate, AttackOptions> results = new HashMap<Coordinate, AttackOptions>();
-        int fl = opponent.frontLine();
-        for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
-        {
-            Coordinate k = e.getKey();
-            ShipInstance v = e.getValue();
-            if(!v.isAlive()) continue;
-            
-            AttackVector f = getAttackVector(k, opponent, fl);
-            AttackVector r = getAttackVector(k, opponent, fl+1);
-            results.put(k, new AttackOptions(f,r));
-        }
-        return results;
-    }
-
-    private AttackVector getAttackVector(Coordinate k, Deployment opponent,
-            int fl)
-    {
-        // allow dead-ahead to be treated as deviation 1. Have seen shots go into the adjacent row.
-        Integer deviation = null;
-        List<Coordinate> best = new LinkedList<Coordinate>();
-        for(int r=0; r<5; r++)
-        {
-            ShipInstance target = opponent.getLivingShip(r, fl);
-            if(target != null)
-            {
-                // lock on
-                int d = r - k.r;
-                if(d<0) d=-d;
-                if(d==0) d=1;
-                if((deviation == null) || (d < deviation.intValue()) )
-                {
-                    best.clear();
-                    best.add(new Coordinate(r, fl));
-                    deviation = Integer.valueOf(d);
-                }
-                else if(d == deviation.intValue())
-                {
-                    best.add(new Coordinate(r, fl));
-                }
-            }
-        }
-        return new AttackVector(fl, deviation, best);
-    }
-
+    // everything down here was a mess to handle replays
     public Collection< List<Coordinate>> equivalenceClasses()
     {
         Map<String, List<Coordinate>> eqClasses = new HashMap<String, List<Coordinate>>();
@@ -257,6 +210,31 @@ public class Deployment
         for(int i=0;i<domain.size();i++)
         {
             out.put(domain.get(i), range.get(i));
+        }
+        return out;
+    }
+
+    public List<Coordinate> livingShipList()
+    {
+        List<Coordinate> out = new LinkedList<Coordinate>();
+        for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
+        {
+            Coordinate k = e.getKey();
+            ShipInstance v = e.getValue();
+            if(v.isAlive()) out.add(k);
+        }
+        return out;
+    }
+    public List<Coordinate> vulnerableShipList()
+    {
+        int fl = frontLine();
+        List<Coordinate> out = new LinkedList<Coordinate>();
+        for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
+        {
+            Coordinate k = e.getKey();
+            ShipInstance v = e.getValue();
+            if(k.c > fl+1) continue;
+            if(v.isAlive()) out.add(k);
         }
         return out;
     }
