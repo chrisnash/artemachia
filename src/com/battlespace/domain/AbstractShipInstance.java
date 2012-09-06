@@ -63,4 +63,9 @@ public class AbstractShipInstance implements ShipInstance
     {
         return damage;
     }
+    
+    public String toString()
+    {
+        return damage + "(" + unitsRemaining + ")" + template;
+    }
 }

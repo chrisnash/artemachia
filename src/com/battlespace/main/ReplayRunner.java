@@ -6,6 +6,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.SortedMap;
+import java.util.TreeMap;
 
 import com.battlespace.domain.AttackOptions;
 import com.battlespace.domain.Booster;
@@ -188,13 +190,13 @@ public class ReplayRunner
                 }
                 allAttackCombos = rewrite;
             }
-            System.out.println("Attack permutations: " + allAttackCombos.size());
+            //System.out.println("Attack permutations: " + allAttackCombos.size());
        
             // The idea now is to play out these attacks and see which match the dd DamageEntry lists.
             // Remember if a defender is totally obliterated, not all hits may have registered
             int fl = defendDeployment.frontLine();
             // we need to find exactly one attack that matches
-            List< Map<Coordinate, Coordinate>> matchingAttacks = new LinkedList<Map<Coordinate, Coordinate>>();
+            Collection< Map<Coordinate, Coordinate>> matchingAttacks = new LinkedList<Map<Coordinate, Coordinate>>();
             for(Map<Coordinate, Coordinate> attackCombo : allAttackCombos)
             {
                 // flip the map into the form (defender)-(list all attackers)
@@ -240,11 +242,63 @@ public class ReplayRunner
                     matchingAttacks.add(attackCombo);
                 }
             }
-            System.out.println("Matching attack configurations " + matchingAttacks.size());
+            //System.out.println("Matching attack configurations " + matchingAttacks.size());
+            // attack map is attacker coords=>defender coords.
+            // but attackers may be identical and interchangeable?
+            // so may defenders?
+            attackDeployment.equivalenceClasses();
+            if(matchingAttacks.size()>1)
+            {
+                //System.out.println(matchingAttacks);
+                // An attack is a set of mappings A->B
+                // equivalence classes give all mappings f:A->A' and g:B->B'
+                // two attacks are equivalent if there exist f,g such that attack1 can be made equal to attack2
+                // by applying some f and g. (That's a lot of search)
+                
+                // use sorted map on coordinates to make sure order is preserved
+                List< Map<Coordinate,Coordinate> > attackerPermutations = attackDeployment.permutations();
+                List< Map<Coordinate,Coordinate> > defenderPermutations = defendDeployment.permutations();
+                Map<String, Map<Coordinate,Coordinate>> distinctPermutations = new HashMap<String, Map<Coordinate,Coordinate>>();
+                
+                for(Map<Coordinate,Coordinate> attackCombo : matchingAttacks)
+                {
+                    boolean found = false;
+                    for(Map<Coordinate,Coordinate> ap : attackerPermutations)
+                    {
+                        for(Map<Coordinate,Coordinate> dp : defenderPermutations)
+                        {
+                            // render attackCombo under these perms
+                            SortedMap<Coordinate,Coordinate> sm = new TreeMap<Coordinate,Coordinate>();
+                            for(Map.Entry<Coordinate,Coordinate> e : attackCombo.entrySet())
+                            {
+                                Coordinate k = e.getKey();
+                                Coordinate v = e.getValue();
+                                sm.put(ap.get(k), dp.get(v));
+                            }
+                            String key = sm.toString();
+                            // check key existence etc
+                            if(distinctPermutations.get(key) != null)
+                            {
+                                found = true;
+                            }
+                        }
+                    }
+                    // if not found, record this attackCombo in sorted map form
+                    if(!found)
+                    {
+                        SortedMap<Coordinate,Coordinate> sm = new TreeMap<Coordinate,Coordinate>();
+                        sm.putAll(attackCombo);
+                        String key = sm.toString();
+                        distinctPermutations.put(key,  attackCombo);
+                    }
+                }
+                //System.out.println("Distinct: " + distinctPermutations.size());
+                matchingAttacks = distinctPermutations.values();
+            }
             
             if(matchingAttacks.size()==1)
             {
-                Map<Coordinate, Coordinate> attackCombo = matchingAttacks.get(0);
+                Map<Coordinate, Coordinate> attackCombo = matchingAttacks.iterator().next();
                 // now do it all again, this time to compute enemy shield effectiveness.
                 // note you may need to test the subsets harder this time.
                 Map<Coordinate, List<Coordinate>> attackersPerDefender = invertAttackers(attackCombo);
