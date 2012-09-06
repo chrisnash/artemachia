@@ -50,9 +50,9 @@ public class DamageEntry
             else if(frship && brship)
             {
                 String[] parts = piece.split("\\/");
-                if(parts.length!=2) throw new Exception("Two damage entries expected on row " + i + " but got " + piece);
+                //if(parts.length!=2) throw new Exception("Two damage entries expected on row " + i + " but got " + piece);
                 frontRow.add(pieceParse(parts[0], critical));
-                backRow.add(pieceParse(parts[1], critical));
+                backRow.add(pieceParse((parts.length>1)?parts[1]:"", critical));
             }
             else
             {

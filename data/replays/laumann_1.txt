@@ -10,7 +10,7 @@ defender_ships = L Anathema Ship b,L Anathema Ship b,S Anathema Ship b,L Anathem
 stats.1.attacker=2717,1415,2026,1833,1286,4020
 stats.1.defender=950,1750,1100,3750,4350,3900
 damage.1.attacker=1698(3),,1201(4),,849(5)
-damage.1.defender=2077(0),0(1),2183(0),937(1),2077(0)
+damage.1.defender=2077(0),,2183(0),937(1),2077(0)
 
 stats.2.attacker=2471,1168,1576,1672,1125,2948
 stats.2.defender=400,800,400,1500,1800,1500

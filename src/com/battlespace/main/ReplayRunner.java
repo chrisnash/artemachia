@@ -43,7 +43,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "laumann_1.txt";
+        String replayFile = "data/replays/" + "dvthalla_1.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -188,7 +188,7 @@ public class ReplayRunner
                 }
                 allAttackCombos = rewrite;
             }
-            //System.out.println("Attack permutations: " + allAttackCombos.size());
+            System.out.println("Attack permutations: " + allAttackCombos.size());
        
             // The idea now is to play out these attacks and see which match the dd DamageEntry lists.
             // Remember if a defender is totally obliterated, not all hits may have registered
@@ -240,7 +240,7 @@ public class ReplayRunner
                     matchingAttacks.add(attackCombo);
                 }
             }
-            //System.out.println("Matching attack configurations " + matchingAttacks.size());
+            System.out.println("Matching attack configurations " + matchingAttacks.size());
             
             if(matchingAttacks.size()==1)
             {
