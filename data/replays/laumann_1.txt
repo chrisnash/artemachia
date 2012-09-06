@@ -5,8 +5,6 @@ attacker_upgrades = S-1 Destroyer Ship a:2203,S-1 Armored Ship a:0003,M-1 Destro
 defender = Corvus
 defender_ships = L Anathema Ship b,L Anathema Ship b,S Anathema Ship b,L Anathema Ship b,L Anathema Ship b
 
-// TODO
-
 stats.1.attacker=2717,1415,2026,1833,1286,4020
 stats.1.defender=950,1750,1100,3750,4350,3900
 damage.1.attacker=1698(3),,1201(4),,849(5)

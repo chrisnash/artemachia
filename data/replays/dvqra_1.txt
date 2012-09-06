@@ -1,0 +1,16 @@
+attacker = 34,95,37,M Ionizer 1,Telescopium
+attacker_ships = M-1 Destroyer Ship a,L-1 Destroyer Ship a,L-1 Destroyer Ship a,M-1 Destroyer Ship a
+attacker_upgrades = M-1 Destroyer Ship a:0001,L-1 Destroyer Ship a:1003
+
+defender = Corvus
+defender_ships = S Anathema Ship b,M Anathema Ship b,M Anathema Ship b,M Anathema Ship b,S Anathema Ship b
+
+stats.1.attacker=3384,1918,1056,1879,3574,1128
+stats.1.defender=1380,840,1140,4200,3750,4050
+damage.1.attacker=883(2),832(1),,1664(1),883(2)
+damage.1.defender=2038(0),2139(0),,2139(0),2038(0)
+
+stats.2.attacker=2435,1745,883,1446,3392,946
+stats.2.defender=360,180,180,900,750,750
+damage.2.attacker=,,,832(0),
+damage.2.defender=,,2139(0),,
