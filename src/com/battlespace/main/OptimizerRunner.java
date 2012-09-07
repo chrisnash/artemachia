@@ -31,11 +31,40 @@ public class OptimizerRunner
      */
     public static void main(String[] args) throws Exception
     {
-        String playerFormation = "Telescopium";
-        //String playerShips = "M-1 Destroyer Ship a,L-1 Destroyer Ship a,L-1 Destroyer Ship a,M-1 Destroyer Ship a";
-        String enemyFormation = "Corvus";
-        String enemyShips = "S Anathema Ship b,M Anathema Ship b,M Anathema Ship b,M Anathema Ship b,S Anathema Ship b";
+        // parameters
+        // param 1 is player formation,(commander),(luck),(skill)
+        //System.out.println(args[0]);
+        String[] playerArgs = args[0].split(",");
+        String playerFormation = playerArgs[0];
         
+        // param 2 is enemy selection
+        // (planet)
+        // (planet level),(config)
+        // (formation),(ship,ship,ship...)
+        String[] enemyArgs = args[1].split(",");
+        String enemyFormation = null;
+        String enemyShips = null;
+        if(enemyArgs.length==1)
+        {
+            // lookup planet by id
+        }
+        else if(enemyArgs.length==2)
+        {
+            // lookup planet by level and config
+        }
+        else
+        {
+            // formation, ship, ship, ship....
+            enemyFormation = enemyArgs[0];
+            StringBuffer sb = new StringBuffer();
+            for(int i=1;i<enemyArgs.length;i++)
+            {
+                if(i!=1) sb.append(",");
+                sb.append(enemyArgs[i]);
+            }
+            enemyShips = sb.toString();
+        }
+                
         // init
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
         AttackStrategy attackStrategy = (AttackStrategy)ObjectCreator.createObjectFromConfig("com.battlespace.strategy", config, "attackStrategy");       

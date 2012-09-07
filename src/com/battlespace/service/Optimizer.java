@@ -89,10 +89,12 @@ public class Optimizer
                     out.add(rng.percentChance(50.0) ? x1.get(i) : x2.get(i));
                 }
                 String g = combine(out);
-                if( (population.get(g)==null) && (!crossovers.contains(g)) )
-                {
+                // removing this, since low ship count may mean low biodiversity
+                // and we could be stuck here awhile
+                //if( (population.get(g)==null) && (!crossovers.contains(g)) )
+                //{
                     crossovers.add(g);
-                }
+                //}
             }
             for(String crossover : crossovers)
             {

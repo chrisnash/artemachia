@@ -1,0 +1,17 @@
+attacker = 37,73,62,Redirector 1,*Pinwheel
+attacker_ships = l1aa,l1da,l1aa,m1aa,m1pa
+attacker_upgrades = l1aa:0001,l1da:1003,m1aa:2103,m1pa:0000
+
+defender = Corvus
+defender_ships = sanab,manab,manab,manab,sanab
+
+stats.1.attacker=1786,2389,1642,3413,3845,2421
+stats.1.defender=1380,840,1140,4200,3750,4050
+damage.1.attacker=,,2747(0),826(1),778(3)
+damage.1.defender=,1146(1),2116(0),1146(1),2718(0)
+
+stats.2.attacker=1519,1695,1375,3125,2346,2133
+stats.2.defender=390,270,420,1350,1250,1400
+damage.2.attacker=,,,1615(0),
+damage.2.defender=2344(0),932(0),,1146(0),
+

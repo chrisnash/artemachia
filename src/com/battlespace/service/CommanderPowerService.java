@@ -16,7 +16,7 @@ public class CommanderPowerService
     public static CommanderPower get(String name) throws Exception
     {
         Map<String, CommanderPower> cps = loadDatabase();
-        CommanderPower cp = cps.get(name);
+        CommanderPower cp = cps.get(sanitize(name));
         if(cp == null)
         {
             throw new Exception("Could not load commander power " + name);
@@ -42,10 +42,17 @@ public class CommanderPowerService
                 Class<? extends CommanderPower> clazz = (Class<? extends CommanderPower>) Class.forName("com.battlespace.domain.commander." + className);
                 Constructor<? extends CommanderPower> constructor = clazz.getConstructor(List.class);
                 CommanderPower cp = constructor.newInstance(params);
-                _cps.put(name, cp);
+                _cps.put(sanitize(name), cp);
             }
         }
         return _cps;
+    }
+
+    private static String sanitize(String name)
+    {
+        String san = name.toLowerCase().replaceAll("\\s", "").replace("-type", "");
+        //System.out.println(name +"-" + san);
+        return san;
     }
 
 }

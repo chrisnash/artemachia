@@ -32,6 +32,10 @@ public class PlayerShip extends AbstractShip
         double[] in = flatten();
         for(int i=0;i<4;i++)
         {
+            if(enhancements[i]==null)
+            {
+                System.out.println("WARNING: missing enhancement file for " + name);
+            }
             int m = is[i];
             double[] mods = enhancements[i].flatten();
             for(int j=0;j<AbstractShip.FLATTEN_SIZE;j++)

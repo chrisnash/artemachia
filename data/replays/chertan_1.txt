@@ -1,0 +1,21 @@
+attacker = 37,35,58,Dominator 1,Microscopium
+attacker_ships = S-1 Destroyer Ship a,L-1 Armored Ship a,M-1 Assault Ship a,S-1 Destroyer Ship a
+attacker_upgrades = S-1 Destroyer Ship a:2203,M-1 Assault Ship a:2103,L-1 Armored Ship a:0002
+
+defender = Crux
+defender_ships = laria,maria,maria,laria,maria
+
+stats.1.attacker=1283,1194,1707,1204,1068,3655
+stats.1.defender=5100,4650,3750,2680,2390,1690
+damage.1.attacker=,2824(0),745(1),2824(0),
+damage.1.defender=2015(1),,1171(2),,2015(1)
+
+stats.2.attacker=654,565,513,827,691,638
+stats.2.defender=4700,4400,3500,2460,2280,1580
+damage.2.attacker=,,2759(0),,
+damage.2.defender=,,1171(0),,
+
+stats.3.attacker=549,408,408,722,534,534
+stats.3.defender=3900,3900,3000,2020,2060,1360
+damage.3.attacker=,,3290(0),,
+damage.3.defender=,,,,881(0)

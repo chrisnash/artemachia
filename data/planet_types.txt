@@ -1,0 +1,89 @@
+#Level 1:
+l1-1=1,AAegm # ...X.............X.............X...,santa,santa,santa
+l1-2=1,EEegm # ...X.............X.............X...,santa,santa,santa
+l1-3=1,GGegm # ..........X.......X.....X..........,santa,santa,santa
+l1-4=1,MMegm # ..........X.....X.......X..........,santa,santa,santa
+
+#Level 2
+l2-1=2,Aaegm # ..........X.....X.X.....X..........,lanta,lanab,manta,lanta
+l2-2=2,Eeegm # ..........X.....XX......X..........,santa,lanab,manta,santa
+l2-3=2,Gggem # .................X.....XX......X...,santa,manab,manta,santa
+l2-4=2,Mmmeg # ...X.....XX......X.................,lanta,sanab,santa,lanta
+
+#Level 3
+l3-1=3,Aaa	 # ...X......X......X......X......X...,lanab,lanab,sanab,lanab,lanab
+l3-2=3,Eegm  # ...X......X......X......X......X...,sanab,manab,manab,manab,sanab
+l3-3=3,Gegm  # .........X.....X..X....X...........,sanab,manab,lanab,sanab
+l3-4=3,Megm  # .........X.....X..X....X...........,manab,lanab,sanab,manab
+
+#Level 4	 
+l4-1=4,aegm  # ....X....X.......X.....X........X..,manab,maria,maria,maria,manab
+l4-2=4,eegm	 # ....X.....X.....X.......X.......X..,lanab,sanab,maria,sanab,lanab
+l4-3=4,mmeg  # ..X........X.....X.......X....X....,laria,lanab,laria,lanab,laria
+l4-4=4,ggem  # ....X.....X.....X.......X.......X..,sanab,saria,saria,saria,sanab
+
+#Level 5
+l5-1=5,aa	 # ..X.X............X............X.X..,maria,saria,saria,maria,saria
+l5-2=5,eegm	 # ..........X.....XXX.....X..........,laria,maria,laria,maria,laria
+l5-3=5,ggem  # ..........X.....XXX.....X..........,saria,saria,laria,laria,saria
+l5-4=5,mmeg  # ..X.X............X............X.X..,laria,maria,maria,laria,maria
+
+#Level 6
+l6-1=6,Aaa	 #
+l6-2=6,Eee	 #
+l6-3=6,Ggg	 #
+l6-4=6,Mmm	 #
+
+#Level 7
+l7-1=7,aaa	 #
+l7-2=7,Eem	 #
+l7-3=7,Gge	 #
+l7-4=7,Mmg	 #
+
+#Level 8
+l8-1=8,Aa	 #
+l8-2=8,Ee	 #
+l8-3=8,Gg	 #
+l8-4=8,Mm	 #
+
+#Level 9
+l9-1=9,Aa	 #
+l9-2=9,Ee	 #
+l9-3=9,Gg	 #
+l9-4=9,Mm	 #
+
+#Level 10
+l10-1=10,Aa	 #
+l10-1=10,Ee	 #
+l10-1=10,Gg	 #
+l10-1=10,Mm	 #
+
+#Asteroids:
+#Level 3
+a3=3,
+
+#Level 4
+a4=4,
+
+#Level 6
+a6=6,
+
+#Level 7
+a7=7,
+
+#Level 9
+a9=9,
+
+#Level 10
+a10=10,
+
+
+#Giant Planets:
+#Level 8
+g8=8,
+
+#Level 9
+g9=9,
+
+#Level 10
+g10=10,

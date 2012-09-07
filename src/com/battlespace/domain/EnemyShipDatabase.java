@@ -45,6 +45,7 @@ public class EnemyShipDatabase implements ShipFactory
                             
             EnemyShip ps = new EnemyShip(name, torp, plas, torpShield, plasShield, dur, dom, speed, units);          
             ps.code = key;
+            _psd.put(key, ps);
             _psd.put(name, ps);
         }
         return _psd;
@@ -68,8 +69,12 @@ public class EnemyShipDatabase implements ShipFactory
             PrintStream w = new PrintStream(new FileOutputStream("conf/enemy_ships.txt"));
             
             // write the new version of the file
-            for(EnemyShip ship : db.values())
+            for(Map.Entry<String,EnemyShip> e : db.entrySet())
             {
+                String key = e.getKey();
+                EnemyShip ship = e.getValue();
+                if(key!=ship.getCode()) continue;   // ignore full name aliases
+                
                 String code = ship.getCode();
                 String name = ship.getName();
                 List<Stat> summary = ship.getSummaryStats();
