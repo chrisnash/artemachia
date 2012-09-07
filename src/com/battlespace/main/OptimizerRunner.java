@@ -14,6 +14,7 @@ import com.battlespace.domain.SimulatorCollator;
 import com.battlespace.domain.SimulatorContext;
 import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
+import com.battlespace.domain.optimizers.FitnessFunction;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
 import com.battlespace.service.ObjectCreator;
@@ -64,6 +65,12 @@ public class OptimizerRunner
             }
             enemyShips = sb.toString();
         }
+        
+        String fitness="victory";
+        if(args.length==3)
+        {
+            fitness = args[2];
+        }
                 
         // init
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
@@ -86,6 +93,7 @@ public class OptimizerRunner
         settings.mutations = config.getInt("optimizer.mutations",0);
         settings.crossovers = config.getInt("optimizer.crossovers",0);
         settings.iterations = config.getInt("optimizer.iterations",0);
+        settings.fitness = (FitnessFunction)ObjectCreator.createObjectFromConfig("com.battlespace.domain.optimizers", config, "optmode."+fitness);
         
         // simple test of the simulator runner
         SimulatorContext context = new SimulatorContext();

@@ -44,6 +44,11 @@ public class SimulatorCollator
 
     public double getStat(String string)
     {
-        return stats.get(string).doubleValue() / simulations;
+        Double stat = stats.get(string);
+        if(stat==null)
+        {
+            System.out.println("Warning: " + string + " stat is not available");
+        }
+        return stat.doubleValue() / simulations;
     }
 }

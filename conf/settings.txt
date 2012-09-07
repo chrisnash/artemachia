@@ -9,3 +9,8 @@ optimizer.population = 50
 optimizer.mutations = 10
 optimizer.crossovers = 10
 optimizer.iterations = 100
+
+optmode.victory=Victory
+optmode.shipcount=ShipCount,80
+optmode.domination=Domination,80
+

@@ -47,6 +47,19 @@ public class Deployment
         }
         return results;
     }
+    
+    public double getEffectiveDomination()
+    {
+        double results = 0.0;
+        for(ShipInstance instance : deploymentMap.values())
+        {
+            Ship ship = instance.getParent();
+            double c = instance.getEffectiveCount();
+            
+            results += c * ship.getDomination().value();
+        }
+        return results;
+    }
 
     public Integer frontLine()
     {

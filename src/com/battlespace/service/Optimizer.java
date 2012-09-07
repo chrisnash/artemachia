@@ -110,7 +110,7 @@ public class Optimizer
                 List<String> ships = split(s);
                 parameters.playerShips = ships;
                 Simulator.simulateMultiple(context, parameters, v, 100);
-                best.add(new OptimizerRecord(s, v.getStat("victoryPercent")));
+                best.add(new OptimizerRecord(s, settings.fitness.getFitness(v)));
                 
             }
             //System.out.println(population.size());

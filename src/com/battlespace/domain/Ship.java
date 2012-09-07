@@ -18,4 +18,6 @@ public interface Ship
     String getSize();
 
     Stat getDurability();
+
+    Stat getDomination();
 }
