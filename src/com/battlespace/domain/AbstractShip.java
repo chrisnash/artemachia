@@ -20,7 +20,7 @@ public class AbstractShip implements Ship
     public Stat speed;
     public int units;
     
-    String code;
+    public String code;
     
     public AbstractShip(String name, Map<String, Stat> torp,
             Map<String, Stat> plas, Stat torpShield, Stat plasShield, Stat dur,

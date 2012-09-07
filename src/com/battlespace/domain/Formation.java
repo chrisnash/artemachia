@@ -51,4 +51,9 @@ public class Formation
         return new Deployment(deployData);
     }
 
+    public int shipCount()
+    {
+        return coords.size();
+    }
+
 }

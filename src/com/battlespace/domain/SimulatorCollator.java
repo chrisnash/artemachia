@@ -6,7 +6,7 @@ import java.util.Map;
 public class SimulatorCollator
 {
     int simulations = 0;
-    Map<String, Double> stats = new HashMap<String, Double>();
+    public Map<String, Double> stats = new HashMap<String, Double>();
     
     public void addResult(SimulatorResults r) throws Exception
     {
@@ -40,5 +40,10 @@ public class SimulatorCollator
             sb.append(k +": " + v + "\n");
         }
         return sb.toString();
+    }
+
+    public double getStat(String string)
+    {
+        return stats.get(string).doubleValue() / simulations;
     }
 }

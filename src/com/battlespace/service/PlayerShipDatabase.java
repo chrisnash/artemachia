@@ -85,7 +85,9 @@ public class PlayerShipDatabase
                     }
                 }
                 
+                ps.code = key;
                 _psd.put(name, ps);
+                _psd.put(key, ps);  // works for codes too
             }
         }
         return _psd;

@@ -1,0 +1,33 @@
+
+
+
+
+
+#Available ships and upgrades
+#For every available ship, include a line <ship code>=<upgrade level>
+
+s1ia=	0000
+s1mpa=	0000
+s1ta=	0000
+s1pa=	0000
+s1ha=	0000
+s1sa=	0000
+s1aa=	0000
+s1da=	0000
+
+m1mpa=	0000
+m1ta=	0000
+m1pa=	0000
+m1ha=	0000
+m1sa=	0000
+m1na=	0000
+m1aa=	0000
+m1da=	0000
+
+l1mpa=	0000
+l1ta=	0000
+l1pa=	0000
+l1sa=	0000
+l1na=	0000
+l1aa=	0000
+l1da=	0000
