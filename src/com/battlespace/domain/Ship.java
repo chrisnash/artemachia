@@ -16,4 +16,6 @@ public interface Ship
     Stat getPlasmaDamage(String size, double d) throws Exception;
 
     String getSize();
+
+    Stat getDurability();
 }

@@ -7,8 +7,8 @@ import com.battlespace.domain.Coordinate;
 
 public class TwoTierAttackElement
 {
-    List<Coordinate> closest;
-    List<Coordinate> secondTier;
+    public List<Coordinate> closest;
+    public List<Coordinate> secondTier;
 
     public TwoTierAttackElement(List<Coordinate> c, List<Coordinate> s)
     {

@@ -17,4 +17,6 @@ public interface ShipInstance
     int getUnits();
 
     Stat getDamage();
+
+    void setDamage(double d) throws Exception;
 }

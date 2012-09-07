@@ -238,4 +238,28 @@ public class Deployment
         }
         return out;
     }
+
+    public boolean isAlive()
+    {
+       for(ShipInstance v : deploymentMap.values())
+       {
+            if(v.isAlive()) return true;
+       }
+       return false;
+    }
+    
+    public String toString()
+    {
+        return deploymentMap.toString();
+    }
+
+    public int shipsLost()
+    {
+        int l=0;
+        for(ShipInstance v : deploymentMap.values())
+        {
+             if(!v.isAlive()) l++;
+        }
+        return l;
+    }
 }

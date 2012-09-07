@@ -13,7 +13,7 @@ import com.battlespace.domain.Deployment;
 
 public class TwoTierAttackStrategy implements AttackStrategy
 {
-    double secondPercent;
+    public double secondPercent;
     
     public TwoTierAttackStrategy(List<String> params)
     {
@@ -66,6 +66,6 @@ public class TwoTierAttackStrategy implements AttackStrategy
             elements.put(attacker, e);
         }
         
-        return new TwoTierAttackPlan(elements);
+        return new TwoTierAttackPlan(elements, this);
     }
 }

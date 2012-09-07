@@ -68,4 +68,14 @@ public class AbstractShipInstance implements ShipInstance
     {
         return damage + "(" + unitsRemaining + ")" + template;
     }
+
+    @Override
+    public void setDamage(double d) throws Exception
+    {
+        damage = StatFactory.create(d, d);
+        // recalculate unitsRemaining
+        int deadShips = (int)Math.floor( (d * template.getUnits()) / template.getDurability().value() );
+        int um = template.getUnits() - deadShips;
+        unitsRemaining = (um<0) ? 0 : um;
+    }
 }

@@ -12,7 +12,7 @@ import java.util.Set;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.StatFactory;
 
-public class EnemyShipDatabase
+public class EnemyShipDatabase implements ShipFactory
 {
     Map<String, EnemyShip> db;
     boolean dirty = false;
@@ -179,6 +179,12 @@ public class EnemyShipDatabase
     {
         List<Stat> initial = nme.getShieldStats();
         doRefine(initial, newStatEstimate, 2);        
+    }
+
+    @Override
+    public ShipInstance createShip(String name) throws Exception
+    {
+        return instantiate(name);
     }
 
 }

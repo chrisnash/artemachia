@@ -45,7 +45,7 @@ public class ReplayRunner
     {
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
         AttackStrategy attackStrategy = (AttackStrategy)ObjectCreator.createObjectFromConfig("com.battlespace.strategy", config, "attackStrategy");
-        
+       
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
