@@ -49,7 +49,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "ashby_1.txt";
+        String replayFile = "data/replays/" + "kavandi_1.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -86,7 +86,7 @@ public class ReplayRunner
             //System.out.println(psi);
             
             // apply ship upgrades
-            psi = psi.applyUpgrades( upgradeLevels.get(attackShipName) );
+            psi = psi.applyUpgrades( upgradeLevels.get(attackShipName), true ); // replay can't run with missing files
             //System.out.println(psi);
 
             // calculate boost percentages

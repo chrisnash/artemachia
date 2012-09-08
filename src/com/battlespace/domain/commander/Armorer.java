@@ -8,7 +8,7 @@ import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
-public class Armorer implements CommanderPower
+public class Armorer extends AbstractCommanderPower
 {
     double percent;
     

@@ -8,7 +8,7 @@ import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
-public class Cartographer implements CommanderPower
+public class Cartographer extends AbstractCommanderPower
 {
     double percent;
     

@@ -8,7 +8,7 @@ import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
-public class Dominator implements CommanderPower
+public class Dominator extends AbstractCommanderPower
 {
     double percent;
     

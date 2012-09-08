@@ -8,7 +8,7 @@ import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
-public class Safeguard implements CommanderPower
+public class Safeguard extends AbstractCommanderPower
 {
     double percent;
     

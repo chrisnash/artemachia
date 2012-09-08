@@ -23,4 +23,10 @@ public class Striker implements CommanderPower
         // TODO add a new booster column for critical rate
     }
 
+    @Override
+    public double criticalMultiplier()
+    {
+        return factor;
+    }
+
 }

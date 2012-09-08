@@ -5,7 +5,7 @@ import java.util.List;
 import com.battlespace.domain.Booster;
 import com.battlespace.domain.CommanderPower;
 
-public class Sharpshooter implements CommanderPower
+public class Sharpshooter extends AbstractCommanderPower
 {
     String size;
     double percent;

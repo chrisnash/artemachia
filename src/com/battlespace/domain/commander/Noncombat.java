@@ -8,7 +8,7 @@ import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
-public class Noncombat implements CommanderPower
+public class Noncombat extends AbstractCommanderPower
 {
     public Noncombat(List<String> params)
     {

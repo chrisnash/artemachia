@@ -8,7 +8,7 @@ import com.battlespace.domain.CommanderPower;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.PlayerShipInstance;
 
-public class Mitigator implements CommanderPower
+public class Mitigator extends AbstractCommanderPower
 {
     double percent;
     

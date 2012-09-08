@@ -27,17 +27,22 @@ public class PlayerShip extends AbstractShip
                 torpedoShield, plasmaShield, durability, domination, speed, units);                
     }
     
-    public PlayerShip applyUpgrades(int[] is) throws Exception
+    public PlayerShip applyUpgrades(int[] is, boolean required) throws Exception
     {
         double[] in = flatten();
         for(int i=0;i<4;i++)
         {
+            double[] mods = new double[AbstractShip.FLATTEN_SIZE];
             if(enhancements[i]==null)
             {
                 System.out.println("WARNING: missing enhancement file for " + name);
+                if(required) throw new UnsupportedOperationException();
+            }
+            else
+            {
+                mods = enhancements[i].flatten();                
             }
             int m = is[i];
-            double[] mods = enhancements[i].flatten();
             for(int j=0;j<AbstractShip.FLATTEN_SIZE;j++)
             {
                 in[j] += mods[j]*m;

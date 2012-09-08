@@ -3,6 +3,9 @@ attackStrategy=TwoTierAttackStrategy,10
 
 # commander skill level per percent of attack boost
 skill_factor=20
+luck_factor=20
+enemy_critical_percent=1
+critical_multiplier=1.3
 
 # optimizer (genetic algorithm) parameters
 optimizer.population = 50

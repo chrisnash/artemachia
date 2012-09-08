@@ -1,4 +1,5 @@
-
+# military skill, gives player boosts
+military.skill = 37
 
 
 
