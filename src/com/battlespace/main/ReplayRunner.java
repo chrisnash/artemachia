@@ -49,7 +49,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "kavandi_1.txt";
+        String replayFile = "data/replays/" + "regor_1.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 

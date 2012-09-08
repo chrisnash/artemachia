@@ -1,0 +1,21 @@
+attacker = 37,68,21,Dominator 1,Sculptor
+attacker_ships = s1da,l1sa,l1pa,s1da
+attacker_upgrades = s1da:2203,l1sa:0002,l1pa:1003
+
+defender = vulpecula
+defender_ships = lanta,lanab,manta,lanta
+
+stats.1.attacker=744,798,1319,1266,2213,3947
+stats.1.defender=1310,1930,1010,1200,1320,1170
+damage.1.attacker=,399(6),924(1)/,399(6),
+damage.1.defender=,2108(0),944(1),2108(0),
+
+stats.2.attacker=744,798,1319,1266,2213,3947
+stats.2.defender=770,670,470,900,1020,870
+damage.2.attacker=,,924(1)/,,
+damage.2.defender=,,2269(0),,
+
+stats.3.attacker=744,798,1319,1266,2213,3947
+stats.3.defender=570,270,270,150,120,120
+damage.3.attacker=,,269(1)/,,
+damage.3.defender=,,2475(0),,

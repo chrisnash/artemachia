@@ -1,0 +1,27 @@
+attacker = 37,25,33,Keeper 1,Aquila
+attacker_ships = s1aa,m1aa,l1aa
+attacker_upgrades = s1aa:0001,m1aa:2103,l1aa:0001
+
+defender = sculptor
+defender_ships = scp,scp,lyop,lyop
+
+stats.1.attacker=1423,1438,1501,1511,1428,1355
+stats.1.defender=660,1060,1200,1440,1840,2400
+damage.1.attacker=532(5),,1255(2),,400(1)
+damage.1.defender=,706(5),1122(3)/,844(0),
+
+stats.2.attacker=1172,1235,1261,1209,1188,1110
+stats.2.defender=390,590,750,860,1060,1500
+damage.2.attacker=,,1428(0),,
+damage.2.defender=,589(3),1550(0)/,,
+
+stats.3.attacker=807,964,990,729,834,755
+stats.3.defender=240,440,375,510,710,750
+damage.3.attacker=266(5),,,,400(1)
+damage.3.defender=,589(1),844(0),,
+
+stats.4.attacker=807,964,990,729,834,755
+stats.4.defender=30,30,75,70,70,150
+damage.4.attacker=C115(4),,,,
+damage.4.defender=,589(0),,,
+
