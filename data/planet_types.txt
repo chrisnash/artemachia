@@ -29,16 +29,16 @@ l5-3=5,ggem  # ..........X.....XXX.....X..........,saria,saria,laria,laria,saria
 l5-4=5,mmeg  # ..X.X............X............X.X..,laria,maria,maria,laria,maria
 
 #Level 6
-l6-1=6,Aaa	 #
-l6-2=6,Eee	 #
-l6-3=6,Ggg	 #
-l6-4=6,Mmm	 #
+l6-1=6,Aaa	 # ...XX....XX.....X..................,maria,maria,sarcb,saria,maria
+l6-2=6,Eee	 # ................X.....X..XX...X....,sarcb,maria,manab,manab,sarcb
+l6-3=6,Ggg	 # ..X.....X..XX...X..................,sarcb,laria,lanab,lanab,sarcb
+l6-4=6,Mmm	 # ................X......XX......XX..,laria,marcb,maria,laria,laria
 
 #Level 7
-l7-1=7,aaa	 #
-l7-2=7,Eem	 #
-l7-3=7,Gge	 #
-l7-4=7,Mmg	 #
+l7-1=7,aaa	 # .X.............X.X.X.........X.....,marcb,saria,saria,saria,marcb
+l7-2=7,Eem	 # ....X...X..........X..X.........X..,saria,marcb,saria,marcb,saria
+l7-3=7,Gge	 # ....X...X..........X..X.........X..,laria,sarcb,laria,sarcb,laria
+l7-4=7,Mmg	 # .X.............X.X.X.........X.....,larcb,maria,maria,maria,larcb
 
 #Level 8
 l8-1=8,Aa	 #
@@ -63,7 +63,7 @@ l10-1=10,Mm	 #
 a3=3,
 
 #Level 4
-a4=4,
+a4=4,		 # ..X..X......X....XX...........X....,manab,lanab,lanta,sanab,sanab,manab
 
 #Level 6
 a6=6,
