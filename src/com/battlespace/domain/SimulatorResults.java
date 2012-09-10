@@ -10,7 +10,7 @@ public class SimulatorResults
     Deployment playerResult;
     Deployment enemyResult;
     
-    String[] availableStats = new String[]{"victoryPercent", "shipLosses", "shipCount", "domination"};
+    String[] availableStats = new String[]{"victoryPercent", "shipLosses", "shipCount", "domination", "enemyKills"};
 
     public SimulatorResults(boolean v, Deployment player, Deployment enemy)
     {
@@ -57,5 +57,9 @@ public class SimulatorResults
     private double domination()
     {
         return playerResult.getEffectiveDomination();
+    }
+    private double enemyKills()
+    {
+        return (double)enemyResult.shipsLost();
     }
 }

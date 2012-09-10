@@ -16,4 +16,6 @@ optimizer.iterations = 10000
 optmode.victory=Victory
 optmode.shipcount=ShipCount,80
 optmode.domination=Domination,80
+optmode.kills=Kills
+
 

@@ -72,10 +72,10 @@ a6=6,		 # ..XX.......X...........X.......XX..,laria,laria,manab,manab,saria,sari
 a7=7,		 # ..XX.......X...........X.......XX..,saria,saria,lanab,laria,maria,maria
 
 #Level 9
-a9=9,
+a9=9,		 # ....X....XX....X.......XX.......X..,marcb,lanab,lanta,sarcb,lanab,lanta,marcb
 
 #Level 10
-a10=10,
+a10=10,		 # ....X....XX....X.......XX.......X..,sarcb,lanab,lanab,marcb,lanab,lanab,sarcb
 
 
 #Giant Planets:
@@ -83,7 +83,7 @@ a10=10,
 g8=8,		 # ...X....X...X....X....X...X....X...,marcb,laria,laria,manab,laria,laria,marcb
 
 #Level 9
-g9=9,
+g9=9,		 # ...X....X...X....X....X...X....X...,larcb,saria,laria,maria,maria,saria,larcb
 
 #Level 10
-g10=10,
+g10=10,		 # ...X....X...X....X....X...X....X...,saria,larcb,maria,marcb,larcb,maria,saria
