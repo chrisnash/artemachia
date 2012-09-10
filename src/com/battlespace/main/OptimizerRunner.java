@@ -13,6 +13,7 @@ import com.battlespace.domain.EnemyShipDatabase;
 import com.battlespace.domain.FileData;
 import com.battlespace.domain.OptimizerRecord;
 import com.battlespace.domain.OptimizerSettings;
+import com.battlespace.domain.PlanetData;
 import com.battlespace.domain.PlayerShip;
 import com.battlespace.domain.SimulatorCollator;
 import com.battlespace.domain.SimulatorContext;
@@ -24,6 +25,7 @@ import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
 import com.battlespace.service.ObjectCreator;
 import com.battlespace.service.Optimizer;
+import com.battlespace.service.PlanetService;
 import com.battlespace.service.PlayerShipDatabase;
 import com.battlespace.service.PlayerSkillModifier;
 import com.battlespace.service.RandomRoller;
@@ -76,11 +78,16 @@ public class OptimizerRunner
         String enemyShips = null;
         if(enemyArgs.length==1)
         {
-            // lookup planet by id
+            PlanetData pd = PlanetService.lookup(enemyArgs[0]);
+            enemyFormation = pd.formation;
+            enemyShips = pd.enemies;
         }
         else if(enemyArgs.length==2)
         {
-            // lookup planet by level and config
+            PlanetData pd = PlanetService.lookupByLayout(Integer.valueOf(enemyArgs[0]), enemyArgs[1]);
+            enemyFormation = pd.formation;
+            enemyShips = pd.enemies;
+            System.out.println("Planet code is " + pd.code);
         }
         else
         {

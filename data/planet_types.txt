@@ -1,89 +1,89 @@
 #Level 1:
-l1-1=1,AAegm # ...X.............X.............X...,santa,santa,santa
-l1-2=1,EEegm # ...X.............X.............X...,santa,santa,santa
-l1-3=1,GGegm # ..........X.......X.....X..........,santa,santa,santa
-l1-4=1,MMegm # ..........X.....X.......X..........,santa,santa,santa
+l1-1=1,AAegm,...X.............X.............X...,santa,santa,santa
+l1-2=1,EEegm,...X.............X.............X...,santa,santa,santa
+l1-3=1,GGegm,..........X.......X.....X..........,santa,santa,santa
+l1-4=1,MMegm,..........X.....X.......X..........,santa,santa,santa
 
 #Level 2
-l2-1=2,Aaegm # ..........X.....X.X.....X..........,lanta,lanab,manta,lanta
-l2-2=2,Eeegm # ..........X.....XX......X..........,santa,lanab,manta,santa
-l2-3=2,Gggem # .................X.....XX......X...,santa,manab,manta,santa
-l2-4=2,Mmmeg # ...X.....XX......X.................,lanta,sanab,santa,lanta
+l2-1=2,Aaegm,..........X.....X.X.....X..........,lanta,lanab,manta,lanta
+l2-2=2,Eeegm,..........X.....XX......X..........,santa,lanab,manta,santa
+l2-3=2,Gggem,.................X.....XX......X...,santa,manab,manta,santa
+l2-4=2,Mmmeg,...X.....XX......X.................,lanta,sanab,santa,lanta
 
 #Level 3
-l3-1=3,Aaa	 # ...X......X......X......X......X...,lanab,lanab,sanab,lanab,lanab
-l3-2=3,Eegm  # ...X......X......X......X......X...,sanab,manab,manab,manab,sanab
-l3-3=3,Gegm  # .........X.....X..X....X...........,sanab,manab,lanab,sanab
-l3-4=3,Megm  # .........X.....X..X....X...........,manab,lanab,sanab,manab
+l3-1=3,Aaa,...X......X......X......X......X...,lanab,lanab,sanab,lanab,lanab
+l3-2=3,Eegm,...X......X......X......X......X...,sanab,manab,manab,manab,sanab
+l3-3=3,Gegm,.........X.....X..X....X...........,sanab,manab,lanab,sanab
+l3-4=3,Megm,.........X.....X..X....X...........,manab,lanab,sanab,manab
 
 #Level 4	 
-l4-1=4,aegm  # ....X....X.......X.....X........X..,manab,maria,maria,maria,manab
-l4-2=4,eegm	 # ....X.....X.....X.......X.......X..,lanab,sanab,maria,sanab,lanab
-l4-3=4,mmeg  # ..X........X.....X.......X....X....,laria,lanab,laria,lanab,laria
-l4-4=4,ggem  # ....X.....X.....X.......X.......X..,sanab,saria,saria,saria,sanab
+l4-1=4,aegm,....X....X.......X.....X........X..,manab,maria,maria,maria,manab
+l4-2=4,eegm,....X.....X.....X.......X.......X..,lanab,sanab,maria,sanab,lanab
+l4-3=4,mmeg,..X........X.....X.......X....X....,laria,lanab,laria,lanab,laria
+l4-4=4,ggem,....X.....X.....X.......X.......X..,sanab,saria,saria,saria,sanab
 
 #Level 5
-l5-1=5,aa	 # ..X.X............X............X.X..,maria,saria,saria,maria,saria
-l5-2=5,eegm	 # ..........X.....XXX.....X..........,laria,maria,laria,maria,laria
-l5-3=5,ggem  # ..........X.....XXX.....X..........,saria,saria,laria,laria,saria
-l5-4=5,mmeg  # ..X.X............X............X.X..,laria,maria,maria,laria,maria
+l5-1=5,aa,..X.X............X............X.X..,maria,saria,saria,maria,saria
+l5-2=5,eegm,..........X.....XXX.....X..........,laria,maria,laria,maria,laria
+l5-3=5,ggem,..........X.....XXX.....X..........,saria,saria,laria,laria,saria
+l5-4=5,mmeg,..X.X............X............X.X..,laria,maria,maria,laria,maria
 
 #Level 6
-l6-1=6,Aaa	 # ...XX....XX.....X..................,maria,maria,sarcb,saria,maria
-l6-2=6,Eee	 # ................X.....X..XX...X....,sarcb,maria,manab,manab,sarcb
-l6-3=6,Ggg	 # ..X.....X..XX...X..................,sarcb,laria,lanab,lanab,sarcb
-l6-4=6,Mmm	 # ................X......XX......XX..,laria,marcb,maria,laria,laria
+l6-1=6,Aaa,...XX....XX.....X..................,maria,maria,sarcb,saria,maria
+l6-2=6,Eee,................X.....X..XX...X....,sarcb,maria,manab,manab,sarcb
+l6-3=6,Ggg,..X.....X..XX...X..................,sarcb,laria,lanab,lanab,sarcb
+l6-4=6,Mmm,................X......XX......XX..,laria,marcb,maria,laria,laria
 
 #Level 7
-l7-1=7,aaa	 # .X.............X.X.X.........X.....,marcb,saria,saria,saria,marcb
-l7-2=7,Eem	 # ....X...X..........X..X.........X..,saria,marcb,saria,marcb,saria
-l7-3=7,Gge	 # ....X...X..........X..X.........X..,laria,sarcb,laria,sarcb,laria
-l7-4=7,Mmg	 # .X.............X.X.X.........X.....,larcb,maria,maria,maria,larcb
+l7-1=7,aaa,.X.............X.X.X.........X.....,marcb,saria,saria,saria,marcb
+l7-2=7,Eem,....X...X..........X..X.........X..,saria,marcb,saria,marcb,saria
+l7-3=7,Gge,....X...X..........X..X.........X..,laria,sarcb,laria,sarcb,laria
+l7-4=7,Mmg,.X.............X.X.X.........X.....,larcb,maria,maria,maria,larcb
 
 #Level 8
-l8-1=8,Aa	 # ...X......X.....X.X.....X......X...,manab,manab,sarcb,sarcb,manab,manab
-l8-2=8,Ee	 # ....X.....X.....X.X.....X.....X....,laria,laria,laria,maria,maria,maria
-l8-3=8,Gg	 # ....X.....X.....X.X.....X.....X....,laria,laria,laria,saria,saria,saria
-l8-4=8,Mm	 # ...X......X.....X.X.....X......X...,lanab,lanab,marcb,marcb,lanab,lanab
+l8-1=8,Aa,...X......X.....X.X.....X......X...,manab,manab,sarcb,sarcb,manab,manab
+l8-2=8,Ee,....X.....X.....X.X.....X.....X....,laria,laria,laria,maria,maria,maria
+l8-3=8,Gg,....X.....X.....X.X.....X.....X....,laria,laria,laria,saria,saria,saria
+l8-4=8,Mm,...X......X.....X.X.....X......X...,lanab,lanab,marcb,marcb,lanab,lanab
 
 #Level 9
-l9-1=9,Aa	 # ...X.....X.X...........X.X.....X...,maria,saria,saria,saria,saria,laria
-l9-2=9,Ee	 # ...X.......X....X..X.....X.....X...,laria,saria,maria,maria,saria,laria
-l9-3=9,Gg	 # ...X.......X....X..X.....X.....X...,saria,maria,laria,laria,maria,saria
-l9-4=9,Mm	 # ...X.....X.X...........X.X.....X...,laria,maria,maria,maria,maria,saria
+l9-1=9,Aa,...X.....X.X...........X.X.....X...,maria,saria,saria,saria,saria,laria
+l9-2=9,Ee,...X.......X....X..X.....X.....X...,laria,saria,maria,maria,saria,laria
+l9-3=9,Gg,...X.......X....X..X.....X.....X...,saria,maria,laria,laria,maria,saria
+l9-4=9,Mm,...X.....X.X...........X.X.....X...,laria,maria,maria,maria,maria,saria
 
 #Level 10
-l10-1=10,Aa	 # .........X.....XXXXX...X...........,saria,saria,sarcb,saria,saria,saria,saria
-l10-1=10,Ee	 # ..X......X.X....X......X.X....X....,saria,laria,laria,laria,laria,laria,saria
-l10-1=10,Gg	 # .........X.....XXXXX...X...........,laria,laria,larcb,laria,laria,laria,laria
-l10-1=10,Mm	 # .........X.....XXXXX...X...........,maria,maria,marcb,maria,maria,maria,maria
+l10-1=10,Aa,.........X.....XXXXX...X...........,saria,saria,sarcb,saria,saria,saria,saria
+l10-1=10,Ee,..X......X.X....X......X.X....X....,saria,laria,laria,laria,laria,laria,saria
+l10-1=10,Gg,.........X.....XXXXX...X...........,laria,laria,larcb,laria,laria,laria,laria
+l10-1=10,Mm,.........X.....XXXXX...X...........,maria,maria,marcb,maria,maria,maria,maria
 
 #Asteroids:
 #Level 3
-a3=3,		 # ..X..X......X....XX...........X....,lanab,manab,manab,santa,santa,lanab
+a3=3,,..X..X......X....XX...........X....,lanab,manab,manab,santa,santa,lanab
 
 #Level 4
-a4=4,		 # ..X..X......X....XX...........X....,manab,lanab,lanta,sanab,sanab,manab
+a4=4,,..X..X......X....XX...........X....,manab,lanab,lanta,sanab,sanab,manab
 
 #Level 6
-a6=6,		 # ..XX.......X...........X.......XX..,laria,laria,manab,manab,saria,saria
+a6=6,,..XX.......X...........X.......XX..,laria,laria,manab,manab,saria,saria
 
 #Level 7
-a7=7,		 # ..XX.......X...........X.......XX..,saria,saria,lanab,laria,maria,maria
+a7=7,,..XX.......X...........X.......XX..,saria,saria,lanab,laria,maria,maria
 
 #Level 9
-a9=9,		 # ....X....XX....X.......XX.......X..,marcb,lanab,lanta,sarcb,lanab,lanta,marcb
+a9=9,,....X....XX....X.......XX.......X..,marcb,lanab,lanta,sarcb,lanab,lanta,marcb
 
 #Level 10
-a10=10,		 # ....X....XX....X.......XX.......X..,sarcb,lanab,lanab,marcb,lanab,lanab,sarcb
+a10=10,,....X....XX....X.......XX.......X..,sarcb,lanab,lanab,marcb,lanab,lanab,sarcb
 
 
 #Giant Planets:
 #Level 8
-g8=8,		 # ...X....X...X....X....X...X....X...,marcb,laria,laria,manab,laria,laria,marcb
+g8=8,,...X....X...X....X....X...X....X...,marcb,laria,laria,manab,laria,laria,marcb
 
 #Level 9
-g9=9,		 # ...X....X...X....X....X...X....X...,larcb,saria,laria,maria,maria,saria,larcb
+g9=9,,...X....X...X....X....X...X....X...,larcb,saria,laria,maria,maria,saria,larcb
 
 #Level 10
-g10=10,		 # ...X....X...X....X....X...X....X...,saria,larcb,maria,marcb,larcb,maria,saria
+g10=10,,...X....X...X....X....X...X....X...,saria,larcb,maria,marcb,larcb,maria,saria
