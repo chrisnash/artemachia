@@ -5,3 +5,4 @@ b17=17,Air Force b,BoostWeapons,M,3
 b22=22,Dept of Defense b,BoostShields,M,3
 b28=28,Aeronautics Admin a,BoostDomination,15
 b34=34,Air Force c,BoostWeapons,L,3
+b43=43,Dept of Defense c,BoostShields,L,3

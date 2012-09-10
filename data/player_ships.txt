@@ -94,3 +94,11 @@ l1aa.0=Torpedo Gun a,35,50,35,0,0,0,0,0,0,0,0
 l1aa.1=Particle Beam a,0,0,0,30,40,30,0,0,0,0,0
 l1aa.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
 l1aa.3=Multi-Shock Armor b,0,0,0,0,0,0,10,10,0,0,0
+
+s2mpb=S-2 Mass Produced Ship b,360,360,450,390,390,720,60,60,2580,6,12,6
+
+s2tb=S-2 Torpedo Ship b,780,780,1620,0,0,0,150,0,3300,6,12,6
+
+m2mpb=M-2 Mass Produced Ship b,840,450,450,480,390,390,60,60,2400,6,10,3
+
+l2mpb=L-2 Mass Produced SHip b,400,600,400,500,700,500,60,60,2150,8,9,1

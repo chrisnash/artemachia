@@ -76,6 +76,7 @@ public class Optimizer
             }
             
             Set<String> crossovers = new HashSet<String>();
+            int coAttempts = 0;
             while(crossovers.size() < settings.crossovers)
             {
                 int g1 = rng.select(settings.population);
@@ -91,10 +92,12 @@ public class Optimizer
                 String g = combine(out);
                 // removing this, since low ship count may mean low biodiversity
                 // and we could be stuck here awhile
-                //if( (population.get(g)==null) && (!crossovers.contains(g)) )
-                //{
+                if( (population.get(g)==null) && (!crossovers.contains(g)) )
+                {
                     crossovers.add(g);
-                //}
+                }
+                coAttempts++;
+                if(coAttempts==settings.crossovers*10) break;   // forget it
             }
             for(String crossover : crossovers)
             {
@@ -124,7 +127,10 @@ public class Optimizer
                 if(i==0)
                 {
                     output = o;
-                    //System.out.println("Iteration " + iteration + " best so far " + o.id + " with fitness " + o.fitness);
+                    if(iteration%50==0)
+                    {
+                        System.out.println("Iteration " + iteration + " best so far " + o.id + " with fitness " + o.fitness);
+                    }
                 }
                 rewrite.put(o.id, population.get(o.id));
             }

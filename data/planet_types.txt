@@ -41,35 +41,35 @@ l7-3=7,Gge	 # ....X...X..........X..X.........X..,laria,sarcb,laria,sarcb,laria
 l7-4=7,Mmg	 # .X.............X.X.X.........X.....,larcb,maria,maria,maria,larcb
 
 #Level 8
-l8-1=8,Aa	 #
-l8-2=8,Ee	 #
-l8-3=8,Gg	 #
-l8-4=8,Mm	 #
+l8-1=8,Aa	 # ...X......X.....X.X.....X......X...,manab,manab,sarcb,sarcb,manab,manab
+l8-2=8,Ee	 # ....X.....X.....X.X.....X.....X....,laria,laria,laria,maria,maria,maria
+l8-3=8,Gg	 # ....X.....X.....X.X.....X.....X....,laria,laria,laria,saria,saria,saria
+l8-4=8,Mm	 # ...X......X.....X.X.....X......X...,lanab,lanab,marcb,marcb,lanab,lanab
 
 #Level 9
-l9-1=9,Aa	 #
-l9-2=9,Ee	 #
-l9-3=9,Gg	 #
-l9-4=9,Mm	 #
+l9-1=9,Aa	 # ...X.....X.X...........X.X.....X...,maria,saria,saria,saria,saria,laria
+l9-2=9,Ee	 # ...X.......X....X..X.....X.....X...,laria,saria,maria,maria,saria,laria
+l9-3=9,Gg	 # ...X.......X....X..X.....X.....X...,saria,maria,laria,laria,maria,saria
+l9-4=9,Mm	 # ...X.....X.X...........X.X.....X...,laria,maria,maria,maria,maria,saria
 
 #Level 10
-l10-1=10,Aa	 #
-l10-1=10,Ee	 #
-l10-1=10,Gg	 #
-l10-1=10,Mm	 #
+l10-1=10,Aa	 # .........X.....XXXXX...X...........,saria,saria,sarcb,saria,saria,saria,saria
+l10-1=10,Ee	 # ..X......X.X....X......X.X....X....,saria,laria,laria,laria,laria,laria,saria
+l10-1=10,Gg	 # .........X.....XXXXX...X...........,laria,laria,larcb,laria,laria,laria,laria
+l10-1=10,Mm	 # .........X.....XXXXX...X...........,maria,maria,marcb,maria,maria,maria,maria
 
 #Asteroids:
 #Level 3
-a3=3,
+a3=3,		 # ..X..X......X....XX...........X....,lanab,manab,manab,santa,santa,lanab
 
 #Level 4
 a4=4,		 # ..X..X......X....XX...........X....,manab,lanab,lanta,sanab,sanab,manab
 
 #Level 6
-a6=6,
+a6=6,		 # ..XX.......X...........X.......XX..,laria,laria,manab,manab,saria,saria
 
 #Level 7
-a7=7,
+a7=7,		 # ..XX.......X...........X.......XX..,saria,saria,lanab,laria,maria,maria
 
 #Level 9
 a9=9,
@@ -80,7 +80,7 @@ a10=10,
 
 #Giant Planets:
 #Level 8
-g8=8,
+g8=8,		 # ...X....X...X....X....X...X....X...,marcb,laria,laria,manab,laria,laria,marcb
 
 #Level 9
 g9=9,

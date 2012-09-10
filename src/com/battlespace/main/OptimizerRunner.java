@@ -112,6 +112,7 @@ public class OptimizerRunner
         
         BoostedPlayerShipFactory bpsf = new BoostedPlayerShipFactory();
         int militarySkill = playerData.getInt("military.skill", 0);
+        int unionArmor = playerData.getInt("union.armor", 0);
         
         Set<String> keys = playerData.getKeys();
         for(String key : keys)
@@ -136,6 +137,7 @@ public class OptimizerRunner
                     commanderPower.upgrade(booster);
                 }
                 booster.skillUpgrade(commanderBoost);
+                booster.add(new double[]{0,0,0, 0,0,0, 0,0, unionArmor*2.0,0, 0});
                 psi = psi.applyBooster(booster);
                 
                 bpsf.register(key, psi);

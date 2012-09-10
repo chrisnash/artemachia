@@ -1,0 +1,21 @@
+attacker = 43,71,41,M Ionizer 1,Tucana
+attacker_ships = m1da,m1aa,s1aa,s1da
+attacker_upgrades = m1da:0001,m1aa:2103,s1aa:0001,s1da:2203
+
+defender = vulpecula
+defender_ships = scp,lcp,lcp,scp
+
+stats.1.attacker=2702,1407,1918,1994,1420,2795
+stats.1.defender=1360,1860,1900,1340,2040,2300
+damage.1.attacker=,519(3)/,1975(2),,
+damage.1.defender=,3101(0),2948(0),,
+
+stats.2.attacker=2489,1193,1513,1866,1292,1771
+stats.2.defender=680,930,950,670,1020,1150
+damage.2.attacker=,,1259(0),,
+damage.2.defender=,,2307(0),157(6),
+
+stats.3.attacker=2382,1087,1311,1802,1228,1260
+stats.3.defender=180,180,450,420,420,900
+damage.3.attacker=,519(2)/,,,
+damage.3.defender=,,,3101(0),

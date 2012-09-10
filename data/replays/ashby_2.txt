@@ -1,0 +1,32 @@
+attacker = 37,106,91,Redirector 1,*Pinwheel
+attacker_ships = m1pa,m1da,m1da,l1aa,m1pa
+attacker_upgrades = l1aa:0001,m1pa:0000,m1da:0001
+
+defender = Eridanus
+defender_ships = marcb,saria,saria,saria,marcb
+
+stats.1.attacker=3347,1169,1007,4788,2556,2448
+stats.1.defender=3630,3390,4740,5100,2700,3600
+damage.1.attacker=,,3319(0),959(2),1303(1)
+damage.1.defender=635(3),,3664(0),,1745(2)
+
+stats.2.attacker=1440,823,660,3964,2209,2101
+stats.2.defender=2650,2450,3350,4100,2100,2700
+damage.2.attacker=,,,2360(0),2461(0)
+damage.2.defender=1270(2),,,,1430(0)
+
+stats.3.attacker=0,0,0,3119,1494,1494
+stats.3.defender=1960,1880,2780,2000,1200,1800
+damage.3.attacker=,2893(0),,
+damage.3.defender=1270(0),,,,
+
+stats.4.attacker=0,0,0,1559,747,747
+stats.4.defender=1500,1500,2400,600,600,1200
+damage.4.attacker=,,,,2006(1)
+damage.4.defender=,,1559(3),,
+
+stats.5.attacker=0,0,0,519,249,249
+stats.5.defender=1125,1125,1800,450,450,900
+damage.5.attacker=,,,,1504(0)
+damage.5.defender=,,519(2),,
+
