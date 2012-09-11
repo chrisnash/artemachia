@@ -275,4 +275,18 @@ public class Deployment
         }
         return l;
     }
+
+    public double damageRatio()
+    {
+        double dam = 0.0;
+        for(ShipInstance v : deploymentMap.values())
+        {
+            double d = v.getDamage().value();
+            double m = v.getParent().getDurability().value();
+            if(d<0.0) d=0.0;
+            if(d>m) d=m;
+            dam += (d/m);
+        }
+        return dam;
+    }
 }

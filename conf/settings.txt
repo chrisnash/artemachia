@@ -8,14 +8,19 @@ enemy_critical_percent=1
 critical_multiplier=1.3
 
 # optimizer (genetic algorithm) parameters
-optimizer.population = 50
-optimizer.mutations = 20
-optimizer.crossovers = 10
+optimizer.population = 100
+optimizer.mutationPopulation = 10
+optimizer.mutations = 5
+optimizer.crossoverPopulation = 10
+optimizer.crossovers = 5
+optimizer.crossoverAttempts = 100
 optimizer.iterations = 10000
+optimizer.report = 50
+optimizer.simulations = 100
 
 optmode.victory=Victory
 optmode.shipcount=ShipCount,80
 optmode.domination=Domination,80
 optmode.kills=Kills
-
+optmode.damage=Damage
 

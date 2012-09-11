@@ -160,6 +160,11 @@ public class OptimizerRunner
         settings.crossovers = config.getInt("optimizer.crossovers",0);
         settings.iterations = config.getInt("optimizer.iterations",0);
         settings.fitness = (FitnessFunction)ObjectCreator.createObjectFromConfig("com.battlespace.domain.optimizers", config, "optmode."+fitness);
+        settings.crossoverAttempts = config.getInt("optimizer.crossoverAttempts", 0);
+        settings.report = config.getInt("optimizer.report", 0);
+        settings.crossoverPopulation = config.getInt("optimizer.crossoverPopulation", 0);
+        settings.mutationPopulation = config.getInt("optimizer.mutationPopulation", 0);
+        settings.simulations = config.getInt("optimizer.simulations", 0);
         
         // simple test of the simulator runner
         SimulatorContext context = new SimulatorContext();

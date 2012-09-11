@@ -12,5 +12,10 @@ public class OptimizerSettings
     public int crossovers;
     public int iterations;
     public FitnessFunction fitness;
+    public int crossoverAttempts;
+    public int crossoverPopulation;
+    public int mutationPopulation;
+    public int report;
+    public int simulations;
 
 }
