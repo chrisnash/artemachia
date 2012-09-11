@@ -1,5 +1,5 @@
 # military skill, gives player boosts
-military.skill = 43
+military.skill = 46
 
 #union.armor, gives durability boost (2% per)
 union.armor=3
@@ -14,7 +14,7 @@ s1pa=	0000
 s1ha=	2002
 s1sa=	0003
 s1aa=	0001
-s1da=	2203
+s1da=	3203
 
 m1mpa=	1000
 m1ta=	0000
@@ -34,7 +34,8 @@ l1aa=	0001
 l1da=	1203
 
 s2mpb=	0000
-s2tb=	0000
+s2tb=	1000
+s2pb=	0000
 
 m2mpb=	0000
 

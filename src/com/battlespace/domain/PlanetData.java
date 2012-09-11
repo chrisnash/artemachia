@@ -37,4 +37,9 @@ public class PlanetData
         }
         return sb.toString();
     }
+    
+    public String toString()
+    {
+        return code + "," + level + ( (planetConfig.isEmpty())?(""):(","+planetConfig) );
+    }
 }

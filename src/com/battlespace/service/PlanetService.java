@@ -1,6 +1,7 @@
 package com.battlespace.service;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -58,5 +59,11 @@ public class PlanetService
             }
         }
         throw new Exception("Cannot find planet " + level + "," + conf);
+    }
+
+    public static Collection<PlanetData> getAllPlanets() throws Exception
+    {
+        Map<String, PlanetData> pd = loadDatabase();
+        return pd.values();
     }
 }
