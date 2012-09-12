@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -192,4 +193,8 @@ public class EnemyShipDatabase implements ShipFactory
         return instantiate(name);
     }
 
+    public Collection<EnemyShip> getAllShips()
+    {
+        return db.values();
+    }
 }

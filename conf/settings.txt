@@ -24,3 +24,4 @@ optmode.domination=Domination,80
 optmode.kills=Kills
 optmode.damage=Damage
 optmode.time=Time,80,120,1
+optmode.dv=DataValue

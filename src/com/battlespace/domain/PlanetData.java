@@ -42,4 +42,17 @@ public class PlanetData
     {
         return code + "," + level + ( (planetConfig.isEmpty())?(""):(","+planetConfig) );
     }
+
+    public boolean containsShip(String code)
+    {
+        String[] nmeList = enemies.split(",");
+        for(String nme : nmeList)
+        {
+            if(nme.equals(code))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }

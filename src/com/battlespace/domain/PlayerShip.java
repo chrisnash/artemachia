@@ -98,4 +98,18 @@ public class PlayerShip extends AbstractShip
     {
         return buildTime;
     }
+
+    @Override
+    public double dataValue()
+    {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void updateDataValue(double d)
+    {
+        // TODO Auto-generated method stub
+        
+    }
 }

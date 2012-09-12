@@ -77,5 +77,7 @@ public class AbstractShipInstance implements ShipInstance
         int deadShips = (int)Math.floor( (d * template.getUnits()) / template.getDurability().value() );
         int um = template.getUnits() - deadShips;
         unitsRemaining = (um<0) ? 0 : um;
+        
+        template.updateDataValue(d);
     }
 }

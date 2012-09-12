@@ -2,9 +2,11 @@ package com.battlespace.domain;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.SortedMap;
 
 public class Deployment
@@ -301,5 +303,20 @@ public class Deployment
             }
         }
         return rt;
+    }
+
+    public double dataValue()
+    {
+        Set<Ship> distinctShips = new HashSet<Ship>();
+        for(ShipInstance v : deploymentMap.values())
+        {
+            distinctShips.add(v.getParent());
+        }
+        double dv = 0.0;
+        for(Ship s : distinctShips)
+        {
+            dv += s.dataValue();
+        }
+        return dv;
     }
 }

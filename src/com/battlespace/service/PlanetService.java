@@ -3,6 +3,7 @@ package com.battlespace.service;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -65,5 +66,19 @@ public class PlanetService
     {
         Map<String, PlanetData> pd = loadDatabase();
         return pd.values();
+    }
+
+    public static Set<PlanetData> findShip(String code) throws Exception
+    {
+        Set<PlanetData> matches = new HashSet<PlanetData>();
+        Map<String, PlanetData> pd = loadDatabase();
+        for(PlanetData p : pd.values())
+        {
+            if(p.containsShip(code))
+            {
+                matches.add(p);
+            }
+        }
+        return matches;
     }
 }

@@ -22,4 +22,8 @@ public interface Ship
     Stat getDomination();
 
     int getReplacementTime();
+
+    double dataValue();
+
+    void updateDataValue(double d);
 }

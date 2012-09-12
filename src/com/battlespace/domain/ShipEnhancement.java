@@ -19,4 +19,18 @@ public class ShipEnhancement extends AbstractShip
         return 0;
     }
 
+    @Override
+    public double dataValue()
+    {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override
+    public void updateDataValue(double d)
+    {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
