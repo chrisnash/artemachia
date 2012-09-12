@@ -294,12 +294,28 @@ public class Deployment
 
     public int replacementTime()
     {
-        int rt = 0;
+        Map<String,Integer> rtBySize = new HashMap<String,Integer>();
+        
         for(ShipInstance v : deploymentMap.values() )
         {
             if(!v.isAlive())
             {
-                rt += v.getParent().getReplacementTime();
+                int rt = v.getParent().getReplacementTime();
+                String size = v.getParent().getSize();
+                Integer oldRt = rtBySize.get(size);
+                if(oldRt != null)
+                {
+                    rt += oldRt.intValue();
+                }
+                rtBySize.put(size, Integer.valueOf(rt));
+            }
+        }
+        int rt = 0;
+        for(Integer rts : rtBySize.values())
+        {
+            if(rts.intValue() > rt)
+            {
+                rt = rts.intValue();
             }
         }
         return rt;
