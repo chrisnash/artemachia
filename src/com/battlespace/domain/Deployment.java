@@ -289,4 +289,17 @@ public class Deployment
         }
         return dam;
     }
+
+    public int replacementTime()
+    {
+        int rt = 0;
+        for(ShipInstance v : deploymentMap.values() )
+        {
+            if(!v.isAlive())
+            {
+                rt += v.getParent().getReplacementTime();
+            }
+        }
+        return rt;
+    }
 }

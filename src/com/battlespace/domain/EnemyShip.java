@@ -17,4 +17,10 @@ public class EnemyShip extends AbstractShip
     {
         return new EnemyShipInstance(this);
     }
+
+    @Override
+    public int getReplacementTime()
+    {
+        return 0;
+    }
 }

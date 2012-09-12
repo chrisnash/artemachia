@@ -20,4 +20,6 @@ public interface Ship
     Stat getDurability();
 
     Stat getDomination();
+
+    int getReplacementTime();
 }

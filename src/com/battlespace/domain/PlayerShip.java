@@ -8,12 +8,14 @@ import com.battlespace.service.PlayerShipDatabase;
 public class PlayerShip extends AbstractShip
 {
     ShipEnhancement[] enhancements = new ShipEnhancement[4];
+    int buildTime;
     
     public PlayerShip(String name, Map<String, Stat> torp,
             Map<String, Stat> plas, Stat torpShield, Stat plasShield, Stat dur,
-            Stat dom, Stat speed, int units) throws Exception
+            Stat dom, Stat speed, int units, int buildTime) throws Exception
     {
         super(name, torp, plas, torpShield, plasShield, dur, dom, speed, units);
+        this.buildTime = buildTime;
     }
 
     public PlayerShipInstance createInstance() throws Exception
@@ -24,7 +26,7 @@ public class PlayerShip extends AbstractShip
     public PlayerShip skillUpgrade(double commanderBoost) throws Exception
     {
         return new PlayerShip(name, AbsoluteStat.enhance(torpedoes, commanderBoost), AbsoluteStat.enhance(plasma, commanderBoost),
-                torpedoShield, plasmaShield, durability, domination, speed, units);                
+                torpedoShield, plasmaShield, durability, domination, speed, units, buildTime);                
     }
     
     public PlayerShip applyUpgrades(int[] is, boolean required) throws Exception
@@ -58,7 +60,8 @@ public class PlayerShip extends AbstractShip
         p.put("M", new AbsoluteStat(in[4]));
         p.put("L", new AbsoluteStat(in[5]));
         
-        return new PlayerShip(name, t, p, new AbsoluteStat(in[6]), new AbsoluteStat(in[7]), new AbsoluteStat(in[8]), new AbsoluteStat(in[9]), new AbsoluteStat(in[10]), units);
+        return new PlayerShip(name, t, p, new AbsoluteStat(in[6]), new AbsoluteStat(in[7]),
+                new AbsoluteStat(in[8]), new AbsoluteStat(in[9]), new AbsoluteStat(in[10]), units, buildTime);
 
     }
 
@@ -86,6 +89,13 @@ public class PlayerShip extends AbstractShip
         p.put("M", new AbsoluteStat(in[4]));
         p.put("L", new AbsoluteStat(in[5]));
         
-        return new PlayerShip(name, t, p, new AbsoluteStat(in[6]), new AbsoluteStat(in[7]), new AbsoluteStat(in[8]), new AbsoluteStat(in[9]), new AbsoluteStat(in[10]), units);
+        return new PlayerShip(name, t, p, new AbsoluteStat(in[6]), new AbsoluteStat(in[7]),
+                new AbsoluteStat(in[8]), new AbsoluteStat(in[9]), new AbsoluteStat(in[10]), units, buildTime);
+    }
+
+    @Override
+    public int getReplacementTime()
+    {
+        return buildTime;
     }
 }

@@ -56,8 +56,9 @@ public class PlayerShipDatabase
                 Stat dom = StatFactory.create(data.get(10));
                 Stat speed = StatFactory.create(data.get(11));
                 int units = Integer.valueOf(data.get(12));
+                int buildTime = Integer.valueOf(data.get(13));
                                 
-                PlayerShip ps = new PlayerShip(name, torp, plas, torpShield, plasShield, dur, dom, speed, units);
+                PlayerShip ps = new PlayerShip(name, torp, plas, torpShield, plasShield, dur, dom, speed, units, buildTime);
                 
                 for(int i=0; i<4; i++)
                 {

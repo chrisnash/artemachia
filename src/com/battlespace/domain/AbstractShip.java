@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public class AbstractShip implements Ship
+public abstract class AbstractShip implements Ship
 {
     public static final int FLATTEN_SIZE = 11;
     

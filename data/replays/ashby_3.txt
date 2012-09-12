@@ -1,0 +1,21 @@
+attacker = 46,112,95,Redirector 1,*Pinwheel
+attacker_ships = l2mpb,l1da,s2pb,l2mpb,l2mpb
+attacker_upgrades = s2pb:0000,l1da:1203,l2mpb:0000
+
+defender = Eridanus
+defender_ships = larcb,maria,maria,maria,larcb
+
+stats.1.attacker=1618,2769,1618,2769,4653,3681
+stats.1.defender=4800,3750,3450,3780,5190,2790
+damage.1.attacker=,,2414(0),3516(0),1404(1)
+damage.1.defender=896(1),,3065(0),,1792(1)
+
+stats.2.attacker=1303,1954,1303,1629,2280,1629
+stats.2.defender=3600,3000,2700,3120,4860,2460
+damage.2.attacker=,2414(0),,,1404(0)/1010(1)
+damage.2.defender=896(1),,,,1792(0)
+
+stats.3.attacker=434,651,434,543,760,543
+stats.3.defender=3000,2250,2100,2220,2760,1560
+damage.3.attacker=,,,,1404(0)
+damage.3.defender=896(1),,,,

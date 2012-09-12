@@ -13,4 +13,10 @@ public class ShipEnhancement extends AbstractShip
         // TODO Auto-generated constructor stub
     }
 
+    @Override
+    public int getReplacementTime()
+    {
+        return 0;
+    }
+
 }

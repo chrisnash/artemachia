@@ -1,0 +1,27 @@
+attacker = 46,106,52,Dominator 1,Eridanus
+attacker_ships = s2pb,l1sa,l1da,l1da,s2pb
+attacker_upgrades = s2pb:0000,l1sa:0002,l1da:1203
+
+defender = Eridanus
+defender_ships = larcb,maria,maria,maria,larcb
+
+stats.1.attacker=736,1787,736,2382,4895,4202
+stats.1.defender=4800,3750,3450,3780,5190,2790
+damage.1.attacker=1360(4),,2205(1),,1360(4)
+damage.1.defender=1491(1),,2512(0),,2053(1)
+# This is a curious one. How did the bottom ship get hit by a sniper?
+
+stats.2.attacker=736,1787,736,1819,4332,3032
+stats.2.defender=3600,3000,2700,3120,4860,2460
+damage.2.attacker=1360(2),,1470(0),,1360(2)
+damage.2.defender=1756(0),,,,994(0)
+
+stats.3.attacker=628,1624,628,1148,3606,1754
+stats.3.defender=2400,1500,1500,1320,660,660
+damage.3.attacker=1758(0),,,,1758(0)
+damage.3.defender=,,2774(0),,
+
+stats.4.attacker=628,1624,628,584,3043,584
+stats.4.defender=1200,750,750,660,330,330
+damage.4.attacker=,,1035(1),,
+damage.4.defender=,,4424(0),,

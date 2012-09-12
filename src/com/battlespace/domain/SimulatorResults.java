@@ -10,7 +10,7 @@ public class SimulatorResults
     Deployment playerResult;
     Deployment enemyResult;
     
-    String[] availableStats = new String[]{"victoryPercent", "shipLosses", "shipCount", "domination", "enemyKills", "enemyDamage"};
+    String[] availableStats = new String[]{"victoryPercent", "shipLosses", "shipCount", "domination", "enemyKills", "enemyDamage", "replacementTime"};
 
     public SimulatorResults(boolean v, Deployment player, Deployment enemy)
     {
@@ -65,5 +65,9 @@ public class SimulatorResults
     private double enemyDamage()
     {
         return enemyResult.damageRatio();
+    }
+    private double replacementTime()
+    {
+        return (double)playerResult.replacementTime();
     }
 }
