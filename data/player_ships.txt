@@ -1,7 +1,6 @@
 #TODO: add upgrade details for these ships
 
 s1ia=S-1 Improvised Ship a,270,270,300,150,150,180,40,40,1800,6,10,6,1
-s1mpa=S-1 Mass Produced Ship a,270,270,480,240,240,360,60,60,2100,6,12,6,3
 s1ta=S-1 Torpedo Ship a,630,630,1320,0,0,0,150,0,2700,6,12,6,8
 s1ha=S-1 Hyperdrive Ship a,300,300,600,270,270,450,60,60,2280,6,15,6,8
 s1x=S-1 Special Ship,420,660,660,420,660,660,150,150,2280,6,14,6,30
@@ -10,6 +9,12 @@ m1sa=M-1 Armored Ship a,150,90,90,150,90,90,250,250,2930,18,8,3,10
 m1na=M-1 Domination Ship a,180,150,150,180,150,150,300,100,2700,60,9,3,10
 l1mpa=L-1 Mass Produced Ship a,250,400,250,380,540,380,60,60,1700,8,9,1,6
 l1na=L-1 Domination Ship a,150,200,150,150,200,150,100,300,2600,70,8,1,12
+
+s1mpa=S-1 Mass Produced Ship a,240,240,360,270,270,480,60,60,2100,6,12,6,3
+s1mpa.0=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
+s1mpa.1=Pulse Rifle,30,30,30,0,0,0,0,0,0,0,0
+s1mpa.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+s1mpa.3=Whipple Armor,0,0,0,0,0,0,10,10,0,0,0
 
 s1pa=S-1 Plasma Ship a,0,0,0,630,630,1320,0,150,2700,6,12,6,8
 s1pa.0=Plasma Cannon a,0,0,0,30,30,60,0,0,0,0,0

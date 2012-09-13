@@ -1,0 +1,16 @@
+attacker = 46,50,44,L Missileer 1,Aquila
+attacker_ships = l1aa,l1aa,l1aa
+attacker_upgrades = l1aa:0001
+
+defender = corvus
+defender_ships = sanab,manab,manab,manab,sanab
+
+stats.1.attacker=1505,2007,1505,1266,1582,1266
+stats.1.defender=1380,840,1140,4200,3750,4050
+damage.1.attacker=1064(1),,1648(1),,1888(1)
+damage.1.defender=902(3),,1170(1),,902(3)
+
+stats.2.attacker=1505,2007,1505,1266,1582,1266
+stats.2.defender=990,570,720,2850,2500,2650
+damage.2.attacker=1356(0),,806(0),,824(0)
+damage.2.defender=902(0),,1170(0),,902(0)

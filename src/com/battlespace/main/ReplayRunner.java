@@ -37,19 +37,21 @@ import com.battlespace.strategy.AttackStrategy;
 
 public class ReplayRunner
 {
-
+    
     /**
      * @param args
      */
     public static void main(String[] args) throws Exception
     {
+        boolean debug = false;
+        
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
         AttackStrategy attackStrategy = (AttackStrategy)ObjectCreator.createObjectFromConfig("com.battlespace.strategy", config, "attackStrategy");
        
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "ashby_3.txt";
+        String replayFile = "data/replays/" + "brutus_5.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -83,11 +85,11 @@ public class ReplayRunner
         for(String attackShipName : attackShipNames)
         {
             PlayerShip psi = PlayerShipDatabase.lookup(attackShipName);
-            //System.out.println(psi);
+            if(debug) System.out.println(psi);
             
             // apply ship upgrades
             psi = psi.applyUpgrades( upgradeLevels.get(attackShipName), true ); // replay can't run with missing files
-            //System.out.println(psi);
+            if(debug) System.out.println(psi);
 
             // calculate boost percentages
             Booster booster = new Booster(psi.size);
@@ -95,10 +97,10 @@ public class ReplayRunner
             PlayerSkillModifier.upgrade(booster, militarySkill);
             commanderPower.upgrade(booster);
             booster.skillUpgrade(commanderBoost);
-            //System.out.println(booster);
+            if(debug) System.out.println(booster);
             
             psi = psi.applyBooster(booster);
-            //System.out.println(psi);
+            if(debug) System.out.println(psi);
             attackShips.add(psi.createInstance());
         }
         Deployment attackDeployment = attackFormation.deploy(attackShips);
@@ -126,8 +128,8 @@ public class ReplayRunner
             List<RangedStat> displayRange = RangedStat.statsFromDisplay(attackStats);
             List<Stat> realRange = attackDeployment.getStats();
             
-            //System.out.println(displayRange);
-            //System.out.println(realRange);
+            if(debug) System.out.println(displayRange);
+            if(debug) System.out.println(realRange);
             
             List<Stat> extractedAttackStats = RangedStat.merge(displayRange, realRange);
             

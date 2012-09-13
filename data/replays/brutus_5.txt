@@ -1,0 +1,32 @@
+attacker = 46,50,44,L Missileer 1,Aquila
+attacker_ships = l1da,s1mpa,m1da
+attacker_upgrades = l1da:1203,s1mpa:1100,m1da:0001
+
+defender = sculptor
+defender_ships = santa,lanab,manta,santa
+
+stats.1.attacker=2001,1374,988,1203,2052,1076
+stats.1.defender=1310,1210,1490,1140,1260,1170
+damage.1.attacker=639(1),,1931(1),,
+damage.1.defender=,592(4),922(1)/,1924(0),
+
+stats.2.attacker=1763,1137,645,939,1788,627
+stats.2.defender=950,850,810,980,1100,970
+damage.2.attacker=799(1),,891(0),,
+damage.2.defender=,592(1),646(1)/,,
+
+stats.3.attacker=1716,1089,576,886,1735,538
+stats.3.defender=815,715,555,920,1040,895
+damage.3.attacker=955(0),,,,359(3)
+damage.3.defender=,592(0),493(0)/,,
+
+stats.4.attacker=1392,253,253,601,253,253
+stats.4.defender=570,270,270,150,120,120
+damage.4.attacker=,,,,359(3)
+damage.4.defender=,,493(2),,
+
+stats.5.attacker=1392,253,253,601,253,253
+stats.5.defender=380,180,180,100,80,80
+damage.5.attacker=,,,,239(2)
+damage.5.defender=,,C642(0),,
+

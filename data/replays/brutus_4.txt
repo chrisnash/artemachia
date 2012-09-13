@@ -1,0 +1,21 @@
+attacker = 46,50,44,L Missileer 1,Aquila
+attacker_ships = l2mpb,m1pa,m1ta
+attacker_upgrades = l2mpb:0000,m1pa:1103,m1ta:0000
+
+defender = microscopium
+defender_ships = manab,lanab,sanab,manab
+
+stats.1.attacker=1965,1397,1174,2158,1530,1319
+stats.1.defender=1070,910,860,3300,3150,3150
+damage.1.attacker=872(1),,2609(0),,
+damage.1.defender=,1370(1),751(1),728(2),
+
+stats.2.attacker=1965,1397,1174,527,738,527
+stats.2.defender=710,730,680,2400,2400,2400
+damage.2.attacker=1181(1),,,,1477(2)
+damage.2.defender=,1370(0),,728(1),
+
+stats.3.attacker=1459,1154,931,527,738,527
+stats.3.defender=470,610,560,1800,1900,1900
+damage.3.attacker=891(0),,,,1176(0)
+damage.3.defender=,,947(0),485(0),
