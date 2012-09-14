@@ -26,4 +26,6 @@ public interface Ship
     double dataValue();
 
     void updateDataValue(double d);
+
+    void clearDataValue();
 }

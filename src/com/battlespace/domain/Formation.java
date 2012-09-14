@@ -46,7 +46,9 @@ public class Formation
         }
         for(Coordinate c : coords)
         {
-            deployData.put(c, ships.get(index++));
+            ShipInstance si = ships.get(index++);
+            si.getParent().clearDataValue();
+            deployData.put(c, si);
         }
         return new Deployment(deployData);
     }

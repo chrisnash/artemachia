@@ -1,0 +1,41 @@
+attacker = 49,20,25,student1,aquila
+attacker_ships = l1aa,m1pa,s1sa
+attacker_upgrades = l1aa:0001,m1pa:1103,s1sa:0003
+
+defender = Tucana
+defender_ships = lanta,sanab,santa,lanta
+
+stats.1.attacker=561,717,592,2116,1393,1321
+stats.1.defender=960,1680,1350,1170,1170,1350
+damage.1.attacker=1431(1),,1109(2),,
+damage.1.defender=860(1),,1023(0),,
+
+stats.2.attacker=561,717,592,1581,1133,1061
+stats.2.defender=690,1050,1080,1020,1020,1200
+damage.2.attacker=954(0),,733(1),,
+damage.2.defender=860(0),1199(3)/,,,
+
+stats.3.attacker=93,93,124,629,353,384
+stats.3.defender=345,345,660,495,495,600
+damage.3.attacker=,,729(1),,
+damage.3.defender=,690(0)/,,,
+
+stats.4.attacker=93,93,124,629,353,384
+stats.4.defender=270,270,510,120,120,150
+damage.4.attacker=,,363(0),,
+damage.4.defender=,717(3),,,
+
+stats.5.attacker=93,93,124,93,93,124
+stats.5.defender=135,135,255,60,60,75
+damage.5.attacker=,,,,124(6)
+damage.5.defender=,182(2),,,
+
+stats.6.attacker=93,93,124,93,93,124
+stats.6.defender=90,90,170,40,40,50
+damage.6.attacker=,,,,83(6)
+damage.6.defender=,182(1),,,
+
+stats.7.attacker=93,93,124,93,93,124
+stats.7.defender=45,45,85,20,20,25
+damage.7.attacker=,,,,41(6)
+damage.7.defender=,182(0),,,

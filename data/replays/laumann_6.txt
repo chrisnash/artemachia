@@ -1,0 +1,31 @@
+attacker = 49,115,56,Dominator 1,Eridanus
+attacker_ships = l1aa,s2pb,m1aa,l1pa,s2tb
+attacker_upgrades = l1aa:0001,s2pb:0000,m1aa:2103,l1pa:1003,s2tb:1000
+
+defender = ................X......XX......XX..
+defender_ships = laria,marcb,maria,laria,laria
+
+stats.1.attacker=1941,1957,2773,2827,3654,3545
+stats.1.defender=4140,4920,3570,3810,3330,2280
+damage.1.attacker=,,C4549(0),,4717(0)
+damage.1.defender=,,2612(0),2346(1)/,1580(1)
+
+stats.2.attacker=1060,1076,913,1979,2805,1783
+stats.2.defender=2930,3340,2440,2060,2030,1330
+damage.2.attacker=2357(0),,,,
+damage.2.defender=,,,1114(0)/2622(0),
+
+stats.3.attacker=570,424,424,1544,2262,1348
+stats.3.defender=1500,2400,1500,700,1400,700
+damage.3.attacker=,,3276(0),,
+damage.3.defender=,,,,915(0)/793(1)
+
+stats.4.attacker=0,0,0,793,1707,793
+stats.4.defender=750,1200,750,350,700,350
+damage.4.attacker=,,1022(1),,
+damage.4.defender=,,,,793(1)
+
+stats.5.attacker=0,0,0,793,1707,793
+stats.5.defender=750,1200,750,350,700,350
+damage.5.attacker=,,1022(1),,
+damage.5.defender=,,,,793(0)

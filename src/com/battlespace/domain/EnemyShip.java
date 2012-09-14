@@ -48,4 +48,10 @@ public class EnemyShip extends AbstractShip
             }
         }
     }
+
+    @Override
+    public void clearDataValue()
+    {
+        dataValue = 0.0;
+    }
 }
