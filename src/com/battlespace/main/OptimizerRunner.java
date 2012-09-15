@@ -94,7 +94,7 @@ public class OptimizerRunner
         else
         {
             int base = 0;
-            if(args[0].startsWith("i"))
+            if(enemyArgs[0].startsWith("i"))
             {
                 base++;
                 interception = true;
