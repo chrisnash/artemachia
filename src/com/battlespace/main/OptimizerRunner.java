@@ -73,6 +73,8 @@ public class OptimizerRunner
         // (planet)
         // (planet level),(config)
         // (formation),(ship,ship,ship...)
+        // i,(formation),(ship,ship,ship....)
+        boolean interception = false;
         String[] enemyArgs = args[1].split(",");
         String enemyFormation = null;
         String enemyShips = null;
@@ -91,12 +93,18 @@ public class OptimizerRunner
         }
         else
         {
-            // formation, ship, ship, ship....
-            enemyFormation = enemyArgs[0];
-            StringBuffer sb = new StringBuffer();
-            for(int i=1;i<enemyArgs.length;i++)
+            int base = 0;
+            if(args[0].startsWith("i"))
             {
-                if(i!=1) sb.append(",");
+                base++;
+                interception = true;
+            }
+            // formation, ship, ship, ship....
+            enemyFormation = enemyArgs[base];
+            StringBuffer sb = new StringBuffer();
+            for(int i=base+1;i<enemyArgs.length;i++)
+            {
+                if(i!=base+1) sb.append(",");
                 sb.append(enemyArgs[i]);
             }
             enemyShips = sb.toString();
@@ -175,6 +183,7 @@ public class OptimizerRunner
         context.enemyFactory = esd;
         context.playerCritChance = commanderCritical;
         context.playerCritDamage = Double.valueOf(config.get("critical_multiplier"));
+        context.interception = interception;
         if(commanderPower != null)
         {
             context.playerCritChance *= commanderPower.criticalMultiplier();
