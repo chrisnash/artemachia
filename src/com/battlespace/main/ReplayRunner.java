@@ -51,7 +51,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "ashby_4.txt";
+        String replayFile = "data/replays/" + "ashby_5.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -124,6 +124,13 @@ public class ReplayRunner
             {
                 break;
             }
+            // support "reboot.turn" flag for union interception
+            String reboot = replay.get("reboot." + turn);
+            if(reboot != null)
+            {
+                defendDeployment.reboot();
+            }
+            
             // allow for display rounding and make sure they're compatible with our calculations
             List<RangedStat> displayRange = RangedStat.statsFromDisplay(attackStats);
             List<Stat> realRange = attackDeployment.getStats();

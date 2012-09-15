@@ -51,8 +51,13 @@ public class Simulator
         }
         Deployment enemy = params.enemyFormation.deploy(es);
         
-        while(player.isAlive() && enemy.isAlive())
+        while(player.isAlive() && (context.interception || enemy.isAlive()) )
         {
+            if(!enemy.isAlive())
+            {
+                enemy.reboot();
+            }
+            
             AttackPlan pap = context.attackStrategy.getAttackPlan(player, enemy);
             AttackPlan eap = context.attackStrategy.getAttackPlan(enemy,  player);
             

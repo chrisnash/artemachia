@@ -80,4 +80,10 @@ public class AbstractShipInstance implements ShipInstance
         
         template.updateDataValue(d);
     }
+    
+    public void reboot() throws Exception
+    {
+        this.damage = StatFactory.create(0.0, 0.0);
+        this.unitsRemaining = template.getUnits();        
+    }
 }

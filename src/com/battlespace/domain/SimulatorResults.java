@@ -58,6 +58,8 @@ public class SimulatorResults
     {
         return playerResult.getEffectiveDomination();
     }
+    
+    // ships lost and damage ratio need to carry from one round to the next
     private double enemyKills()
     {
         return (double)enemyResult.shipsLost();
@@ -66,6 +68,7 @@ public class SimulatorResults
     {
         return enemyResult.damageRatio();
     }
+    
     private double replacementTime()
     {
         return (double)playerResult.replacementTime();

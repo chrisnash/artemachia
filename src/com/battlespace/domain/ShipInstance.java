@@ -19,4 +19,6 @@ public interface ShipInstance
     Stat getDamage();
 
     void setDamage(double d) throws Exception;
+
+    void reboot() throws Exception;
 }

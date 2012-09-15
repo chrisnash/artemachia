@@ -16,4 +16,6 @@ public class SimulatorContext
     
     public double enemyCritChance;
     public double enemyCritDamage;
+    
+    public boolean interception;
 }

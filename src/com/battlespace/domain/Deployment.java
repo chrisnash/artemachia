@@ -12,6 +12,7 @@ import java.util.SortedMap;
 public class Deployment
 {
     SortedMap<Coordinate, ShipInstance> deploymentMap;
+    int interceptionKills = 0;
     
     public Deployment(SortedMap<Coordinate, ShipInstance> deployData)
     {
@@ -275,7 +276,7 @@ public class Deployment
         {
              if(!v.isAlive()) l++;
         }
-        return l;
+        return l + interceptionKills;
     }
 
     public double damageRatio()
@@ -289,7 +290,7 @@ public class Deployment
             if(d>m) d=m;
             dam += (d/m);
         }
-        return dam;
+        return dam + interceptionKills;
     }
 
     public int replacementTime()
@@ -334,5 +335,14 @@ public class Deployment
             dv += s.dataValue();
         }
         return dv;
+    }
+
+    public void reboot() throws Exception
+    {
+        for(ShipInstance v : deploymentMap.values())
+        {
+            v.reboot();
+            interceptionKills++;
+        }
     }
 }
