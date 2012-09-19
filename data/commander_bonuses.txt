@@ -34,6 +34,7 @@ rd1=Redirector 1,Safeguard,7
 sc1=Scrapper 1,Noncombat
 sd1=Shieldmate 1,Armorer,20
 sg1=Safeguard 1,Safeguard,5
+sv1=Scavenger 1,Noncombat
 si1=S Ionizer 1,Ionizer,S,6
 sm1=S Missileer 1,Missileer,S,6
 sn1=S Grenadier 1,Missileer,S,9

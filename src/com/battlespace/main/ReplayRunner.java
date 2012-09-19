@@ -51,7 +51,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "ashby_5.txt";
+        String replayFile = "data/replays/" + "is_4.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -125,7 +125,7 @@ public class ReplayRunner
                 break;
             }
             // support "reboot.turn" flag for union interception
-            String reboot = replay.get("reboot." + turn);
+            List<String> reboot = replay.getList("reboot." + turn);
             if(reboot != null)
             {
                 defendDeployment.reboot();
@@ -149,6 +149,7 @@ public class ReplayRunner
             // Then for each ship type, min is given by back calculation (assuming all other ships maxed)
             // and likewise for max
             Map<String, Double> deploymentSummary = defendDeployment.getSummary();
+            if(debug) System.out.println("deployment summary " + deploymentSummary);
             Set<String> enemyNames = deploymentSummary.keySet();
             for(String treatFixed : enemyNames)
             {
@@ -166,6 +167,7 @@ public class ReplayRunner
                 List<Stat> fixedStats = RangedStat.diff(displayRange, others);
                 List<Stat> newStatEstimate = RangedStat.scale(fixedStats, 1.0 / deploymentSummary.get(treatFixed));
                 EnemyShip fixedShip = esd.lookup(treatFixed);
+                if(debug) System.out.println("reestimating " + fixedShip + " as " + newStatEstimate);
                 esd.refineSummaryStats(fixedShip, newStatEstimate);
             }
             

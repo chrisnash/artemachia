@@ -1,0 +1,54 @@
+attacker = 52,99,39,mionizer1,telescopium
+attacker_ships = l2x,l2x,l2x,l2x
+attacker_upgrades = l2x:0000
+
+defender = vulpecula
+defender_ships = sap,lat,sat,sat
+
+stats.1.attacker=4217,4217,1997,4217,4217,1997
+stats.1.defender=770,1220,1280,460,460,1030
+damage.1.attacker=,1135(1),,807(1),
+damage.1.defender=,3584(0),,3584(0),
+
+stats.2.attacker=4217,4217,1997,4217,4217,1997
+stats.2.defender=440,890,680,160,160,280
+damage.2.attacker=,252(1),,555(1),
+damage.2.defender=,,2547(0),,
+
+stats.3.attacker=4217,4217,1997,4217,4217,1997
+stats.3.defender=240,240,480,60,60,180
+damage.3.attacker=,,,555(1),
+damage.3.defender=,,3584(0),,
+
+reboot.4=yes
+stats.4.attacker=4217,4217,1997,4217,4217,1997
+stats.4.defender=770,1220,1280,460,460,1030
+damage.4.attacker=,1135(0),,807(0),
+damage.4.defender=,3584(0),,3584(0),
+
+stats.5.attacker=2108,2108,998,2108,2108,998
+stats.5.defender=440,890,680,160,160,280
+damage.5.attacker=,,,,807(1)
+damage.5.defender=,,1698(1),,
+
+stats.6.attacker=2108,2108,998,2108,2108,998
+stats.6.defender=440,890,680,160,160,280
+damage.6.attacker=,,,,807(1)
+damage.6.defender=,,849(0),,
+
+stats.7.attacker=2108,2108,998,2108,2108,998
+stats.7.defender=240,240,480,60,60,180
+damage.7.attacker=555(1),,,,
+damage.7.defender=,,3584(0),,
+
+reboot.8=yes
+stats.8.attacker=2108,2108,998,2108,2108,998
+stats.8.defender=770,1220,1280,460,460,1030
+damage.8.attacker=1135(1),,,,807(0)
+damage.8.defender=,C2330(2),,2330(1),
+
+stats.9.attacker=1054,1054,499,1054,1054,499
+stats.9.defender=510,960,800,250,250,500
+damage.9.attacker=537(0),,,,
+damage.9.defender=,1792(0),,,
+

@@ -54,9 +54,9 @@ l9-4=9,Mm,...X.....X.X...........X.X.....X...,laria,maria,maria,maria,maria,sari
 
 #Level 10
 l10-1=10,Aa,.........X.....XXXXX...X...........,saria,saria,sarcb,saria,saria,saria,saria
-l10-1=10,Ee,..X......X.X....X......X.X....X....,saria,laria,laria,laria,laria,laria,saria
-l10-1=10,Gg,.........X.....XXXXX...X...........,laria,laria,larcb,laria,laria,laria,laria
-l10-1=10,Mm,.........X.....XXXXX...X...........,maria,maria,marcb,maria,maria,maria,maria
+l10-2=10,Ee,..X......X.X....X......X.X....X....,saria,laria,laria,laria,laria,laria,saria
+l10-3=10,Gg,.........X.....XXXXX...X...........,laria,laria,larcb,laria,laria,laria,laria
+l10-4=10,Mm,.........X.....XXXXX...X...........,maria,maria,marcb,maria,maria,maria,maria
 
 #Asteroids:
 #Level 3
