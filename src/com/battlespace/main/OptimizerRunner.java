@@ -21,6 +21,7 @@ import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
 import com.battlespace.domain.optimizers.FitnessFunction;
 import com.battlespace.main.parsers.ParsedCommander;
+import com.battlespace.main.parsers.ParsedEnemy;
 import com.battlespace.service.CommanderPowerService;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
@@ -46,47 +47,8 @@ public class OptimizerRunner
 
         ParsedCommander pc = new ParsedCommander(config, args[0]);
                 
-        // param 2 is enemy selection
-        // (planet)
-        // (planet level),(config)
-        // (formation),(ship,ship,ship...)
-        // i,(formation),(ship,ship,ship....)
-        boolean interception = false;
-        String[] enemyArgs = args[1].split(",");
-        String enemyFormation = null;
-        String enemyShips = null;
-        if(enemyArgs.length==1)
-        {
-            PlanetData pd = PlanetService.lookup(enemyArgs[0]);
-            enemyFormation = pd.formation;
-            enemyShips = pd.enemies;
-        }
-        else if(enemyArgs.length==2)
-        {
-            PlanetData pd = PlanetService.lookupByLayout(Integer.valueOf(enemyArgs[0]), enemyArgs[1]);
-            enemyFormation = pd.formation;
-            enemyShips = pd.enemies;
-            System.out.println("Planet code is " + pd.code);
-        }
-        else
-        {
-            int base = 0;
-            if(enemyArgs[0].startsWith("i"))
-            {
-                base++;
-                interception = true;
-            }
-            // formation, ship, ship, ship....
-            enemyFormation = enemyArgs[base];
-            StringBuffer sb = new StringBuffer();
-            for(int i=base+1;i<enemyArgs.length;i++)
-            {
-                if(i!=base+1) sb.append(",");
-                sb.append(enemyArgs[i]);
-            }
-            enemyShips = sb.toString();
-        }
-        
+        ParsedEnemy pe = new ParsedEnemy(args[1]);
+                
         String fitness="victory";
         if(args.length==3)
         {
@@ -160,7 +122,7 @@ public class OptimizerRunner
         context.enemyFactory = esd;
         context.playerCritChance = pc.commanderCritical;
         context.playerCritDamage = Double.valueOf(config.get("critical_multiplier"));
-        context.interception = interception;
+        context.interception = pe.interception;
         if(pc.commanderPower != null)
         {
             context.playerCritChance *= pc.commanderPower.criticalMultiplier();
@@ -172,8 +134,8 @@ public class OptimizerRunner
         
         params.playerFormation = FormationService.get(pc.playerFormation);
         //params.playerShips = Arrays.asList(playerShips.split(","));
-        params.enemyFormation = FormationService.get(enemyFormation);
-        params.enemyShips = Arrays.asList(enemyShips.split(","));
+        params.enemyFormation = FormationService.get(pe.enemyFormation);
+        params.enemyShips = Arrays.asList(pe.enemyShips.split(","));
      
         OptimizerRecord out = Optimizer.optimize(context, params, settings);
         System.out.println(out);
