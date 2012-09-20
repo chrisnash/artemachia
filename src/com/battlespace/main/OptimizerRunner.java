@@ -64,43 +64,8 @@ public class OptimizerRunner
         List<String> availableShips = new LinkedList<String>();
         FileData playerData = DataLoaderService.loadFile("conf/player_data.txt");
         
-        BoostedPlayerShipFactory bpsf = new BoostedPlayerShipFactory();
-        int militarySkill = playerData.getInt("military.skill", 0);
-        int unionArmor = playerData.getInt("union.armor", 0);
+        BoostedPlayerShipFactory bpsf = pc.createShipFactory(playerData, availableShips);
         
-        Set<String> keys = playerData.getKeys();
-        for(String key : keys)
-        {
-            // will eventually have to check for valid ship keys
-            if(!key.contains("."))      // all others contain a dot
-            {
-                // perfom boost calculations on this ship
-                PlayerShip psi = PlayerShipDatabase.lookup(key);
-                // get the ug as an array of int
-                int[] ug = new int[4];
-                String ugString = playerData.get(key);
-                for(int i=0;i<4;i++)
-                {
-                    ug[i] = ugString.codePointAt(i) - '0';
-                }
-                psi = psi.applyUpgrades( ug, false);    // allow sim to run even with missing files
-                Booster booster = new Booster(psi.size);
-                PlayerSkillModifier.upgrade(booster, militarySkill);
-                if(pc.commanderPower!=null)
-                {
-                    pc.commanderPower.upgrade(booster);
-                }
-                booster.skillUpgrade(pc.commanderBoost);
-                booster.add(new double[]{0,0,0, 0,0,0, 0,0, unionArmor*2.0,0, 0});
-                psi = psi.applyBooster(booster);
-                
-                bpsf.register(key, psi);
-                
-                // and add it to the list of ships the GA can use
-                availableShips.add(key);
-            }
-        }
-
         settings.availableShips = availableShips;
         settings.population = config.getInt("optimizer.population",0);
         settings.mutations = config.getInt("optimizer.mutations",0);
@@ -118,7 +83,7 @@ public class OptimizerRunner
         
         context.rng = new RandomRoller();
         context.attackStrategy = attackStrategy;
-        context.playerFactory = new BasePlayerShipFactory();    // no upgrades, commander power etc
+        context.playerFactory = bpsf;    // no upgrades, commander power etc
         context.enemyFactory = esd;
         context.playerCritChance = pc.commanderCritical;
         context.playerCritDamage = Double.valueOf(config.get("critical_multiplier"));
