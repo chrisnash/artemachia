@@ -1,0 +1,14 @@
+santa=S Antagonist Ship a,270,270,510,120,120,150,	50?,0?,		1180-1271
+sanab=S Anathema Ship b,150,150,300,750,750,900,	0?,	50?,	1795-1808
+saria=S Aristarch Ship a,750,750,1200,300,300,600,	150?,0?,	2509-2600,
+sarcb=S Archenemy Ship b,540,540,600,900,900,2100,	0?,150?,	3153-3365,
+
+manta=M Antagonist Ship a,570,270,270,150,120,120,	50?,0?,		736-971,
+manab=M Anathema Ship b,360,180,180,900,750,750,	0?,50?,		1537-1722,
+maria=M Aristarch Ship a,1200,750,750,660,330,330,	150?,0?,	2220-2346,
+marcb=M Archenemy Ship b,690,570,570,2100,900,900,	0?,150?,	2946-3179,
+
+lanta=L Antagonist Ship a,270,630,270,150,150,150,	50?,0?,		858-1025,
+lanab=L Anathema Ship b,200,400,200,750,900,750,	0?,50?,		1564-1702,
+laria=L Aristarch Ship a,750,1200,750,350,700,350,	150?,0?,	2013-2298,
+larcb=L Archenemy Ship b,600,750,600,900,2100,900,	0?,150?,	2682-3051,

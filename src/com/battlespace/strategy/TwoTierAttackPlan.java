@@ -7,15 +7,14 @@ import java.util.Map;
 import com.battlespace.domain.Coordinate;
 import com.battlespace.service.Roller;
 
-public class TwoTierAttackPlan extends AbstractAttackPlan
+public class TwoTierAttackPlan extends AbstractAttackPlan implements BasicAttackPlan
 {
     Map<Coordinate, TwoTierAttackElement> plan;
-    TwoTierAttackStrategy strategy;
     
     public TwoTierAttackPlan(Map<Coordinate, TwoTierAttackElement> plan, TwoTierAttackStrategy strategy)
     {
+        super(strategy);
         this.plan = plan;
-        this.strategy = strategy;
     }
 
     @Override
@@ -43,11 +42,30 @@ public class TwoTierAttackPlan extends AbstractAttackPlan
             List<Coordinate> selector = x.closest;
             if(!x.secondTier.isEmpty())
             {
-                if(rng.percentChance(strategy.secondPercent)) selector = x.secondTier;
+                if(rng.percentChance( ((TwoTierAttackStrategy)strategy).secondPercent)) selector = x.secondTier;
             }
             int selection = rng.select(selector.size());
             out.put(k, selector.get(selection));
         }
         return out;
+    }
+
+    @Override
+    public double getTorpedoAttackForSize(Coordinate attacker, String size)
+    {
+        return getStatForSize(attacker, size, 0);
+    }
+
+    @Override
+    public double getPlasmaAttackForSize(Coordinate attacker, String size)
+    {
+        return getStatForSize(attacker, size, 3);
+    }
+
+    private double getStatForSize(Coordinate attacker, String size, int i)
+    {
+        int o = "SML".indexOf(size);
+        TwoTierAttackElement e = plan.get(attacker);
+        return e.getStat(o+i);
     }
 }

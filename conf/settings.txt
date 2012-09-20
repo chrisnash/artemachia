@@ -1,5 +1,6 @@
 # which attack strategy to use
-attackStrategy=TwoTierAttackStrategy,10
+#attackStrategy=TwoTierAttackStrategy,10
+attackStrategy=HalifixAttackStrategy,5
 
 # commander skill level per percent of attack boost
 skill_factor=20

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import com.battlespace.domain.Coordinate;
+import com.battlespace.domain.Deployment;
+import com.battlespace.domain.ShipInstance;
 import com.battlespace.service.Roller;
 
 public interface AttackPlan
@@ -12,5 +14,8 @@ public interface AttackPlan
     
     Map<Coordinate, List<Coordinate>> getAllTargeting();
 
-    Map<Coordinate, Coordinate> selectAttack(Roller rng);
+    double computeDamage(Coordinate attacker, ShipInstance si, double multiplier);
+    
+    public void execute(Deployment defenders, Roller rng, double multiplier) throws Exception;
+
 }

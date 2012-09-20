@@ -243,7 +243,9 @@ public class Deployment
     }
     public List<Coordinate> vulnerableShipList()
     {
-        int fl = frontLine();
+        Integer fl = frontLine();
+        if(fl==null) return new LinkedList<Coordinate>();
+        
         List<Coordinate> out = new LinkedList<Coordinate>();
         for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
         {

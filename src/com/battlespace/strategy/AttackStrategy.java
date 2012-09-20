@@ -6,6 +6,6 @@ public interface AttackStrategy
 {
 
     AttackPlan getAttackPlan(Deployment attackDeployment,
-            Deployment defendDeployment);
-
+            Deployment defendDeployment) throws Exception;
+    AttackProcessor getProcessor();
 }

@@ -1,9 +1,60 @@
+# basic file format is java properties
+# each line of the form key=value
+# # can be used for comments
+
+# attacker statistics
+# format is (player military skill),(command stat),(luck stat),(commander skill name),(formation)
+# formation can be written as name (eg *Pinwheel) or 35-character format (...........X.....X.....X.......XX..)
+# See commander_bonuses.txt for known commander skills
+# See formations.txt for known formation names
+
 attacker = 37,73,62,Redirector 1,*Pinwheel
+
+# attacker ships
+# listed in order, top to bottom, front to back
+# use ship codes in player_ships.txt, basic format is (size)(tier)(type letter)(abcde)
+# note some type letters are not obvious (examples s- shield for armored, n - domination, x - special)
+# full ship name, i.e L-1 Assault Ship a, can be used too
+# layout below has l1aa line 2, l1da line 3, l1aa line 4, and m1aa,m1pa line 5, assault in the front
+
 attacker_ships = l1aa,l1da,l1aa,m1aa,m1pa
+
+# attacker upgrades at the time of the attack
+# for each ship that appears, an entry (ship code):(upgrade levels) should appear
+# upgrade levels are each 0,1,2,3, listed top to bottom as they appear on the weapons page
+
 attacker_upgrades = l1aa:0001,l1da:1003,m1aa:2103,m1pa:0000
 
+# Union research armor level
+# This awards a ship durability bonus, and is needed for the calculations
+
+union_armor = 3
+
+# defender formation, either by name or 35-character code (top to bottom, front to back)
+
 defender = Corvus
+
+# ships in the defender formation
+# use ship codes in enemy_ships.txt, typical format is (size)(abbreviation)(abcde)
+# full ship names can be used, i.e. S Anathema Ship b
+# all resource planet ships end up as 5 characters (sml)(ant/ana/ari/arc)(abcde)
+# pirates, interception ship names as they occur
+
 defender_ships = sanab,manab,manab,manab,sanab
+
+# Attacks section
+# for each attack, list the stats (torp A-S,A-M,A-L plasma A-S,A-M,A-L) before the attack starts for both sides
+# then list the damage each side suffers on that turn
+# basic damage format is damage(units remaining), e.g. 826(1) means ship took 826 damage, and has 1 unit left afterwards
+# each damage entry is the five lines, top to bottom, separated by commas
+# only record damage entries for the two columns of "active" ships (no other ships can be hit)
+# if no ship on a line takes a hit, leave that entry BLANK
+# if there are two ships in the active two lines, separate their damage entries with /, list the first ship entry first
+# examples: 826(1)/ means "two ships on a line, front ship took 826 damage, back ship wasn't hit"
+# /999(3) means "two ships, front wasn't hit, back took 999 damage" (this isn't likely)
+# 999(0)/333(1) means "front ship took 999, destroyed, back ship took 333 and one unit left"
+
+# use 1,2,3 between the dots to indicate turn number
 
 stats.1.attacker=1786,2389,1642,3413,3845,2421
 stats.1.defender=1380,840,1140,4200,3750,4050

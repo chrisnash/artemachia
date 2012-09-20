@@ -4,16 +4,19 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.battlespace.domain.Coordinate;
+import com.battlespace.domain.Stat;
 
 public class TwoTierAttackElement
 {
     public List<Coordinate> closest;
     public List<Coordinate> secondTier;
+    public List<Stat> cachedStats;
 
-    public TwoTierAttackElement(List<Coordinate> c, List<Coordinate> s)
+    public TwoTierAttackElement(List<Coordinate> c, List<Coordinate> s, List<Stat> cachedStats)
     {
-        closest = c;
-        secondTier = (s!=null)?s:new LinkedList<Coordinate>();
+        this.closest = c;
+        this.secondTier = (s!=null)?s:new LinkedList<Coordinate>();
+        this.cachedStats = cachedStats;
     }
 
     public List<Coordinate> getAllTargets()
@@ -22,5 +25,10 @@ public class TwoTierAttackElement
         out.addAll(closest);
         out.addAll(secondTier);
         return out;
+    }
+
+    public double getStat(int i)
+    {
+        return cachedStats.get(i).value();
     }
 }

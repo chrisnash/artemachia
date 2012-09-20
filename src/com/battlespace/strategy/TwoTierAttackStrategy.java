@@ -10,10 +10,12 @@ import java.util.TreeMap;
 
 import com.battlespace.domain.Coordinate;
 import com.battlespace.domain.Deployment;
+import com.battlespace.domain.ShipInstance;
 
 public class TwoTierAttackStrategy implements AttackStrategy
 {
     public double secondPercent;
+    public AttackProcessor processor = new BasicAttackProcessor();
     
     public TwoTierAttackStrategy(List<String> params)
     {
@@ -23,7 +25,7 @@ public class TwoTierAttackStrategy implements AttackStrategy
     // basic attack plan is two tiers
     // first tier is closest ships, counting second line as +1, row offset as +1
     // second tier is ships that are closest+1
-    public AttackPlan getAttackPlan(Deployment attackDeployment, Deployment defendDeployment)
+    public AttackPlan getAttackPlan(Deployment attackDeployment, Deployment defendDeployment) throws Exception
     {
         List<Coordinate> attackers = attackDeployment.livingShipList();
         List<Coordinate> defenders = defendDeployment.vulnerableShipList();
@@ -62,10 +64,19 @@ public class TwoTierAttackStrategy implements AttackStrategy
                     secondTier = possible;
                 }
             }
-            TwoTierAttackElement e = new TwoTierAttackElement(firstTier.getValue(), (secondTier!=null)?secondTier.getValue():null);
+            // get the effective stats
+            ShipInstance si = attackDeployment.getLivingShip(attacker.r, attacker.c);
+            TwoTierAttackElement e = new TwoTierAttackElement(firstTier.getValue(), (secondTier!=null)?secondTier.getValue():null,
+                    si.getEffectiveStats());
             elements.put(attacker, e);
         }
         
         return new TwoTierAttackPlan(elements, this);
+    }
+
+    @Override
+    public AttackProcessor getProcessor()
+    {
+        return processor;
     }
 }
