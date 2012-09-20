@@ -20,6 +20,7 @@ import com.battlespace.domain.SimulatorContext;
 import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
 import com.battlespace.domain.optimizers.FitnessFunction;
+import com.battlespace.main.parsers.ParsedCommander;
 import com.battlespace.service.CommanderPowerService;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
@@ -43,32 +44,8 @@ public class OptimizerRunner
     {
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
 
-        // parameters
-        // param 1 is player formation,(commander),(luck),(skill)
-        //System.out.println(args[0]);
-        String[] playerArgs = args[0].split(",");
-        String playerFormation = playerArgs[0];
-
-        int commanderSkill = 0;
-        if(playerArgs.length > 1)
-        {
-            commanderSkill = Integer.valueOf(playerArgs[1]);
-        }
-        double commanderBoost = commanderSkill/Double.valueOf(config.get("skill_factor"));
-        
-        int commanderLuck = 0;
-        if(playerArgs.length > 2)
-        {
-            commanderLuck = Integer.valueOf(playerArgs[2]);
-        }
-        double commanderCritical = commanderLuck/Double.valueOf(config.get("luck_factor"));
-        
-        CommanderPower commanderPower = null;
-        if(playerArgs.length>3)
-        {
-            commanderPower = CommanderPowerService.get(playerArgs[3]);
-        }
-        
+        ParsedCommander pc = new ParsedCommander(config, args[0]);
+                
         // param 2 is enemy selection
         // (planet)
         // (planet level),(config)
@@ -147,11 +124,11 @@ public class OptimizerRunner
                 psi = psi.applyUpgrades( ug, false);    // allow sim to run even with missing files
                 Booster booster = new Booster(psi.size);
                 PlayerSkillModifier.upgrade(booster, militarySkill);
-                if(commanderPower!=null)
+                if(pc.commanderPower!=null)
                 {
-                    commanderPower.upgrade(booster);
+                    pc.commanderPower.upgrade(booster);
                 }
-                booster.skillUpgrade(commanderBoost);
+                booster.skillUpgrade(pc.commanderBoost);
                 booster.add(new double[]{0,0,0, 0,0,0, 0,0, unionArmor*2.0,0, 0});
                 psi = psi.applyBooster(booster);
                 
@@ -181,19 +158,19 @@ public class OptimizerRunner
         context.attackStrategy = attackStrategy;
         context.playerFactory = new BasePlayerShipFactory();    // no upgrades, commander power etc
         context.enemyFactory = esd;
-        context.playerCritChance = commanderCritical;
+        context.playerCritChance = pc.commanderCritical;
         context.playerCritDamage = Double.valueOf(config.get("critical_multiplier"));
         context.interception = interception;
-        if(commanderPower != null)
+        if(pc.commanderPower != null)
         {
-            context.playerCritChance *= commanderPower.criticalMultiplier();
+            context.playerCritChance *= pc.commanderPower.criticalMultiplier();
         }
         context.enemyCritChance = Double.valueOf(config.get("enemy_critical_percent"));
         context.enemyCritDamage = Double.valueOf(config.get("critical_multiplier"));
         
         SimulatorParameters params = new SimulatorParameters();
         
-        params.playerFormation = FormationService.get(playerFormation);
+        params.playerFormation = FormationService.get(pc.playerFormation);
         //params.playerShips = Arrays.asList(playerShips.split(","));
         params.enemyFormation = FormationService.get(enemyFormation);
         params.enemyShips = Arrays.asList(enemyShips.split(","));

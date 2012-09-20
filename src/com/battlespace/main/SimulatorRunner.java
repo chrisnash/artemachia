@@ -25,6 +25,13 @@ public class SimulatorRunner
      */
     public static void main(String[] args) throws Exception
     {
+        // work out how to parameterize this. Use the similar method as optimize.
+        // first parameter, commander (creates the player ship factory)
+        // second parameter, player ships
+        // third parameter, enemy (planet, definition, etc)
+        
+        // refactor those argument extractors out
+        
         String playerFormation = "Telescopium";
         String playerShips = "M-1 Destroyer Ship a,L-1 Destroyer Ship a,L-1 Destroyer Ship a,M-1 Destroyer Ship a";
         String enemyFormation = "Corvus";
