@@ -1,0 +1,21 @@
+attacker = 52,61,58,L Ionizer 1,capricornus
+attacker_ships = s2tb,m2mpb,m1ta
+attacker_upgrades = s2tb:1000,m2mpb:0000,m1ta:0000
+
+defender = .................X.....XX......X...
+defender_ships = santa,manab,manta,santa
+
+stats.1.attacker=3371,2127,3109,523,425,425
+stats.1.defender=1470,990,1470,1290,1110,1170
+damage.1.attacker=,,365(3),1595(2),
+damage.1.defender=,,2233(0),752(2)/,
+
+stats.2.attacker=2847,1876,2858,523,425,425
+stats.2.defender=1080,660,900,870,740,770
+damage.2.attacker=,,,1294(0),
+damage.2.defender=,,,1384(0)/891(1),
+
+stats.3.attacker=1800,1374,2356,523,425,425
+stats.3.defender=460,360,600,170,160,190
+damage.3.attacker=,,486(2),,
+damage.3.defender=,,,839(0),1394(0)

@@ -1,0 +1,31 @@
+attacker = 52,30,42,Gatherer 1,leominor
+attacker_ships = s2sb,m2x,l2x
+attacker_upgrades = s2sb:0000,m2x:0000,l2x:0000
+
+defender = vulpecula
+defender_ships = mcp,scp,scp,mcp
+
+stats.1.attacker=2085,1601,1612,2085,1601,1612
+stats.1.defender=1080,1020,1560,2220,1800,2760
+damage.1.attacker=,,C3152(2)/,,
+damage.1.defender=,,3753(0),,
+
+stats.2.attacker=2021,1537,1505,2021,1537,1505
+stats.2.defender=900,840,1110,1800,1380,1860
+damage.2.attacker=,,1542(0)/504(3),,
+damage.2.defender=,,3637(0),,
+
+stats.3.attacker=1988,1505,1451,1988,1505,1451
+stats.3.defender=720,660,660,1380,960,960
+damage.3.attacker=,,C1770(1)/,,
+damage.3.defender=,870(2),,1838(1),
+
+stats.4.attacker=1343,1182,806,1343,1182,806
+stats.4.defender=360,330,330,690,480,480
+damage.4.attacker=,,454(0)/227(1),,
+damage.4.defender=,290(2),,1838(0),
+
+stats.5.attacker=1021,1021,483,1021,1021,483
+stats.5.defender=240,220,220,460,320,320
+damage.5.attacker=,,454(1),,
+damage.5.defender=,1838(0),,,

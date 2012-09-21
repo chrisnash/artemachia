@@ -1,0 +1,21 @@
+attacker = 52,146,129,Scavenger 1,vulpecula
+attacker_ships = l1pa,m2tb,l1da,m1da
+attacker_upgrades = l1pa:1003,m2tb:0000,l1da:1203,m1da:0001
+
+defender = ................X.....X..XX...X....
+defender_ships = sarcb,maria,manab,manab,sarcb
+
+stats.1.attacker=3796,2074,1552,1779,3643,1405
+stats.1.defender=3000,2190,2310,4260,3630,6030
+damage.1.attacker=,,2255(1),3278(0),
+damage.1.defender=,,3263(1),503(3),
+
+stats.2.attacker=986,1167,646,1133,3371,1133
+stats.2.defender=2550,1740,1810,3510,2880,4280
+damage.2.attacker=,2604(0),960(0),,
+damage.2.defender=,,657(0),4093(0),
+
+stats.3.attacker=328,850,328,306,1592,306
+stats.3.defender=1260,900,960,2700,2400,3600
+damage.3.attacker=,,2410(0),,
+damage.3.defender=,,,,588(5)

@@ -43,7 +43,7 @@ public class ReplayRunner
      */
     public static void main(String[] args) throws Exception
     {
-        boolean debug = false;
+        boolean debug = true;
         
         FileData config = DataLoaderService.loadFile("conf/settings.txt");
         AttackStrategy attackStrategy = (AttackStrategy)ObjectCreator.createObjectFromConfig("com.battlespace.strategy", config, "attackStrategy");
@@ -51,7 +51,7 @@ public class ReplayRunner
         EnemyShipDatabase esd = EnemyShipDatabase.load();
         
         //String replayFile = "data/replays/" + args[0];
-        String replayFile = "data/replays/" + "ashby_6.txt";
+        String replayFile = "data/replays/" + "kraz_1.txt";
         
         FileData replay = DataLoaderService.loadFile(replayFile);
 
@@ -181,6 +181,8 @@ public class ReplayRunner
             // Method: establish attack vectors, for each attacking ship, work out
             // which ships are possibly targeted. Note that's a max of 4 per attacker
             // so we have a max of 4^n permutations.
+            attackDeployment.beginTurn();
+            defendDeployment.beginTurn();
 
             AttackPlan attackPlan = attackStrategy.getAttackPlan(attackDeployment, defendDeployment);
             List< Map<Coordinate,Coordinate> > allAttackCombos = attackPlan.getAllAttackCombos();
