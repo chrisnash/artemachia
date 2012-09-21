@@ -63,6 +63,9 @@ public class Simulator
             }
             viewer.beginTurn(player, enemy);
             
+            player.beginTurn();
+            enemy.beginTurn();
+            
             AttackPlan pap = context.attackStrategy.getAttackPlan(player, enemy);
             AttackPlan eap = context.attackStrategy.getAttackPlan(enemy,  player);
            
@@ -70,8 +73,11 @@ public class Simulator
             eap.execute(player, context.rng, context.rng.percentChance(context.enemyCritChance) ? context.enemyCritDamage : 1.0, viewer);
             
             viewer.endTurn(player, enemy);
+            player.endTurn();
+            enemy.endTurn();
         }
         // note if both die, enemy wins
+        viewer.beginTurn(player,  enemy);
         return new SimulatorResults(player.isAlive(), player, enemy);
     }
 }

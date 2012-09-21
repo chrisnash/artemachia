@@ -7,7 +7,7 @@ attackStrategy=HalifixAttackStrategy,5,2
 
 # commander skill level per percent of attack boost
 skill_factor=20
-luck_factor=20
+luck_factor=100
 enemy_critical_percent=1
 critical_multiplier=1.3
 

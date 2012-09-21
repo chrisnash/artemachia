@@ -1,6 +1,7 @@
 package com.battlespace.strategy;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.SortedSet;
 
 import com.battlespace.domain.Coordinate;
@@ -26,6 +27,7 @@ public class RollingAttackProcessor implements AttackProcessor
             {
                 ShipInstance si = defenders.getLivingShip(target.r, target.c);
                 double damage = rap.computeDamage(attacker, si, multiplier);
+                viewer.recordDamage(defenders, target, damage, Collections.singletonList(attacker));
                 si.setDamage( si.getDamage().value() + damage);     // this might be enough to kill the guy.
             }
         }

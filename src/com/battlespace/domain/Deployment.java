@@ -13,6 +13,7 @@ public class Deployment
 {
     SortedMap<Coordinate, ShipInstance> deploymentMap;
     int interceptionKills = 0;
+    Integer cachedFrontLine;
     
     public Deployment(SortedMap<Coordinate, ShipInstance> deployData)
     {
@@ -243,15 +244,12 @@ public class Deployment
     }
     public List<Coordinate> vulnerableShipList()
     {
-        Integer fl = frontLine();
-        if(fl==null) return new LinkedList<Coordinate>();
-        
         List<Coordinate> out = new LinkedList<Coordinate>();
         for(Map.Entry<Coordinate, ShipInstance> e : deploymentMap.entrySet())
         {
             Coordinate k = e.getKey();
             ShipInstance v = e.getValue();
-            if(k.c > fl+1) continue;
+            if(k.c > cachedFrontLine+1) continue;
             if(v.isAlive()) out.add(k);
         }
         return out;
@@ -346,5 +344,15 @@ public class Deployment
             v.reboot();
             interceptionKills++;
         }
+    }
+
+    public void beginTurn()
+    {
+        cachedFrontLine = frontLine();
+    }
+    
+    public void endTurn()
+    {
+        cachedFrontLine = null;
     }
 }

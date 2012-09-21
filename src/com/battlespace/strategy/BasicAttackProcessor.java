@@ -37,6 +37,7 @@ public class BasicAttackProcessor implements AttackProcessor
                 damage += plan.computeDamage(attacker, si, multiplier);
             }
             // and apply the damage in one go
+            viewer.recordDamage(defenders, target, damage, attackers);
             si.setDamage( si.getDamage().value() + damage);     // this might be enough to kill the guy.
         }
     }
