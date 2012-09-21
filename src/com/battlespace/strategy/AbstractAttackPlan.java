@@ -10,6 +10,7 @@ import com.battlespace.domain.Deployment;
 import com.battlespace.domain.Ship;
 import com.battlespace.domain.ShipInstance;
 import com.battlespace.domain.Stat;
+import com.battlespace.main.viewer.Viewer;
 import com.battlespace.service.Roller;
 
 public abstract class AbstractAttackPlan implements AttackPlan
@@ -75,11 +76,11 @@ public abstract class AbstractAttackPlan implements AttackPlan
     }
     
     @Override
-    public void execute(Deployment defenders, Roller rng, double multiplier)
+    public void execute(Deployment defenders, Roller rng, double multiplier, Viewer viewer)
             throws Exception
     {
         AttackProcessor processor = strategy.getProcessor();
-        processor.process(this, defenders, rng, multiplier);
+        processor.process(this, defenders, rng, multiplier, viewer);
     }
 
 }

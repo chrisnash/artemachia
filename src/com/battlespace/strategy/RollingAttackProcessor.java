@@ -6,13 +6,14 @@ import java.util.SortedSet;
 import com.battlespace.domain.Coordinate;
 import com.battlespace.domain.Deployment;
 import com.battlespace.domain.ShipInstance;
+import com.battlespace.main.viewer.Viewer;
 import com.battlespace.service.Roller;
 
 // the rolling attack processor will process the attacks one at a time.
 // This may mean a defender gets obliterated and removed from consideration
 public class RollingAttackProcessor implements AttackProcessor
 {
-    public void process(AttackPlan plan, Deployment defenders, Roller rng, double multiplier) throws Exception
+    public void process(AttackPlan plan, Deployment defenders, Roller rng, double multiplier, Viewer viewer) throws Exception
     {
         RollingAttackPlan rap = (RollingAttackPlan)plan;
         SortedSet<Coordinate> attackerOrder = rap.getAttackerOrder();

@@ -13,6 +13,7 @@ import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
 import com.battlespace.main.parsers.ParsedCommander;
 import com.battlespace.main.parsers.ParsedEnemy;
+import com.battlespace.main.viewer.ShellViewer;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
 import com.battlespace.service.ObjectCreator;
@@ -73,16 +74,17 @@ public class SimulatorRunner
         params.enemyFormation = FormationService.get(pe.enemyFormation);
         params.enemyShips = Arrays.asList(pe.enemyShips.split(","));
         
-        SimulatorResults results = Simulator.simulate(context, params);
         //System.out.println(results);
         
         SimulatorCollator collator = null;
+
+        System.out.println("SIMULATION RESULTS");
+        collator = Simulator.simulateMultiple(context,  params, collator, 1000);
+        System.out.println(collator.toString());
+        System.out.println();
         
-        for(int i=0;i<10;i++)
-        {
-            collator = Simulator.simulateMultiple(context,  params, collator, 100);
-            System.out.println(collator.toString());
-        }
+        // now include an actual simulator output (looks like a replay)
+        SimulatorResults results = Simulator.simulate(context, params, new ShellViewer());
     }
 
 }

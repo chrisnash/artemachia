@@ -1,6 +1,7 @@
 package com.battlespace.strategy;
 
 import com.battlespace.domain.Deployment;
+import com.battlespace.main.viewer.Viewer;
 import com.battlespace.service.Roller;
 
 // processes the attacks that were outlined in an attack plan. The idea is that some strategies
@@ -8,5 +9,5 @@ import com.battlespace.service.Roller;
 // ship kills a defender, later ships won't target that same ship any more.
 public interface AttackProcessor
 {
-    public void process(AttackPlan plan, Deployment defenders, Roller rng, double multiplier) throws Exception;
+    public void process(AttackPlan plan, Deployment defenders, Roller rng, double multiplier, Viewer viewer) throws Exception;
 }

@@ -19,11 +19,13 @@ import com.battlespace.domain.Stat;
 public class HalifixAttackStrategy implements AttackStrategy
 {
     public double secondPercent;
+    public int rowWeight;
     public AttackProcessor processor = new RollingAttackProcessor();
     
     public HalifixAttackStrategy(List<String> params)
     {
         this.secondPercent = Double.valueOf(params.get(0));
+        this.rowWeight = Integer.valueOf(params.get(1));
     }
     
     class HalifixOrder implements Comparator<Coordinate>
@@ -71,6 +73,7 @@ public class HalifixAttackStrategy implements AttackStrategy
             {
                 int ro = attacker.r - defender.r;
                 if(ro<0) ro=-ro;
+                ro *= rowWeight;
                 if(defender.c != fl) ro++;
                 List<Coordinate> l = tiers.get(ro);
                 if(l==null)
@@ -82,11 +85,11 @@ public class HalifixAttackStrategy implements AttackStrategy
             }
             // calculate which tiers you need to store. Note that attackerIndex ships might have already been
             // killed, so you need to gather enough tiers so that more ships than that are included, plus
-            // one more backup tier. (tier index is 0-5).
+            // one more backup tier. (tier index is 0-4*rowWeight+1).
             List< List<Coordinate> > cachedTiers = new LinkedList< List<Coordinate> >();
             int shipsSeen = 0;
             boolean exitAfterNext = false;
-            for(int t=0;t<=5;t++)
+            for(int t=0;t<=4*rowWeight+1;t++)
             {
                 List<Coordinate> tt = tiers.get(t);
                 if(tt==null) continue;

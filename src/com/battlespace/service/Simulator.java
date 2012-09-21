@@ -15,6 +15,9 @@ import com.battlespace.domain.SimulatorContext;
 import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
 import com.battlespace.domain.Stat;
+import com.battlespace.main.viewer.EmptyViewer;
+import com.battlespace.main.viewer.ShellViewer;
+import com.battlespace.main.viewer.Viewer;
 import com.battlespace.strategy.AttackPlan;
 
 public class Simulator
@@ -25,15 +28,16 @@ public class Simulator
         {
             collator = new SimulatorCollator();
         }
+        Viewer viewer = (count > 1) ? (new EmptyViewer()) : (new ShellViewer());
         for(int i=0;i<count;i++)
         {
-            SimulatorResults r = simulate(context, params);
+            SimulatorResults r = simulate(context, params, viewer);
             collator.addResult(r);
         }
         return collator;
     }
     
-    public static SimulatorResults simulate(SimulatorContext context, SimulatorParameters params) throws Exception
+    public static SimulatorResults simulate(SimulatorContext context, SimulatorParameters params, Viewer viewer) throws Exception
     {
         // create player ships
         List<ShipInstance> ps = new LinkedList<ShipInstance>();
@@ -57,12 +61,15 @@ public class Simulator
             {
                 enemy.reboot();
             }
+            viewer.beginTurn(player, enemy);
             
             AttackPlan pap = context.attackStrategy.getAttackPlan(player, enemy);
             AttackPlan eap = context.attackStrategy.getAttackPlan(enemy,  player);
            
-            pap.execute(enemy, context.rng, context.rng.percentChance(context.playerCritChance) ? context.playerCritDamage : 1.0);
-            eap.execute(player, context.rng, context.rng.percentChance(context.enemyCritChance) ? context.enemyCritDamage : 1.0);
+            pap.execute(enemy, context.rng, context.rng.percentChance(context.playerCritChance) ? context.playerCritDamage : 1.0, viewer);
+            eap.execute(player, context.rng, context.rng.percentChance(context.enemyCritChance) ? context.enemyCritDamage : 1.0, viewer);
+            
+            viewer.endTurn(player, enemy);
         }
         // note if both die, enemy wins
         return new SimulatorResults(player.isAlive(), player, enemy);

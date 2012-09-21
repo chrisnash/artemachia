@@ -8,6 +8,7 @@ import java.util.Map;
 import com.battlespace.domain.Coordinate;
 import com.battlespace.domain.Deployment;
 import com.battlespace.domain.ShipInstance;
+import com.battlespace.main.viewer.Viewer;
 import com.battlespace.service.Roller;
 
 // the basic attack processor will select all targets upfront and run the attacks in one
@@ -17,7 +18,7 @@ public class BasicAttackProcessor implements AttackProcessor
 
     @Override
     public void process(AttackPlan plan, Deployment defenders, Roller rng,
-            double multiplier) throws Exception
+            double multiplier, Viewer viewer) throws Exception
     {
         BasicAttackPlan bap = (BasicAttackPlan)plan;
         // this is who attacks who, precalculated

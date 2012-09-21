@@ -84,6 +84,7 @@ public class HalifixAttackPlan extends AbstractAttackPlan implements RollingAtta
         {
             int ro = attacker.r - defender.r;
             if(ro<0) ro=-ro;
+            ro *= ((HalifixAttackStrategy)strategy).rowWeight;
             ro += defender.c;   // later columns, later tier
             Integer o = Integer.valueOf(ro);
             List<Coordinate> l = tiers.get(o);
