@@ -8,3 +8,5 @@ b34=34,Air Force c,BoostWeapons,L,3
 b43=43,Dept of Defense c,BoostShields,L,3
 b49=49,Strategic Command,BoostAllShields,3
 b52=52,Strategic Command,BoostAllWeapons,3
+# next one is another 3, to make 6 total
+b65=65,Air Force d,BoostWeapons,S,3

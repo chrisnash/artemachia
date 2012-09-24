@@ -1,12 +1,10 @@
 #TODO: add upgrade details for these ships
 
 s1ia=S-1 Improvised Ship a,270,270,300,150,150,180,40,40,1800,6,10,6,1
-s1ta=S-1 Torpedo Ship a,630,630,1320,0,0,0,150,0,2700,6,12,6,8
-s1ha=S-1 Hyperdrive Ship a,300,300,600,270,270,450,60,60,2280,6,15,6,8
-s1x=S-1 Special Ship,420,660,660,420,660,660,150,150,2280,6,14,6,30
-m1na=M-1 Domination Ship a,180,150,150,180,150,150,300,100,2700,60,9,3,10
-l1mpa=L-1 Mass Produced Ship a,250,400,250,380,540,380,60,60,1700,8,9,1,6
-l1na=L-1 Domination Ship a,150,200,150,150,200,150,100,300,2600,70,8,1,12
+s1ia.0=Pulse Rifle,30,30,30,0,0,0,0,0,0,0,0
+s1ia.1=Particle Beam,0,0,0,0,0,30,0,0,0,0,0
+s1ia.2=Basic Engine,0,0,0,0,0,0,0,0,0,0,1
+s1ia.3=Improvised Armor,0,0,0,0,0,0,10,10,0,0,0
 
 s1mpa=S-1 Mass Produced Ship a,240,240,360,270,270,480,60,60,2100,6,12,6,3
 s1mpa.0=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
@@ -14,11 +12,23 @@ s1mpa.1=Pulse Rifle,30,30,30,0,0,0,0,0,0,0,0
 s1mpa.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
 s1mpa.3=Whipple Armor,0,0,0,0,0,0,10,10,0,0,0
 
+s1ta=S-1 Torpedo Ship a,630,630,1320,0,0,0,150,0,2700,6,12,6,8
+s1ta.0=Torpedo Gun,30,30,60,0,0,0,0,0,0,0,0
+s1ta.1=Pulse Rifle,30,30,30,0,0,0,0,0,0,0,0
+s1ta.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+s1ta.3=Anti-Torpedo Armor,0,0,0,0,0,0,20,0,0,0,0
+
 s1pa=S-1 Plasma Ship a,0,0,0,630,630,1320,0,150,2700,6,12,6,8
 s1pa.0=Plasma Cannon a,0,0,0,30,30,60,0,0,0,0,0
 s1pa.1=Particle Beam a,0,0,0,30,30,30,0,0,0,0,0
 s1pa.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
 s1pa.3=Anti-Plasma Armor a,0,0,0,0,0,0,0,20,0,0,0
+
+s1ha=S-1 Hyperdrive Ship a,300,300,600,270,270,450,60,60,2280,6,15,6,8
+s1ha.0=Torpedo Gun,30,30,60,0,0,0,0,0,0,0,0
+s1ha.1=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
+s1ha.2=Turbo Engine,0,0,0,0,0,0,0,0,0,0,2
+s1ha.3=Whipple Armor,0,0,0,0,0,0,10,10,0,0,0
 
 s1sa=S-1 Armored Ship a,90,90,120,90,90,120,250,250,3120,18,10,6,8
 s1sa.0=Pulse Rifle a,0,0,30,0,0,0,0,0,0,0,0
@@ -37,6 +47,12 @@ s1da.0=Anti-L Plasma a,0,0,0,0,0,90,0,0,0,0,0
 s1da.1=Anti-L Pulse Rifle a,30,30,30,0,0,0,0,0,0,0,0
 s1da.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
 s1da.3=Anti-Plasma Armor a,0,0,0,0,0,0,0,10,0,0,0
+
+s1x=S-1 Special Ship,420,660,660,420,660,660,150,150,2280,6,14,6,30
+s1x.0=n/a,0,0,0,0,0,0,0,0,0,0,0
+s1x.1=n/a,0,0,0,0,0,0,0,0,0,0,0
+s1x.2=n/a,0,0,0,0,0,0,0,0,0,0,0
+s1x.3=n/a,0,0,0,0,0,0,0,0,0,0,0
 
 m1mpa=M-1 Mass Produced Ship a,570,300,300,300,270,270,60,60,1920,6,10,3,5
 m1mpa.0=Pulse Rifle a,45,30,30,0,0,0,0,0,0,0,0
@@ -62,6 +78,12 @@ m1ha.1=Pulse Rifle,45,15,15,0,0,0,0,0,0,0,0
 m1ha.2=Turbo Engine,0,0,0,0,0,0,0,0,0,0,2
 m1ha.3=Whipple Armor,0,0,0,0,0,0,10,10,0,0,0
 
+m1na=M-1 Domination Ship a,180,150,150,180,150,150,300,100,2700,60,9,3,10
+m1na.0=Pulse Rifle,15,15,15,0,0,0,0,0,0,0,0
+m1na.1=Particle Beam,0,0,0,15,15,15,0,0,0,0,0
+m1na.2=Warp Engine,0,0,0,0,0,0,0,0,0,0,1
+m1na.3=Anti-Torpedo Aegis,0,0,0,0,0,0,40,10,0,0,0
+
 m1sa=M-1 Armored Ship a,150,90,90,150,90,90,250,250,2930,18,8,3,10
 m1sa.0=Pulse Rifle,15,0,0,0,0,0,0,0,0,0,0
 m1sa.1=Particle Beam,0,0,0,15,0,0,0,0,0,0,0
@@ -80,6 +102,12 @@ m1da.1=Anti-S Particle Beam a,0,0,0,45,15,15,0,0,0,0,0
 m1da.2=Flux Engine a,0,0,0,0,0,0,0,0,0,0,1
 m1da.3=Anti-Torpedo Armor a,0,0,0,0,0,0,10,0,0,0,0
 
+l1mpa=L-1 Mass Produced Ship a,250,400,250,380,540,380,60,60,1700,8,9,1,6
+l1mpa.0=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
+l1mpa.1=Pulse Rifle,20,30,20,0,0,0,0,0,0,0,0
+l1mpa.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+l1mpa.3=Whipple Armor,0,0,0,0,0,0,10,10,0,0,0
+
 l1ta=L-1 Torpedo Ship a,700,1500,700,0,0,0,150,0,2200,8,9,1,12
 l1ta.0=Torpedo Gun b,30,70,30,0,0,0,0,0,0,0,0
 l1ta.1=Pulse Rifle b,25,50,25,0,0,0,0,0,0,0,0
@@ -97,6 +125,12 @@ l1sa.0=Pulse Rifle a,10,10,10,0,0,0,0,0,0,0,0
 l1sa.1=Particle Beam a,0,0,0,10,10,10,0,0,0,0,0
 l1sa.2=Warp Engine a,0,0,0,0,0,0,0,0,0,0,1
 l1sa.3=Ion Armor a,0,0,0,0,0,0,30,30,0,0,0
+
+l1na=L-1 Domination Ship a,150,200,150,150,200,150,100,300,2600,70,8,1,12
+l1na.0=Pulse Rifle,10,15,10,0,0,0,0,0,0,0,0
+l1na.1=Particle Beam,0,0,0,10,15,10,0,0,0,0,0
+l1na.2=Warp Engine,0,0,0,0,0,0,0,0,0,0,1
+l1na.3=Anti-Plasma Aegis,0,0,0,0,0,0,10,40,0,0,0
 
 l1da=L-1 Destroyer Ship a,250,650,250,250,1300,250,0,100,2200,8,9,1,12
 l1da.0=Anti-M Plasma b,0,0,0,20,105,20,0,0,0,0,0
@@ -129,12 +163,22 @@ s2pb.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
 s2pb.3=Anti-Plasma Armor,0,0,0,0,0,0,0,20,0,0,0
 
 s2hb=S-2 Hyperdrive Ship b,360,360,720,330,330,540,60,60,2640,6,16,6,15
+s2hb.0=Torpedo Gun,30,30,60,0,0,0,0,0,0,0,0
+s2hb.1=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
+s2hb.2=Turbo Engine,0,0,0,0,0,0,0,0,0,0,2
+s2hb.3=Whipple Armor,0,0,0,0,0,0,10,10,0,0,0
 
 s2sb=S-2 Armored Ship b,90,90,150,90,90,150,250,250,4320,18,11,6,15
 s2sb.0=Pulse Rifle,0,0,30,0,0,0,0,0,0,0,0
 s2sb.1=Particle Beam,0,0,0,0,0,30,0,0,0,0,0
 s2sb.2=Warp Engine,0,0,0,0,0,0,0,0,0,0,1
 s2sb.3=Ion Armor,0,0,0,0,0,0,30,30,0,0,0
+
+s2ab=S-2 Assault Ship b,480,480,720,450,450,480,100,100,3120,12,12,6,18
+s2ab.0=Torpedo Gun,30,30,60,0,0,0,0,0,0,0,0
+s2ab.1=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
+s2ab.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+s2ab.3=Multi-Shock Armor,0,0,0,0,0,0,10,10,0,0,0
 
 m2mpb=M-2 Mass Produced Ship b,840,450,450,480,390,390,60,60,2400,6,10,3,12
 m2mpb.0=Pulse Rifle,60,30,30,0,0,0,0,0,0,0,0
@@ -155,6 +199,10 @@ m2pb.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
 m2pb.3=Anti-Plasma Armor,0,0,0,0,0,0,0,20,0,0,0
 
 m2ab=M-2 Assault Ship b,600,450,450,720,540,540,100,100,2850,12,10,3,20
+m2ab.0=Plasma Cannon,0,0,0,60,45,45,0,0,0,0,0
+m2ab.1=Pulse Rifle,45,30,30,0,0,0,0,0,0,0,0
+m2ab.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+m2ab.3=Multi-Shock Armor,0,0,0,0,0,0,10,10,0,0,0
 
 m2x=M-2 Special Ship,900,450,900,900,450,900,150,150,2400,12,12,3,60
 m2x.0=n/a,0,0,0,0,0,0,0,0,0,0,0
@@ -175,8 +223,22 @@ l2tb.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
 l2tb.3=Anti-Torpedo Armor,0,0,0,0,0,0,20,0,0,0,0
 
 l2pb=L-2 Plasma Ship b,0,0,0,850,1850,850,0,150,2600,8,9,1,20
+l2pb.0=Plasma Cannon,0,0,0,40,90,40,0,0,0,0,0
+l2pb.1=Particle Beam,0,0,0,30,60,30,0,0,0,0,0
+l2pb.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+l2pb.3=Anti-Plasma Armor,0,0,0,0,0,0,0,20,0,0,0
+
+l2sb=L-2 Armored Ship b,100,150,100,100,150,100,250,250,3500,20,7,1,20
+l2sb.0=Pulse Rifle,10,10,10,0,0,0,0,0,0,0,0
+l2sb.1=Particle Beam,0,0,0,10,10,10,0,0,0,0,0
+l2sb.2=Warp Engine,0,0,0,0,0,0,0,0,0,0,1
+l2sb.3=Ion Armor,0,0,0,0,0,0,30,30,0,0,0
 
 l2ab=L-2 Assault Ship b,550,750,550,500,600,500,100,100,2450,15,9,1,22
+l2ab.0=Torpedo Gun,45,60,45,0,0,0,0,0,0,0,0
+l2ab.1=Particle Beam,0,0,0,40,50,40,0,0,0,0,0
+l2ab.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+l2ab.3=Multi-Shock Armor,0,0,0,0,0,0,10,10,0,0,0
 
 l2x=L-2 Special Ship,950,950,450,950,950,450,150,150,2100,15,10,1,60
 l2x.0=n/a,0,0,0,0,0,0,0,0,0,0,0

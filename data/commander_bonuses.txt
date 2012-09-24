@@ -37,6 +37,7 @@ sg1=Safeguard 1,Safeguard,5
 sv1=Scavenger 1,Noncombat
 si1=S Ionizer 1,Ionizer,S,6
 sm1=S Missileer 1,Missileer,S,6
+sm2=S Missileer 2,Missileer,S,6.6
 sn1=S Grenadier 1,Missileer,S,9
 sp1=S Protector 1,Defender,S,6
 sr1=Striker 1,Striker,1.5

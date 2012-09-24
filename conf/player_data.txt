@@ -1,5 +1,5 @@
 # military skill, gives player boosts
-military.skill = 52
+military.skill = 67
 
 #union.armor, gives durability boost (2% per)
 union.armor=3
@@ -39,6 +39,7 @@ s2tb=	1000
 s2pb=	0000
 s2hb=	0000
 s2sb=	0000
+s2ab=	0000
 
 m2mpb=	0000
 m2tb=	0000
@@ -47,7 +48,9 @@ m2ab=	0000
 m2x=	0000
 
 l2mpb=	0000
-l2tb=	0002
-l2pb=	0000
+l2tb=	2202
+l2pb=	3303
+l2sb=	1102
 l2ab=	0000
 l2x=	0000
+
