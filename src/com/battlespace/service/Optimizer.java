@@ -48,19 +48,54 @@ public class Optimizer
         }
         
         List<String> fittest = null;
+        String lastBestKey = null;
+        int perturbationLocation = 0;
+        int samePerturbationCount = 0;
         
         for(int iteration=0;iteration<settings.iterations;iteration++)
         {
             fittest = fitnessEvaluation(population, settings.simulations, settings.fitness, context, parameters, settings.population);
+            String bestKey = fittest.get(0);
            
+            Set<String> crossovers = new HashSet<String>();
+            
+            // to attempt to improve convergence, try a perturbation if the bestKey is
+            // the same as the last one
+            perturbationLocation++;
+            perturbationLocation %= genes;
+            
+            if(bestKey.equals(lastBestKey))
+            {
+                if(samePerturbationCount < genes)   // don't strain yourself
+                {
+                    for(int i=0;i<genomes;i++)
+                    {
+                        List<String> g = split(bestKey);
+                        g.set(perturbationLocation, settings.availableShips.get(i));
+                        String g2 = combine(g);
+                        if( (population.get(g2)==null) && (!crossovers.contains(g2)) )
+                        {
+                            crossovers.add(g2);
+                        }
+                    }
+                }
+                samePerturbationCount++;
+            }
+            else
+            {
+                samePerturbationCount = 0;
+                lastBestKey = bestKey;
+            }
+
             if((iteration % settings.report) == 0)
             {
-                String bestKey = fittest.get(0);
                 SimulatorCollator bestValue = population.get(bestKey);
-                System.out.println("Iteration " + iteration + ": " + new OptimizerRecord(bestKey, settings.fitness.getFitness(bestValue)));                
+                System.out.println("Iteration " + iteration + ": " + new OptimizerRecord(bestKey, settings.fitness.getFitness(bestValue))
+                        + " stability: " + samePerturbationCount);                
             }
             
-            Set<String> crossovers = new HashSet<String>();
+
+
             int coAttempts = 0;
             while( (crossovers.size() < settings.crossovers) && (coAttempts++ < settings.crossoverAttempts) )
             {
