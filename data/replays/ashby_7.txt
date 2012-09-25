@@ -1,0 +1,32 @@
+attacker = 70,168,143,Redirector 1,*Pinwheel
+attacker_ships = m2ab,l1da,l1ta,s2tb,l1ta
+attacker_upgrades = m2ab:0000,l1da:1203,l1ta:1103,s2tb:1000
+
+defender = .X.............X.X.X.........X.....
+defender_ships = larcb,maria,maria,maria,larcb
+
+stats.1.attacker=3696,6030,4581,1132,2225,926
+stats.1.defender=4800,3750,3450,3780,5190,2790
+damage.1.attacker=,,2409(0),1804(1),1398(4)
+damage.1.defender=863(1),,3391(0),,2870(0)
+
+stats.2.attacker=3047,4855,3580,823,617,617
+stats.2.defender=3000,2250,2100,2220,2760,1560
+damage.2.attacker=,,,1357(0),3312(0)
+damage.2.defender=2201(0),,,,
+
+stats.3.attacker=1550,2368,1378,823,617,617
+stats.3.defender=2400,1500,1500,1320,660,660
+damage.3.attacker=,1920(2),,,
+damage.3.defender=,,2630(0),,
+
+stats.4.attacker=1321,2196,1206,549,411,411
+stats.4.defender=1200,750,750,660,330,330
+damage.4.attacker=,960(1),,,
+damage.4.defender=,,2278(1),,
+
+stats.5.attacker=1092,2024,1035,274,205,205
+stats.5.defender=400,250,250,220,110,110
+damage.5.attacker=,320(0),,,
+damage.5.defender=,,351(0),,
+

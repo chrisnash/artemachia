@@ -49,7 +49,7 @@ public class OptimizerRunner
                 
         ParsedEnemy pe = new ParsedEnemy(args[1]);
                 
-        String fitness="victory";
+        String fitness=config.get("default.optmode");
         if(args.length==3)
         {
             fitness = args[2];

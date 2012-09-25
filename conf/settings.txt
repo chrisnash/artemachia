@@ -22,6 +22,9 @@ optimizer.iterations = 10000
 optimizer.report = 50
 optimizer.simulations = 100
 
+default.optmode=score
+
+optmode.score=Score
 optmode.victory=Victory
 optmode.shipcount=ShipCount,80
 optmode.domination=Domination,80
