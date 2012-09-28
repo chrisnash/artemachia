@@ -180,6 +180,12 @@ s2ab.1=Particle Beam,0,0,0,30,30,30,0,0,0,0,0
 s2ab.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
 s2ab.3=Multi-Shock Armor,0,0,0,0,0,0,10,10,0,0,0
 
+s2db=S-2 Destroyer Ship b,300,300,630,210,210,1530,0,100,3300,6,12,6,18
+s2db.0=Anti-L Plasma,0,0,0,30,30,120,0,0,0,0,0
+s2db.1=Anti-L Pulse Rifle,30,30,60,0,0,0,0,0,0,0,0
+s2db.2=Flux Engine,0,0,0,0,0,0,0,0,0,0,1
+s2db.3=Anti-Plasma Armor,0,0,0,0,0,0,0,10,0,0,0
+
 m2mpb=M-2 Mass Produced Ship b,840,450,450,480,390,390,60,60,2400,6,10,3,12
 m2mpb.0=Pulse Rifle,60,30,30,0,0,0,0,0,0,0,0
 m2mpb.1=Particle Beam,0,0,0,45,30,30,0,0,0,0,0
