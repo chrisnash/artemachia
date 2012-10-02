@@ -1,0 +1,28 @@
+attacker = 79,123,50,Mitigator 1,tucana
+attacker_ships = l1da,m2x,l1da,m2mpb
+attacker_upgrades = l1da:1203,m2x:0000,m2mpb:0000
+union_armor = 5
+
+defender = ................X......XX......XX..
+defender_ships = laria,marcb,maria,laria,laria
+
+stats.1.attacker=2603,2692,2165,2154,4095,2053
+stats.1.defender=4140,4920,3570,3810,3330,2280
+damage.1.attacker=,4089(0)/,3150(0),,
+damage.1.defender=,,2447(0),3057(0)/,
+
+stats.2.attacker=650,1682,650,605,3152,605
+stats.2.defender=2700,3150,2250,1360,1730,1030
+damage.2.attacker=,3130(0),,,
+damage.2.defender=,,,4582(0),
+
+stats.3.attacker=325,841,325,302,1576,302
+stats.3.defender=1500,2400,1500,700,1400,700
+damage.3.attacker=2098(1),,,,
+damage.3.defender=,,,,C753(1)/
+
+stats.4.attacker=325,841,325,302,1576,302
+stats.4.defender=1500,2400,1500,700,1400,700
+damage.4.attacker=1049(0),,,,
+damage.4.defender=,,,,579(1)/
+

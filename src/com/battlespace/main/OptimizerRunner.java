@@ -102,7 +102,7 @@ public class OptimizerRunner
         params.enemyFormation = FormationService.get(pe.enemyFormation);
         params.enemyShips = Arrays.asList(pe.enemyShips.split(","));
      
-        OptimizerRecord out = Optimizer.optimize(context, params, settings);
+        OptimizerRecord out = (new Optimizer(context, params, settings)).optimize();
         System.out.println(out);
     }
 }

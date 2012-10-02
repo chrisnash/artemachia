@@ -1,8 +1,8 @@
 # military skill, gives player boosts
-military.skill = 67
+military.skill = 79
 
 #union.armor, gives durability boost (2% per)
-union.armor=4
+union.armor=5
 
 #Available ships and upgrades
 #For every available ship, include a line <ship code>=<upgrade level>
@@ -35,7 +35,7 @@ l1aa=	0001
 l1da=	1203
 
 s2mpb=	0000
-s2tb=	1203
+s2tb=	2203
 s2pb=	0000
 s2hb=	0000
 s2sb=	0003
@@ -45,13 +45,15 @@ s2db=	1100
 m2mpb=	0000
 m2tb=	0000
 m2pb=	0000
+m2sb=	0000
 m2ab=	0000
 m2x=	0000
 
 l2mpb=	0000
-l2tb=	2203
+l2tb=	2303
 l2pb=	3303
 l2sb=	1102
+l2nb=	0000
 l2ab=	0000
+l2db=	0000
 l2x=	0000
-

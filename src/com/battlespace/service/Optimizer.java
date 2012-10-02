@@ -20,16 +20,58 @@ import com.battlespace.domain.optimizers.FitnessFunction;
 
 public class Optimizer
 {
-    public static OptimizerRecord optimize(SimulatorContext context, SimulatorParameters parameters, OptimizerSettings settings) throws Exception
+    SimulatorContext context;
+    SimulatorParameters parameters;
+    OptimizerSettings settings;
+    
+    Roller rng;
+    Map<String, SimulatorCollator> population;
+    
+    int genes;      // number of elements in string
+    int genomes;    // number of potential selections for each
+
+    // perturbation state variables
+    List<String> fittest = null;
+    String lastBestKey = null;
+    int perturbationLocation = 0;
+    int samePerturbationCount = 0;
+
+    int globalPopulation;
+    
+    public Optimizer(SimulatorContext context, SimulatorParameters parameters, OptimizerSettings settings)
     {
-        Roller rng = context.rng;
+        this.context = context;
+        this.parameters = parameters;
+        this.settings = settings;
         
-        Map<String, SimulatorCollator> population = new HashMap<String, SimulatorCollator>();
+        this.rng = context.rng;
+        this.population = new HashMap<String, SimulatorCollator>();
+
+        this.genes = parameters.playerFormation.shipCount();
+        this.genomes = settings.availableShips.size();
         
-        int genes = parameters.playerFormation.shipCount();
-        int genomes = settings.availableShips.size();
+        // calculate genomes^genes. The globalPopulation is a limiter if we don't have many genomes
+        // or we are only optimizing a small number of ships.
+    
+        globalPopulation = 1;
+        for(int i=0; i<genes; i++) globalPopulation*=genomes;
         
+        // if the global population is small, there's nothing to lose by testing them all.
+        // similarly if the global population is just a little larger than our test set,
+        // it may be difficult to explore missing elements using just random mutation
+        
+        // example, we have a population of 100 and ask for 10 mutations of the first 10 elements.
+        // suppse we have 5 genomes and 3 genes = gp of 125. Then its quite possible we will
+        // spend a long time looking for 10 unique mutations (quite possible we might not find one at all).
+        // likewise of the 45 crossover combinations it's not too likely that two will differ at two
+        // or more code points. (3*.8*.8*.2 + .8*.8*.8). Use crossoverAttempts as a limiter for both.
+        // also if crossover count is less than crossoverAttempts, you may as well try them mechanically.
+    }
+    
+    public OptimizerRecord optimize() throws Exception
+    {        
         // first generate an initial population (randomly)
+        // note if genomes^genes is small, then this will fail
         for(int i=0;i<settings.population + settings.mutations + settings.crossovers;)
         {
             StringBuffer sb = new StringBuffer();
@@ -46,12 +88,7 @@ public class Optimizer
                 i++;
             }
         }
-        
-        List<String> fittest = null;
-        String lastBestKey = null;
-        int perturbationLocation = 0;
-        int samePerturbationCount = 0;
-        
+                
         for(int iteration=0;iteration<settings.iterations;iteration++)
         {
             fittest = fitnessEvaluation(population, settings.simulations, settings.fitness, context, parameters, settings.population);
@@ -116,6 +153,18 @@ public class Optimizer
                     out.add(x1.get(i));
                 }
                 int hamming = diffs.size();
+                // note the potential number of crossovers, and balanced crossovers, depends on hamming distance
+                // H    X      BX
+                // 1    0      0  1
+                // 2    2      2  1 (2) 1
+                // 3    6      6  1 (3 3) 1
+                // 4    14     6  1 (4 [6] 4) 1
+                // 5    30     20 1 (5 [10 10] 5) 1
+                // 6    62     20 1 (6 15 [20] 15 6) 1
+                
+                // we should assume hamming distances >=3 are very unlikely (and if they occur we should prioritize them
+                // for the sake of diversity). We need a better analysis here. We need to optimize convergence time.
+                
                 if(hamming<2) continue;
                 int x2tochoose=hamming;
                 // we need to choose hamming/2, if odd, round up or down
@@ -145,7 +194,8 @@ public class Optimizer
             }
             
             // use mutation to fill up the crossovers
-            while(crossovers.size() < settings.mutations + settings.crossovers)
+            int muAttempts = 0;
+            while( (crossovers.size() < settings.mutations + settings.crossovers) && (muAttempts++ < settings.crossoverAttempts) )
             {
                 String source = fittest.get(rng.select(settings.mutationPopulation));
                 List<String> g = split(source);
