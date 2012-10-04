@@ -381,4 +381,19 @@ public class Deployment
     {
         cachedFrontLine = null;
     }
+
+    public double heroism()
+    {
+        double h = 0.0;
+        List<Coordinate> survivors = livingShipList();
+        for(Coordinate survivor : survivors)
+        {
+            ShipInstance si = deploymentMap.get(survivor);
+            double d = si.getDamage().value();
+            double m = si.getParent().getDurability().value();
+            double th = (100.0*d)/m;
+            if(th>h) h=th;
+        }
+        return h;
+    }
 }

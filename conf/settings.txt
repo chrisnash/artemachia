@@ -33,3 +33,4 @@ optmode.damage=Damage
 optmode.time=Time,80,120,1
 optmode.build=Build,80,120,1
 optmode.dv=DataValue
+optmode.hero=Heroism,80

@@ -8,6 +8,7 @@ b34=34,Air Force c,BoostWeapons,L,3
 b43=43,Dept of Defense c,BoostShields,L,3
 b49=49,Strategic Command,BoostAllShields,3
 b52=52,Strategic Command,BoostAllWeapons,3
-# next two are another 3, to make 6 total
+# next two add onto the existing bonuses to get the numbers right
 b65=65,Air Force d,BoostWeapons,S,3
 b71=71,Dept of Defense d,BoostShields,S,3
+b83=83,Dept Of Transport b,BoostSpeed,5

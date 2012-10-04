@@ -11,7 +11,8 @@ public class SimulatorResults
     Deployment enemyResult;
     
     String[] availableStats = new String[]{"victoryPercent", "shipLosses", "shipCount", 
-            "domination", "enemyKills", "enemyDamage", "replacementTime", "buildTime", "dataValue", "score"};
+            "domination", "enemyKills", "enemyDamage", "replacementTime", "buildTime", "dataValue", "score",
+            "heroism"};
 
     public SimulatorResults(boolean v, Deployment player, Deployment enemy)
     {
@@ -85,5 +86,9 @@ public class SimulatorResults
     private double score()
     {
         return playerResult.livingShipList().size() - enemyResult.livingShipList().size();
+    }
+    private double heroism()
+    {
+        return playerResult.heroism();
     }
 }
