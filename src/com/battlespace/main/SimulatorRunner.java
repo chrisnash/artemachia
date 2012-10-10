@@ -11,6 +11,7 @@ import com.battlespace.domain.SimulatorCollator;
 import com.battlespace.domain.SimulatorContext;
 import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
+import com.battlespace.domain.SimulatorState;
 import com.battlespace.main.parsers.ParsedCommander;
 import com.battlespace.main.parsers.ParsedEnemy;
 import com.battlespace.main.viewer.ShellViewer;
@@ -76,7 +77,7 @@ public class SimulatorRunner
         
         //System.out.println(results);
         
-        SimulatorCollator collator = null;
+        SimulatorState collator = null;
 
         System.out.println("SIMULATION RESULTS");
         collator = Simulator.simulateMultiple(context,  params, collator, 1000);

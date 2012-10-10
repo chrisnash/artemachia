@@ -12,3 +12,4 @@ b52=52,Strategic Command,BoostAllWeapons,3
 b65=65,Air Force d,BoostWeapons,S,3
 b71=71,Dept of Defense d,BoostShields,S,3
 b83=83,Dept Of Transport b,BoostSpeed,5
+b89=89,Air Force e,BoostWeapons,M,3

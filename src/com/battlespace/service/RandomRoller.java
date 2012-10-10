@@ -18,4 +18,10 @@ public class RandomRoller implements Roller
         if(options==1) return 0;
         return rng.nextInt(options);
     }
+
+    @Override
+    public double random()
+    {
+        return rng.nextDouble();
+    }
 }

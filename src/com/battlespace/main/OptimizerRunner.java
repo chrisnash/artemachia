@@ -25,6 +25,7 @@ import com.battlespace.main.parsers.ParsedEnemy;
 import com.battlespace.service.CommanderPowerService;
 import com.battlespace.service.DataLoaderService;
 import com.battlespace.service.FormationService;
+import com.battlespace.service.HillOptimizer;
 import com.battlespace.service.ObjectCreator;
 import com.battlespace.service.Optimizer;
 import com.battlespace.service.PlanetService;
@@ -102,7 +103,8 @@ public class OptimizerRunner
         params.enemyFormation = FormationService.get(pe.enemyFormation);
         params.enemyShips = Arrays.asList(pe.enemyShips.split(","));
      
-        OptimizerRecord out = (new Optimizer(context, params, settings)).optimize();
+        System.out.println("Using optimizer " + settings.fitness.getClass());
+        OptimizerRecord out = (new HillOptimizer(context, params, settings)).optimize();
         System.out.println(out);
     }
 }

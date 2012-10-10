@@ -1,0 +1,21 @@
+attacker = 88,74,135,L Missileer 1,triangulum
+attacker_ships = m2x,s1aa,l1aa
+attacker_upgrades = m2x:0000,s1aa:0001,l1aa:0001 
+
+defender = ..........X.....X.X.....X..........
+defender_ships = lanta,lanab,manta,lanta
+
+stats.1.attacker=1947,1627,2184,1832,1448,1866
+stats.1.defender=1310,1930,1010,1200,1320,1170
+damage.1.attacker=,655(3),1469(3),371(1),
+damage.1.defender=,1925(0),1094(1),933(1),
+
+stats.2.attacker=1728,1407,1846,1629,1245,1646
+stats.2.defender=1040,1300,740,1050,1170,1020
+damage.2.attacker=,,1469(0),371(1),
+damage.2.defender=,,547(0),1925(0),
+
+stats.3.attacker=1508,1188,1508,1426,1042,1426
+stats.3.defender=570,270,270,150,120,120
+damage.3.attacker=,,,344(1),
+damage.3.defender=,,962(0),,

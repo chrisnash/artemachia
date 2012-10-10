@@ -3,7 +3,7 @@ package com.battlespace.domain;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SimulatorCollator
+public class SimulatorCollator implements SimulatorState
 {
     int simulations = 0;
     public Map<String, Double> stats = new HashMap<String, Double>();

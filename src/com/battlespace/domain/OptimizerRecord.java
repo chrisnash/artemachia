@@ -3,7 +3,7 @@ package com.battlespace.domain;
 public class OptimizerRecord implements Comparable<OptimizerRecord>
 {
     public String id;
-    public double fitness;
+    private double fitness;
     
     public OptimizerRecord(String id, double fitness)
     {
@@ -24,6 +24,11 @@ public class OptimizerRecord implements Comparable<OptimizerRecord>
     
     public String toString()
     {
-        return id + " (" + fitness + ")";
+        return id + " (" + getFitness() + ")";
+    }
+    
+    public double getFitness()
+    {
+        return fitness;
     }
 }

@@ -1,0 +1,31 @@
+attacker = 88,142,190,S Missileer 3,delphinus
+attacker_ships = s1x,l2tb,l1ta,m1sa,m1da
+attacker_upgrades = s1x:0000,l2tb:2303,l1ta:1103,m1sa:0001,m1da:0001
+
+defender = ................X......XX......XX..
+defender_ships = laria,marcb,maria,laria,laria
+
+stats.1.attacker=4189,5520,3195,1302,1139,1139
+stats.1.defender=4140,4920,3570,3810,3330,2280
+damage.1.attacker=,1840(2),3189(0),,
+damage.1.defender=,,2372(0),3002(0)/,
+
+stats.2.attacker=2989,3145,1798,977,628,628
+stats.2.defender=2700,3150,2250,1360,1730,1030
+damage.2.attacker=,,3431(0),,
+damage.2.defender=,,,2799(0),502(1)/
+
+stats.3.attacker=2820,3043,1696,807,527,527
+stats.3.defender=1500,2400,1500,700,1400,700
+damage.3.attacker=,920(0),,,
+damage.3.defender=,,,,1968(0)/
+
+stats.4.attacker=2647,2771,1425,644,271,271
+stats.4.defender=750,1200,750,350,700,350
+damage.4.attacker=,,1760(2),,
+damage.4.defender=,,,,1482(1)
+
+stats.5.attacker=2149,2681,1335,429,181,181
+stats.5.defender=750,1200,750,350,700,350
+damage.5.attacker=,,1760(0),,
+damage.5.defender=,,,,980(0)

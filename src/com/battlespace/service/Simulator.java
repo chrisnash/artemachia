@@ -14,6 +14,7 @@ import com.battlespace.domain.SimulatorCollator;
 import com.battlespace.domain.SimulatorContext;
 import com.battlespace.domain.SimulatorParameters;
 import com.battlespace.domain.SimulatorResults;
+import com.battlespace.domain.SimulatorState;
 import com.battlespace.domain.Stat;
 import com.battlespace.main.viewer.EmptyViewer;
 import com.battlespace.main.viewer.ShellViewer;
@@ -22,7 +23,7 @@ import com.battlespace.strategy.AttackPlan;
 
 public class Simulator
 {
-    public static SimulatorCollator simulateMultiple(SimulatorContext context, SimulatorParameters params, SimulatorCollator collator, int count) throws Exception
+    public static SimulatorState simulateMultiple(SimulatorContext context, SimulatorParameters params, SimulatorState collator, int count) throws Exception
     {
         if(collator==null)
         {

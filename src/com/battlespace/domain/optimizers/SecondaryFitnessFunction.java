@@ -1,6 +1,7 @@
 package com.battlespace.domain.optimizers;
 
 import com.battlespace.domain.SimulatorCollator;
+import com.battlespace.domain.SimulatorState;
 
 public abstract class SecondaryFitnessFunction implements FitnessFunction
 {
@@ -14,7 +15,7 @@ public abstract class SecondaryFitnessFunction implements FitnessFunction
     }
 
     @Override
-    public double getFitness(SimulatorCollator v)
+    public double getFitness(SimulatorState v)
     {
         double q = v.getStat("victoryPercent") - victoryThreshold;
         if(q>0)

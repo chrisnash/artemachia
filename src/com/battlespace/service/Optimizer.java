@@ -16,6 +16,7 @@ import com.battlespace.domain.OptimizerSettings;
 import com.battlespace.domain.SimulatorCollator;
 import com.battlespace.domain.SimulatorContext;
 import com.battlespace.domain.SimulatorParameters;
+import com.battlespace.domain.SimulatorState;
 import com.battlespace.domain.optimizers.FitnessFunction;
 
 public class Optimizer
@@ -226,17 +227,17 @@ public class Optimizer
         return new OptimizerRecord(bestKey, settings.fitness.getFitness(bestValue));
     }
 
-    private static List<String> fitnessEvaluation(
-            Map<String, SimulatorCollator> population, int simulations, FitnessFunction fitness,
+    protected static List<String> fitnessEvaluation(
+            Map<String, ? extends SimulatorState> population, int simulations, FitnessFunction fitness,
             SimulatorContext context, SimulatorParameters parameters,
             int newPopulation) throws Exception
     {
         // fitness evaluation
         SortedSet<OptimizerRecord> best = new TreeSet<OptimizerRecord>();
-        for(Map.Entry<String, SimulatorCollator> e : population.entrySet())
+        for(Map.Entry<String, ? extends SimulatorState> e : population.entrySet())
         {
             String s = e.getKey();
-            SimulatorCollator v = e.getValue();
+            SimulatorState v = e.getValue();
             List<String> ships = split(s);
             parameters.playerShips = ships;
             Simulator.simulateMultiple(context, parameters, v, simulations);
@@ -260,7 +261,7 @@ public class Optimizer
         return fittest;
     }
 
-    private static String combine(List<String> out)
+    protected static String combine(List<String> out)
     {
         StringBuffer sb = new StringBuffer();
         for(String item : out)
@@ -271,7 +272,7 @@ public class Optimizer
         return sb.toString();
     }
 
-    private static List<String> split(String source)
+    protected static List<String> split(String source)
     {
         return Arrays.asList(source.split(","));
     }
