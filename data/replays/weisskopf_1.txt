@@ -1,0 +1,31 @@
+attacker = 91,71,23,S Ionizer 1,telescopium
+attacker_ships = m2x,m2ab,l2sb,l2x
+attacker_upgrades = m2x:0000,m2ab:1000,l2sb:1102,l2x:0000 
+
+defender = ................X.....X..XX...X....
+defender_ships = sarcb,maria,manab,manab,sarcb
+
+stats.1.attacker=2849,2229,2132,3052,2380,2284
+stats.1.defender=3000,2190,2310,4260,3630,6030
+damage.1.attacker=,,,3785(1),2270(1)
+damage.1.defender=,,3294(1),324(3),1925(3)
+
+stats.2.attacker=2849,2229,2132,3052,2380,2284
+stats.2.defender=2280,1470,1510,3060,2430,3230
+damage.2.attacker=,1876(2),,725(0),1135(0)
+damage.2.defender=,,1421(0),1260(1),1925(0)
+
+stats.3.attacker=1463,844,1350,1598,945,1451
+stats.3.defender=1120,610,610,2020,1610,1610
+damage.3.attacker=,1983(0),,,
+damage.3.defender=,,,1661(0),
+
+stats.4.attacker=1012,506,1012,1012,506,1012
+stats.4.defender=720,360,360,1800,1500,1500
+damage.4.attacker=1564(2),,,,
+damage.4.defender=,,,987(2)/,
+
+stats.5.attacker=675,337,675,675,337,675
+stats.5.defender=600,300,300,1500,1250,1250
+damage.5.attacker=1303(0),,,,
+damage.5.defender=,,,658(1)/,

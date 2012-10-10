@@ -1,0 +1,21 @@
+attacker = 91,37,33,L Ionizer 1,aquila
+attacker_ships = l2ab,l2sb,s1mpa
+attacker_upgrades = l2ab:0000,l2sb:1102,s1mpa:1100
+
+defender = ..........X.....XX......X..........
+defender_ships = santa,lanab,manta,santa
+
+stats.1.attacker=1011,1281,1144,1027,1198,1260
+stats.1.defender=1310,1210,1490,1140,1260,1170
+damage.1.attacker=590(1),,1341(1),,
+damage.1.defender=,1133(1),237(1)/,617(3),
+
+stats.2.attacker=1011,1281,1144,1027,1198,1260
+stats.2.defender=950,850,810,980,1100,970
+damage.2.attacker=98(1),,1119(1),,
+damage.2.defender=,1133(0),237(1)/,617(0),
+
+stats.3.attacker=1011,1281,1144,1027,1198,1260
+stats.3.defender=770,670,470,900,1020,870
+damage.3.attacker=,,898(1),,
+damage.3.defender=,,1134(0)/963(0),,
